@@ -1,0 +1,107 @@
+<!doctype html>
+
+<html>
+
+<head>
+
+  <meta charset='utf-8'>
+  <title>Sketch-A-Query!</title>
+
+  <!--<base href="http://www.handsontable.com/"/>-->
+
+  <!-- Loading Handsontable (full distribution that includes all dependencies apart from jQuery) -->
+
+  <script src="js/jquery.js"></script>
+  <script src="js/jquery.handsontable.full.js"></script>
+  <script src="js/scripts.js"></script>
+
+  <link rel="stylesheet" media="screen" href="css/jquery.handsontable.full.css">
+
+  <!--
+  Loading demo dependencies. They are used here only to enhance the examples on this page
+  -->
+  <link rel="stylesheet" media="screen" href="css/samples.css">
+</head>
+
+
+
+<body class="home">
+
+<!--<a href="http://github.com/warpech/jquery-handsontable" class="forkMeOnGitHub">Fork me on GitHub</a>-->
+
+
+
+<div id="container">
+
+
+<div class="centerLayout">
+
+<h1>
+  <a href="index.html">Sketch-A-Query</a> <!--<span class="ver small"></span></a>-->
+
+  <!--
+  <iframe id="githubWatch"
+          src="demo/github-buttons/github-btn.html?user=warpech&repo=jquery-handsontable&type=watch&count=true"
+          frameborder="0" scrolling="0" width="104" height="20"></iframe>
+
+  <iframe id="githubFork"
+          src="demo/github-buttons/github-btn.html?user=warpech&repo=jquery-handsontable&type=fork&count=true"
+          frameborder="0" scrolling="0" width="87" height="20"></iframe>
+  -->
+</h1>
+
+
+<div class="tagline">Input some cell values and click infer!</div>
+
+
+<!--
+<div class="tagline">a minimalistic Excel-like <span class="nobreak">data grid</span> editor
+  for HTML, JavaScript &amp; jQuery
+</div>
+
+<div class="warning" id="domainNotice">
+  This page has been moved to
+  <a href="http://handsontable.com/">http://handsontable.com/</a>. Please update your bookmarks.
+</div>
+
+
+<div class="warning">
+  This is a new version <span class="ver"></span>. It introduces more plugin hooks (for <a
+  href="https://github.com/warpech/jquery-handsontable/wiki/Events">Events and Callbacks</a>) and more flexible <a
+  href="https://github.com/warpech/jquery-handsontable/wiki/Options">Options</a>. <br>It should fully compatible
+  with 0.8 API. If not, please take a look at the migration guide in <a
+  href="https://github.com/warpech/jquery-handsontable/wiki">Wiki</a> or write us a note on <a
+  href="https://github.com/warpech/jquery-handsontable/issues">GitHub Issues</a>. <br>For details on what's changed, see <a
+  href="https://github.com/warpech/jquery-handsontable/blob/master/CHANGELOG.md">Changelog</a>.
+</div>
+-->
+
+Original table:<p>
+<div id="original"></div>
+
+Put in your constraints:<p>
+<div id="input"></div>
+
+Number of output columns: <input id="numCols" type="number" min="1" max="5" step="1" value="1"> 
+
+<p>
+
+<button name="dump" data-dump="#example1" onclick="dumpData()">
+  Dump data to console
+</button>
+
+<button name="ajax" onclick="sendRequest()">Infer Query</button>
+
+<p>
+
+<div class="warning" id="result" style="visibility:hidden">
+  Inferred query:
+</div>
+
+<div id="resultTable"></div>
+
+</body>
+
+</html>
+
+

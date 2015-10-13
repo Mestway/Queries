@@ -1,0 +1,152 @@
+===
+
+title: SQL Select only rows with Max Value on a Column
+
+link: http://stackoverflow.com/questions/7745609/sql-select-only-rows-with-max-value-on-a-column
+
+desc: Given a table with three columns (id, rev, contents), the goal is to select the rows with max rev in each id group.
+
+===
+
+title: SQL to find the difference between two rows
+
+link: http://stackoverflow.com/questions/588229/sql-to-find-the-difference-between-two-rows?rq=1
+
+desc: Given a table (locID, dtg, temp), the goal is to caltulate the differences of the latest two temperature records for each locID.
+
+===
+
+title: SQL WHERE query on date range
+
+link: http://stackoverflow.com/questions/8358064/sql-where-query-on-date-range?rq=1
+
+desc: Fetch rows whose date are in the given date range.
+
+===
+
+title: select records which are repeated twice
+
+link: http://stackoverflow.com/questions/2235186/select-records-which-are-repeated-twice
+
+desc: select records whose are reperated twice based on their 2nd and 3rd column.
+
+===
+
+title: Sqlite3 query by max and filter by second factor
+
+link: http://stackoverflow.com/questions/32779941/sqlite3-query-by-max-and-filter-by-second-factor
+
+desc: There is a table (message_id | conversation_id | from_user | timestamp  |  message), the goal is to find rows with max timestamp for each conversation id. But when two rows have same conversation_id and both have same max timestamp, select only the one with bigger message_id.
+
+===
+
+title: How to group following rows by not unique value
+
+link: http://stackoverflow.com/questions/30877926/how-to-group-following-rows-by-not-unique-value?rq=1
+
+desc: find records for each interval
+
+===
+
+title: gSELECT / GROUP BY - segments of time (10 seconds, 30 seconds, etc)
+
+link: http://stackoverflow.com/questions/3086386/select-group-by-segments-of-time-10-seconds-30-seconds-etc
+
+desc: count the sum of the 3rd column group by a time interval.
+
+===
+
+title: How can I SELECT rows with MAX(Column value), DISTINCT by another column in SQL?
+
+link: http://stackoverflow.com/questions/612231/how-can-i-select-rows-with-maxcolumn-value-distinct-by-another-column-in-sql
+
+desc: select rows with a max column value for each home group.
+
+===
+
+title: Joining and filtering one to many relationship
+
+link: http://stackoverflow.com/questions/32913803/joining-and-filtering-one-to-many-relationship
+
+desc: join two tables and then select rows that have max value in a column.
+
+===
+
+title: SQL Inner Join With Multiple Columns
+
+link: http://stackoverflow.com/questions/32912453/sql-inner-join-with-multiple-columns
+
+desc: inner join with multiple columns
+
+===
+
+title: Select count with join in sql query
+
+link: http://stackoverflow.com/questions/32942563/select-count-with-join-in-sql-query
+
+desc: Join on adminID and then count for each group
+
+===
+
+title: SQL reverse an entire column
+
+link: http://stackoverflow.com/questions/32936853/sql-reverse-entire-column
+
+desc: reverse the first column
+
+=== 
+
+title: Get data for a given number of days by converting rows to column dynamically
+
+link: http://stackoverflow.com/questions/32933910/get-data-for-a-given-number-of-days-by-converting-rows-to-column-dynamically
+
+desc: from row to column
+
+===
+
+title: select grand parent of a row with in a single table sql 
+
+link: http://stackoverflow.com/questions/32932846/select-grand-parent-of-a-row-with-in-a-single-table-sql
+
+desc: join twice and find the grand parent node for each row
+
+=== 
+
+title: SQL foreach table and get number for duplicate data using reference date
+
+link: http://stackoverflow.com/questions/32928624/sql-foreach-table-and-get-number-for-duplicate-data-using-reference-date
+
+desc: 1) find the max reference date for each name group, 2) difference the max date with the date now
+
+=== 
+
+title: SQL join to count based on query result
+
+link: http://stackoverflow.com/questions/32926859/sql-join-to-count-based-on-query-results
+
+desc: 1) join the table it self and 2) count the number of another field based on the join result.
+
+===
+
+title: How to count daily sales of salesman and show dates as a column in SQL QUERY
+
+link: http://stackoverflow.com/questions/32921518/how-to-count-daily-sales-of-salesman-and-show-dates-as-a-column-in-sql-query
+
+desc: Given two dates d1 and d2, display the daily sales from two this range
+
+===
+
+title: Need a query that returns first recod, every time a car cross the speed of 100
+
+link: http://forums.sqlteam.com/t/need-a-query-that-returns-first-recod-every-time-a-car-cross-the-speed-of-100/3525
+
+desc: find all records that just break 100 (previous record is not 100)
+
+===
+
+title: Find minimum date after a change
+
+link: http://forums.sqlteam.com/t/find-minimum-date-after-a-change/3472
+
+desc: Find minimum date after a change
+

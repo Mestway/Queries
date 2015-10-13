@@ -1,0 +1,204 @@
+Queries and corresponding QLang
+
+=== 01
+
+(Stackoverflow:
+	http://stackoverflow.com/questions/7745609/sql-select-only-rows-with-max-value-on-a-column
+)
+
+select yt.id, nt.maxrev, yt.content
+from yourTable yt
+	inner join (
+		select id, max(rev) maxrev
+		from yourTable
+		group by id
+	) nt
+where
+	yt.id = nt.id and yt.rev = nt.maxrev
+
+select(table.id)
+	++ select(max(table, groupby(table.id)))
+	++ select(table.content)
+with
+	c1 ~ c3,
+	c1.id = c2.key
+
+// an alternative implementation
+
+select yt.id, yt.rev, yt.content
+from yourTable yt
+inner join (
+	select id, max(rev) maxrev
+	from yourTable
+	group by id
+) nt
+on nt.id = yt.id
+where
+	yt.id = nt.id and yt.rev = nt.maxrev
+
+select(table.id)
+	++ select(table.rev)
+	++ select(table.content)
+	++ [select(max(table.rev, groupby(table.id)))]
+with
+	c1 ~ c2,
+	c1 ~ c3,
+	c2 ~ c3,
+	c1 = c4.key
+	c2 = c4.val
+
+=== 02
+
+(tpc-h : simplified from 1.sql)
+
+select
+	l_returnflag,
+	l_linestatus,
+	sum(l_quantity) as sum_qty,
+	sum(l_extendedprice) as sum_base_price,
+	sum(l_extendedprice * (1 - l_discount)) as sum_disc_price,
+	avg(l_quantity) as avg_qty,
+	count(*) as count_order
+from
+	lineitem
+where
+	l_shipdate <= date '1998-12-01' - interval ':1' day (3)
+group by
+	l_returnflag,
+	l_linestatus
+order by
+	l_returnflag,
+	l_linestatus;
+
+select(lineitem.l_returnflag)
+	++ select(lineitem.l_linestatus)
+	++ select(sum(lineitem.l_quantity, groupby(l_returnflag, l_linestatus)))
+	++ select(f(lineitem, groupby(l_returnflag, l_linestatus)))
+	++ select(avg(l_quantity, groupby(l_returnflag, l_linestatus)))
+	++ select(count(groupby(table.l_returnflag, table.l_linestatus)))
+	++ [select(lineitem.l_shipdate)]
+with
+	c1~c2,
+	c1~c6,
+	(c1, c2) = c3.key,
+	(c1, c2) = c4.key,
+	(c1, c2) = c5.key,
+	c6 <=  date '1998-12-01' - interval ':1' day (3)
+
+f(table) = sum(table.l_extendedprice * (1 - table.l_discount),
+								groupby(table.l_returnflag, table.l_linestatus))
+
+=== 03
+
+(Stackoverflow:
+	http://stackoverflow.com/questions/2235186/select-records-which-are-repeated-twice)
+
+select t1.id
+from table t1
+inner join (
+	select date, count(*) cnt
+	from table
+	group by date
+) t2
+on t2.date = t1.date
+where
+	t2.count % 2 = 0
+
+select(table.id)
+	++ select(count(*, groupby(table.id)))
+with
+	c1 = c2.key,
+	c2 % 2 = 0
+
+=== 04
+
+/*
+(Stackoverflow:
+	http://stackoverflow.com/questions/32779941/sqlite3-query-by-max-and-filter-by-second-factor)
+
+select m.*
+from Messages m
+inner join
+(
+    select conversation_id, max(timestamp), message_id
+    from
+    (
+        select conversation_id, timestamp, max(message_id) message_id
+        from Messages
+        where message <> 'me'
+        group by conversation_id, timestamp
+    ) max_mid
+    group by conversation_id
+) max_mid_ts on max_mid_ts.message_id = m.message_id
+order by m.message_id;
+
+select(m.message_id)
+	++ select(m.conversation_id)
+	++ select(m.from_user)
+	++ select(m.timestamp)
+	++ select(m.message)
+	++ [select(max(m.timestamp)) ]
+with
+*/
+
+=== 05
+
+(Stackoverflow:
+	http://stackoverflow.com/questions/32942563/select-count-with-join-in-sql-query)
+
+select table1.admin_name, COUNT(*) as cnt
+from
+  table1
+	inner join table2
+  on table1.admin_id = table2.admin_id
+group by
+  table1.admin_name
+
+select(table1.admin_name)
+	++ [select(table1.id)]
+ 	++ select(count(*, table2.admin_id))
+with
+	c1 ~ c2
+	c2.id = c3.key
+
+=== 06
+
+(TPC-H: 4.sql)
+
+select
+	o_orderpriority,
+	count(*) as order_count
+from
+	orders
+where
+	o_orderdate >= date ':1'
+	and o_orderdate < date ':1' + interval '3' month
+	and exists (
+		select
+			*
+		from
+			lineitem
+		where
+			l_orderkey = o_orderkey
+			and l_commitdate < l_receiptdate
+	)
+group by
+	o_orderpriority
+
+
+select(orders.o_orderpriority)
+	++ select(count(*, group(order)))
+
+=== 07
+
+Old ones:
+	http://stackoverflow.com/questions/2514189/find-earliest-and-latest-dates-of-specified-records-from-a-table-using-sql
+
+---
+New ones:
+
+http://stackoverflow.com/questions/33027549/sql-max-only-returns-1-row-if-column-has-several-max-values
+
+http://stackoverflow.com/questions/33023862/how-to-make-this-one-to-many-query
+
+http://stackoverflow.com/questions/32573572/how-to-get-record-with-earliest-date-per-group

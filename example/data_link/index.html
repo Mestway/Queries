@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <title>Data Inspector</title>
+    <link rel="stylesheet" type="text/css" href="tablestyle.css"/>
+  </head>
+  <body>
+    <script type="text/javascript" src="d3.js"></script>
+    <script type="text/javascript" src="jquery.js"></script>
+
+    <script src="example_json.js"></script>
+    <script type="text/javascript">
+      var fistColumnWidth = "50pt";
+
+      // data is define the the other file
+      var table = d3.select("body")
+        .append("table")
+        .attr("width", "800px");
+
+      var tableheader = table.append("tr");
+        tableheader.append("th").attr("width", fistColumnWidth).style("text-align","center").text("ID");
+        tableheader.append("th").text("Annswer Data");
+      
+
+      table.selectAll(".lines")
+        .data(data)
+        .enter()
+        .append("tr")
+        .attr("class", "lines")
+        .append("td")
+        .attr("width", fistColumnWidth)
+        .style("text-align","center")
+        .html(function(d) {
+          return d.id;
+        });
+      d3.selectAll(".lines")
+        .append("td")
+        .style("line-height", "125%")
+        .html(function(d){
+          d.displaystyle = "table-row";
+          var cellbody = "<div class=\"tablecells\" id=\" table_cell" + d.id + "\">";
+          cellbody += "<a href=\"" + d.link + "\">" + d.title + "</a>" + "<br />";
+          cellbody +=  "Description: " + d.description ; 
+          cellbody += "</div>";
+          return cellbody;
+        });
+
+    </script>    
+  </body>
+</html>

@@ -1,0 +1,70 @@
+Challenging query examples:
+
+1) Queries that contain a field that is used in filter but not used anymore afterwards.
+2) Queries that contain a projection to drop the column that is used to join two tables.
+3) Aggregation result is affected by filter.
+4) Aggregation followed by another aggregation.
+
+
+    ==> something more interesting:
+          input table may not be compelete, and the user will just show some of the result that satisfy the query constraint.
+6) group by some expression that the user cannot express
+    ==> group by some interval
+
+
+some other things we didn't consider:
+  A.CountIf, SUmIF: http://stackoverflow.com/questions/17383055/sql-countif-function
+  B.Count how many times a value change
+      http://stackoverflow.com/questions/30454712/count-changes-based-on-timestamp
+
+Sum then argmax: http://stackoverflow.com/questions/29991767/sql-select-row-where-sum-of-a-column-is-greatest-with-two-fields-in-group-by
+
+E.g. 1
+
+select
+  l_returnflag,
+  l_linestatus,
+  sum(l_quantity) as sum_qty,
+  sum(l_extendedprice) as sum_base_price,
+  sum(l_extendedprice * (1 - l_discount)) as sum_disc_price,
+  avg(l_quantity) as avg_qty,
+  count(*) as count_order
+from
+  lineitem
+where
+  l_shipdate <= date '1998-12-01' - interval ':1' day (3)         -- l_shipdate does not appeared in the original table
+group by
+  l_returnflag,
+  l_linestatus
+order by
+  l_returnflag,
+  l_linestatus;
+
+
+
+E.g. 2
+
+select group_id, avg(score)
+from student_table
+where
+  score > 60
+
+---
+
+select
+  st.group_id,
+  st.name,
+  st.score
+from
+  student_table
+inner join (
+  select group_id, min(score) min_score
+  from student_table
+  where score > 60
+  group by group_id
+) st2
+on
+  st.group_id = st2.group_id
+where
+  st.score = st2.min_score
+

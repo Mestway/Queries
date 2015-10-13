@@ -1,0 +1,144 @@
+select the rows with max value on a column
+http://stackoverflow.com/questions/7745609/sql-select-only-rows-with-max-value-on-a-column
+
+Unique values in each row
+http://stackoverflow.com/questions/190702/mysql-select-n-rows-but-with-only-unique-values-in-one-column?rq=1
+
+get the lastest value for each location
+http://stackoverflow.com/questions/1783932/sql-query-to-get-the-latest-value-for-each-location?lq=1
+
+differences in two latest rows
+http://stackoverflow.com/questions/588229/sql-to-find-the-difference-between-two-rows?rq=1
+
+Same employees with same department but different shifts (hard **)
+http://stackoverflow.com/questions/10228396/how-to-find-out-employees-having-same-department-but-different-shifts?rq=1
+
+Second latest date
+http://stackoverflow.com/questions/13875596/sql-query-for-getting-the-price-for-the-second-latest-date?rq=1
+Query on date range
+http://stackoverflow.com/questions/8358064/sql-where-query-on-date-range?rq=1
+
+Select records repeated twice
+http://stackoverflow.com/questions/2235186/select-records-which-are-repeated-twice?rq=1
+
+Retrieving last record
+http://stackoverflow.com/questions/1313120/retrieving-the-last-record-in-each-group
+
+Find max value per group
+http://stackoverflow.com/questions/2657482/sql-find-the-max-record-per-group?lq=1
+
+Compare values
+http://stackoverflow.com/questions/17194/sql-query-to-compare-product-sales-by-month?rq=1
+
+XXX Query dates with range
+XXX http://stackoverflow.com/questions/16427692/mysql-query-find-dates-within-range-by-month-and-year?rq=1
+
+XXX Select quarters within a date range
+XXX http://stackoverflow.com/questions/14995024/selecting-quarters-within-a-date-range?rq=1
+
+Query with both positive and negative examples
+http://stackoverflow.com/questions/32779941/sqlite3-query-by-max-and-filter-by-second-factor
+
+Group following rows by not unique value
+http://stackoverflow.com/questions/30877926/how-to-group-following-rows-by-not-unique-value?rq=1
+
+Group by segments of time
+http://stackoverflow.com/questions/3086386/select-group-by-segments-of-time-10-seconds-30-seconds-etc
+
+Group by interval
+http://stackoverflow.com/questions/6551214/mysql-group-by-datetime-3-seconds
+
+
+
+
+
+
+Good example
+http://stackoverflow.com/questions/612231/how-can-i-select-rows-with-maxcolumn-value-distinct-by-another-column-in-sql?rq=1
+
+
+Database query greatest-n-per group
+argmax question
+
+
+
+http://stackoverflow.com/questions/20491912/sql-select-only-rows-with-custom-max-value-on-a-column?rq=1
+
+http://stackoverflow.com/questions/7745609/sql-select-only-rows-with-max-value-on-a-column
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+aggregated result
+http://stackoverflow.com/questions/32915426/i-want-to-join-two-aggregrated-result-sets
+
+one to many relationship
+http://stackoverflow.com/questions/32913803/joining-and-filtering-one-to-many-relationship
+
+Translate
+http://stackoverflow.com/questions/32912453/sql-inner-join-with-multiple-columns
+
+Join and filter (looks like arg max but not)
+http://stackoverflow.com/questions/32913803/joining-and-filtering-one-to-many-relationship
+
+Replace ingrediants id with their name
+http://stackoverflow.com/questions/32912453/sql-inner-join-with-multiple-columns
+
+Both max month and comments in a range
+http://stackoverflow.com/questions/32939572/sql-query-to-get-most-comments-since-last-month
+
+Aggregate with  join
+http://stackoverflow.com/questions/32942563/select-count-with-join-in-sql-query
+
+SQL, reverse ID (old lowest id to highest, highest to lowest)
+http://stackoverflow.com/questions/32936853/sql-reverse-entire-column
+
+Join tables
+http://stackoverflow.com/questions/32933910/get-data-for-a-given-number-of-days-by-converting-rows-to-column-dynamically
+
+Select grand-parent node (join twice)
+http://stackoverflow.com/questions/32932846/select-grand-parent-of-a-row-with-in-a-single-table-sql
+
+Find max date and then perform difference *
+http://stackoverflow.com/questions/32928624/sql-foreach-table-and-get-number-for-duplicate-data-using-reference-date
+
+1) generate a table with self join and 2) count the number based on join
+http://stackoverflow.com/questions/32926859/sql-join-to-count-based-on-query-results
+
+Count daily sales of sales between two dates based on sql query.
+http://stackoverflow.com/questions/32921518/how-to-count-daily-sales-of-salesman-and-show-dates-as-a-column-in-sql-query
+
+First record of a car breaking 100mph
+http://forums.sqlteam.com/t/need-a-query-that-returns-first-recod-every-time-a-car-cross-the-speed-of-100/3525
+
+NOT IO but interesting queries
+
+query first several highest (without using limit)
+http://stackoverflow.com/questions/32937341/highest-number-of-occurences-without-using-limit
+
+Group by with conditions
+http://stackoverflow.com/questions/32929866/sql-statement-with-select-atleast-two
+
+Find minimum date after change
+http://forums.sqlteam.com/t/find-minimum-date-after-a-change/3472
+
+Reformatting data into one line
+http://forums.sqlteam.com/t/moving-records-onto-1-line/3363
+
+
+Wierd....
+select same column twice 
+http://stackoverflow.com/questions/32918098/how-to-select-the-same-column-twice-with-different-order

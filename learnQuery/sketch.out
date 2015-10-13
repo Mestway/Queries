@@ -1,0 +1,130 @@
+SKETCH version 1.6.7
+Benchmark = harness.sk
+/* BEGIN PACKAGE ANONYMOUS*/
+struct Relation {
+    int sz;
+    Tuple[sz] tuples;
+    Schema schema;
+}
+struct Schema {
+    int numInts;
+    int[5] intColIds;
+}
+struct Tuple {
+    int[5] ints;
+}
+/*harness.sk:13*/
+
+void _main (int[4] col0_0, int[4] col1_1, int[4] col2_2, int[4] col3_3, int[4] col4_4)/*harness.sk:13*/
+{
+  int[4] col4 = col4_4;
+  int[4] col3 = col3_3;
+  int[4] col2 = col2_2;
+  int[4] col1 = col1_1;
+  int[4] col0 = ((int[4]){0,0,0,0});
+  col1 = {1,2,3,4};
+  col2 = {2,4,6,8};
+  col3 = {1,3,5,7};
+  col4 = {10,20,30,40};
+  Tuple[4] tuples = {null,null,null,null};
+  for(int i = 0; i < 4; i = i + 1)/*Canonical*/
+  {
+    tuples[i] = new Tuple(ints={col0[i],col1[i],col2[i],col3[i],col4[i]});
+  }
+  Schema schema = new Schema(numInts=5, intColIds={0,1,2,3,4});
+  Relation in = new Relation(sz=4, tuples=tuples, schema=schema);
+  Relation@ANONYMOUS out_s7 = null;
+  select(in, out_s7);
+  Relation@ANONYMOUS out_s9 = null;
+  project(out_s7, out_s9);
+  assert ((out_s9.sz) > 0); //Assert at harness.sk:34 (-195811144761245166)
+  bit __sa0 = 0 < (out_s9.sz);
+  int i_0 = 0;
+  while(__sa0)
+  {
+    assert ((out_s9.tuples[i_0].ints[0]) > 1); //Assert at harness.sk:35 (-3589697845648208950)
+    i_0 = i_0 + 1;
+    __sa0 = i_0 < (out_s9.sz);
+  }
+  bit __sa1 = 0 < (out_s9.sz);
+  int i_1 = 0;
+  bit existVar0 = 0;
+  while(__sa1)
+  {
+    if((out_s9.tuples[i_1].ints[0]) == 4)/*harness.sk:39*/
+    {
+      existVar0 = 1;
+    }
+    i_1 = i_1 + 1;
+    __sa1 = i_1 < (out_s9.sz);
+  }
+  assert (existVar0); //Assert at harness.sk:42 (-1709226656634116615)
+  assert ((out_s9.schema.numInts) == 1); //Assert at harness.sk:44 (-5032969394656970944)
+}
+/*harness.sk:13*/
+
+void main__Wrapper (int[4] col0, int[4] col1, int[4] col2, int[4] col3, int[4] col4)  implements main__WrapperNospec/*harness.sk:13*/
+{
+  _main(col0, col1, col2, col3, col4);
+}
+/*harness.sk:13*/
+
+void main__WrapperNospec (int[4] col0, int[4] col1, int[4] col2, int[4] col3, int[4] col4)/*harness.sk:13*/
+{ }
+/*dbOps.sk:14*/
+
+void project (Relation in, ref Relation _out)/*dbOps.sk:14*/
+{
+  _out = null;
+  Schema outSchema = new Schema();
+  int max = in.schema.numInts;
+  assert (!(2 >= max)); //ASSERTION CAN NOT BE SATISFIED: dbOps.sk:68 Assert at dbOps.sk:68 (6911091060798761674)
+  outSchema.intColIds[0] = 2;
+  outSchema.numInts = 1;
+  bit __sa3 = 0 < (in.sz);
+  int j = 0;
+  Tuple[in.sz] outTuples;
+  while(__sa3)
+  {
+    outTuples[j] = new Tuple();
+    Tuple outTuple;
+    outTuple = outTuples[j];
+    Tuple inTuple = in.tuples[j];
+    bit __sa4 = 0 < (outSchema.numInts);
+    int k = 0;
+    while(__sa4)
+    {
+      int chosenId = outSchema.intColIds[k];
+      outTuple.ints[k] = inTuple.ints[chosenId];
+      k = k + 1;
+      __sa4 = k < (outSchema.numInts);
+    }
+    j = j + 1;
+    __sa3 = j < (in.sz);
+  }
+  _out = new Relation(sz=in.sz, tuples=outTuples, schema=outSchema);
+  return;
+}
+/*dbOps.sk:79*/
+
+void select (Relation in, ref Relation _out)/*dbOps.sk:79*/
+{
+  _out = null;
+  bit __sa2 = 0 < (in.sz);
+  int i = 0;
+  int outSz = 0;
+  Tuple[in.sz] outTuples;
+  while(__sa2)
+  {
+    int uo_s5 = outSz;
+    outSz = outSz + 1;
+    outTuples[uo_s5] = in.tuples[i];
+    i = i + 1;
+    __sa2 = i < (in.sz);
+  }
+  _out = new Relation(sz=outSz, tuples=outTuples[0::outSz], schema=in.schema);
+  return;
+}
+/* END PACKAGE ANONYMOUS*/
+[SKETCH] DONE
+Total time = 984

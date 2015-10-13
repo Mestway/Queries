@@ -1,0 +1,121 @@
+struct Relation
+{
+  int sz;
+  Tuple [sz] tuples;
+  Schema schema;
+}
+
+struct Schema
+{
+  int numInts;
+  int [MAX_COLS] intColIds;
+}
+
+Relation project (Relation in)
+{
+  //Schema outSchema = new Schema(numInts = outConstraints.numInts);
+  Schema outSchema = new Schema();
+  
+  /*
+  int i = 0;
+  minrepeat 
+  {
+    if (??)
+    {
+      outSchema.intColIds[i] = chooseNum(in.schema.numInts, outSchema.intColIds, i);
+      ++i;
+    }    
+  }
+  */
+    
+  int i = 0;
+  repeat (??)
+  {
+    outSchema.intColIds[i] = chooseNum(in.schema.numInts, outSchema.intColIds, i);
+    ++i;
+  }
+  //minimize(t);
+  
+  //if (i < outSchema.numInts)
+  //  assert(false);
+
+  outSchema.numInts = i;
+
+  Tuple [in.sz] outTuples;
+  for (int j = 0; j < in.sz; ++j)
+  {
+    outTuples[j] = new Tuple();
+    Tuple outTuple = outTuples[j];
+    Tuple inTuple = in.tuples[j];
+
+    for (int k = 0; k < outSchema.numInts; ++k)
+    {
+      int chosenId = outSchema.intColIds[k];
+      outTuple.ints[k] = inTuple.ints[chosenId];
+    }
+  }
+
+  Relation out = new Relation(sz = in.sz, tuples = outTuples, schema = outSchema);
+  return out;
+}
+
+// return a random number x where 0 <= x < max, and x is not in chosen
+generator int chooseNum (int max, int [MAX_COLS] chosen, int numChosen)
+{
+  int n = ??;
+
+  if (n >= max)
+    assert(false);
+
+  for (int i = 0; i < numChosen; ++i)
+  {
+    if (chosen[i] == n)
+      assert(false);
+  }
+
+  return n;
+}
+
+Relation select (Relation in)
+{
+  Tuple [in.sz] outTuples;
+
+  int outSz = 0;
+  for (int i = 0; i < in.sz; ++i)
+  {
+    bit predicate = true;
+    Tuple tuple = in.tuples[i];
+    
+    int t = ??;
+    repeat (t) 
+    {
+      int val = ??(3);
+      int index = ??(3);
+      int op = ??(3);
+      if (op == 0)
+        predicate = predicate && tuple.ints[index] < val && val != 0;
+      else if (op == 1)
+        predicate = predicate && tuple.ints[index] > val;
+      else if (op == 2)
+        predicate = predicate && tuple.ints[index] <= val && val != 0;
+      else if (op == 3)
+        predicate = predicate && tuple.ints[index] == val;
+      else if (op == 4)
+        predicate = predicate && tuple.ints[index] >= val;
+      else
+        assert false;
+      //predicate = predicate && in.tuples[i].ints[index] < val;
+    }
+    minimize(t);
+    
+    //int index = 2;
+    //int val = 2;
+    //if (in.tuples[i].ints[index] < val && val != 0)
+    if (predicate)
+    {
+      outTuples[outSz++] = in.tuples[i];
+    }
+  }
+
+  return new Relation(sz = outSz, tuples = outTuples[0::outSz], schema = in.schema);
+}
