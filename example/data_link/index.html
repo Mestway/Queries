@@ -21,7 +21,7 @@
       var tableheader = table.append("tr");
         tableheader.append("th").attr("width", fistColumnWidth).style("text-align","center").text("ID");
         tableheader.append("th").text("Annswer Data");
-      
+
 
       table.selectAll(".lines")
         .data(data)
@@ -41,11 +41,15 @@
           d.displaystyle = "table-row";
           var cellbody = "<div class=\"tablecells\" id=\" table_cell" + d.id + "\">";
           cellbody += "<a href=\"" + d.link + "\">" + d.title + "</a>" + "<br />";
-          cellbody +=  "Description: " + d.description ; 
+          cellbody += "Description: " + d.description ;
+          cellbody += "<hr />";
+          cellbody += "Input: <br/>" + d.input;
+          cellbody += "<hr />";
+          cellbody += "Output: <br/>" + d.output;
           cellbody += "</div>";
           return cellbody;
         });
 
-    </script>    
+    </script>
   </body>
 </html>

@@ -1,0 +1,61 @@
+0) aggregation:
+    [21]: count the number of distinct records
+    [22]: count the number of distinct timestamp for each id group
+    [36]: sum up the value for each name group
+    [39]: sum up based on id and date
+    * [31]: aggregation on the result after a first aggregation.
+
+1) filter using aggregation result : comparing the a column value with an aggregation result
+  [1, 2, 4, 5, 11, 12, 19, 38, 40, 41, 44, 47]: finding max, latest, last...
+  (remark: some of them groups by one column, some of them group by with all columns)
+  * aggregation to compute fraction
+    [16, 28]: the proportion of a particular field
+  * filter twice, with different aggregation functions.
+    [8]: find max on col1, if same maximum value per group, compare on col2
+  * filter using aggregation result and with LIMIT
+    [3, 13]: max three result
+    [49]: sum up for each group and select top 3
+  * [12]: self defined aggregation function, as the numbers near 2 has higher piority
+  * [25]: join two tables where date2 from table 2 should should be earlier than max(date1) from table 1
+  * [45]: for each id group, find the top two records in score column
+  * [46]: join two tables and select ones with most recent date
+  * [48]: latest date per group from joined tables
+
+2) filter and then perform aggregation
+  [23] count the number of records with errors for each type group
+  [43] for each productID, find the minimum orderIndex that not rejected
+  [50] max time_start column that time_start is valid based on the given condition
+
+3) filter by comparing a column value with a constant:
+  [7]: date in a range
+
+4) join and filter
+  [29]: find all parent id and name
+  [42]: join two tables to find there corresponding parent
+
+4) Group by a segment of time (moving function)
+  [10]: group by 30seconds period
+  [15]: 3 day moving average *and* connect the result wiht original table
+  [17]: 7 day rolling average
+
+5) exists:
+  [14]: finding duplicates where name and emails are same
+  [18]: find rows whose id also appeared as UNTREATED
+  [26]: select rows based on existance of a pair
+  [30]: select plans with a (K,V) pair pattern
+  [32]: exists multiple result (also can be treat as having)
+  [33]: select id with multiple occurrence on different col2
+  [34]: select people who went to several locations
+  [37]: find names how user_id count > 3
+
+2) self join and projection:
+    [6]: compare the sales of two years for a month
+    [35]: which stores sell the same fruit and what that fruit is.
+
+6) having:
+    [32]: rows with count more than 10
+
+special quest:
+  [9: connect with partition]
+  [20: join and concatenate]
+  [24: merge two column, rank then filter]
