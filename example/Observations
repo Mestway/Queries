@@ -7,7 +7,7 @@
 
 1) filter using aggregation result : comparing the a column value with an aggregation result
   [1, 2, 4, 5, 11, 12, 19, 38, 40, 41, 44, 47]: finding max, latest, last...
-  (remark: some of them groups by one column, some of them group by with all columns)
+  (remark: some of them groups by one column, some of them group by with multiple/all columns)
   * aggregation to compute fraction
     [16, 28]: the proportion of a particular field
   * filter twice, with different aggregation functions.
@@ -18,8 +18,9 @@
   * [12]: self defined aggregation function, as the numbers near 2 has higher piority
   * [25]: join two tables where date2 from table 2 should should be earlier than max(date1) from table 1
   * [45]: for each id group, find the top two records in score column
+
   * [46]: join two tables and select ones with most recent date
-  * [48]: latest date per group from joined tables
+    [48]: latest date per group from joined tables
 
 2) filter and then perform aggregation
   [23] count the number of records with errors for each type group
@@ -53,7 +54,7 @@
     [35]: which stores sell the same fruit and what that fruit is.
 
 6) having:
-    [32]: rows with count more than 10
+    [32]: rows with count more than 10 --> also in exists
 
 special quest:
   [9: connect with partition]

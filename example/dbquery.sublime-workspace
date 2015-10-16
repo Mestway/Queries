@@ -1,0 +1,301 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"text",
+				"text-align"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"padding",
+				"padding-top"
+			],
+			[
+				"border",
+				"border-radius"
+			],
+			[
+				"max",
+				"max-width"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "example_io",
+			"settings":
+			{
+				"buffer_size": 41225,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 375.0,
+		"selected_items":
+		[
+			[
+				"package",
+				"Package Control: List Packages"
+			],
+			[
+				"Pack",
+				"Package Control: Install Package"
+			],
+			[
+				"us",
+				"Preferences: Settings - User"
+			],
+			[
+				"Pak",
+				"Package Control: Install Package"
+			],
+			[
+				"package ",
+				"Package Control: Install Package"
+			],
+			[
+				"pak",
+				"Package Control: Install Package"
+			],
+			[
+				"Prefe",
+				"Preferences: Settings - User"
+			],
+			[
+				"preferen",
+				"Preferences: Settings - Default"
+			],
+			[
+				"PACK",
+				"Package Control: Add Repository"
+			],
+			[
+				"latex",
+				"LaTeXTools: Reconfigure and migrate settings"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 435.0
+	},
+	"console":
+	{
+		"height": 139.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/clwang/CourseWork/CSE505/hw02/hw2-Chenglong.tex",
+		"/Users/clwang/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Users/clwang/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/Users/clwang/Research/DBQueries/example/examples_io.md",
+		"/Users/clwang/Research/DBQueries/example/example_io",
+		"/Users/clwang/Downloads/lec03-sql-basics.sql",
+		"/Users/clwang/Research/DBQueries/example/qlang",
+		"/Users/clwang/Research/DBQueries/example/data_link/index.html",
+		"/Users/clwang/Research/DBQueries/example/data_link/exampl_json.js",
+		"/Users/clwang/Research/DBQueries/learnQuery/requestHandler.py",
+		"/Users/clwang/Research/DBQueries/learnQuery/dbOps.sk",
+		"/Users/clwang/Research/DBQueries/learnQuery/harness.sk",
+		"/Users/clwang/Downloads/sf/Basics.v",
+		"/Users/clwang/Research/DBQueries/learnQuery/harnessGenerator.py",
+		"/Users/clwang/Research/DBQueries/learnQuery/server.py",
+		"/Users/clwang/Documents/Research/DBQueries/query_cases",
+		"/Users/clwang/Research/DBQueries/Examples",
+		"/Users/clwang/Downloads/l01.v",
+		"/Users/clwang/Research/DBQueries/example/example_link.html",
+		"/Users/clwang/Research/DBQueries/example/exampl_link",
+		"/Users/clwang/Documents/Research/DBQueries/query_examples",
+		"/Users/clwang/Research/DBQueries/learnQuery/harness",
+		"/Users/clwang/Documents/Research/DBQueries/learnQuery/index.html",
+		"/Users/clwang/Documents/Research/DBQueries/learnQuery/js/scripts.js",
+		"/Users/clwang/Documents/Research/DBQueries/learnQuery/sketch-1.6.9/sketch-frontend/mytest/mytest1.sk",
+		"/Users/clwang/Workspaces/query_synthesis/learnQuery/server.py",
+		"/Users/clwang/Documents/Research/DBQueries/learnQuery/js/jquery.handsontable.full.js",
+		"/Users/clwang/Documents/Research/DBQueries/learnQuery/js/jquery.js",
+		"/Users/clwang/Documents/Research/Automated Feedback/Automatic-Feedback/Discussion/4.23/specification.tex",
+		"/Users/clwang/Documents/homepage/mestway.github.io/index.html",
+		"/Users/clwang/Documents/Research/untitled folder/select the rows with max value on a column",
+		"/Users/chenglong/Library/Application Support/Sublime Text 2/Packages/User/LaTeXTools.sublime-settings",
+		"/Users/chenglong/Desktop/untitled folder/untitled.tex",
+		"/Users/chenglong/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Users/chenglong/Documents/untitled folder/usernames",
+		"/Users/chenglong/Documents/Research/Automated Feedback/pseudo code/untitled folder/simplesyntax",
+		"/Users/chenglong/Documents/Research/Automated Feedback/pseudo code/untitled folder/hardones",
+		"/Users/chenglong/Documents/java-workspace/PseudoCodeParser/simpleinput",
+		"/Users/chenglong/Documents/Research/Automated Feedback/pseudo code/untitled folder/whileTranslation",
+		"/Users/chenglong/Documents/Research/Automated Feedback/pseudo code/graph-algo-pseudocode",
+		"/Users/chenglong/Documents/Research/Automated Feedback/pseudo code/untitled folder/IfTranslation"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"snd",
+			"length",
+			".\n",
+			"proof",
+			"/>\";",
+			"induct",
+			"tuple",
+			"generate",
+			"font-size",
+			" </",
+			"projects",
+			"to",
+			"BFS",
+			"repeat"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"\\mathsf{snd}",
+			"\\mathsf{length}"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "example_io",
+					"settings":
+					{
+						"buffer_size": 41225,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 112.0
+	},
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 139.0,
+	"status_bar_visible": true
+}
