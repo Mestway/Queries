@@ -15,7 +15,7 @@
   * filter using aggregation result and with LIMIT
     [3, 13]: max three result
     [49]: sum up for each group and select top 3
-  * [12]: self defined aggregation function, as the numbers near 2 has higher piority
+  * [12]: self defined aggregation function, as the numbers near 2 has higher priority
   * [25]: join two tables where date2 from table 2 should should be earlier than max(date1) from table 1
   * [45]: for each id group, find the top two records in score column
 
@@ -35,14 +35,14 @@
   [42]: join two tables to find there corresponding parent
 
 4) Group by a segment of time (moving function)
-  [10]: group by 30seconds period
-  [15]: 3 day moving average *and* connect the result wiht original table
+  [10]: group by 30 seconds period
+  [15]: 3 day moving average *and* connect the result with original table
   [17]: 7 day rolling average
 
 5) exists:
   [14]: finding duplicates where name and emails are same
   [18]: find rows whose id also appeared as UNTREATED
-  [26]: select rows based on existance of a pair
+  [26]: select rows based on existence of a pair
   [30]: select plans with a (K,V) pair pattern
   [32]: exists multiple result (also can be treat as having)
   [33]: select id with multiple occurrence on different col2
@@ -60,3 +60,162 @@ special quest:
   [9: connect with partition]
   [20: join and concatenate]
   [24: merge two column, rank then filter]
+
+
+
+
+Classification:
+
+Two tasks:
+
+A. Filtering and projection
+  A.1: Filter based on constant // based on column-wise relation
+    [7] select yrq with start_date <= given_start_date and end_date >= given_end_date
+
+  A.2: Filter based on aggregation result
+    [1] select rows with greatest rev for each id
+    [3] select three oldest person from different cities.
+    [4] select the largest purchase(total) for each customer
+    [5] select the last record in each group. #semi-specified, as the group label is not defined.
+    [11] select the maximum value of datetime for each distinct home.
+    [13] select rows with the maximum value.
+    [19] select rows with the latest date for each user.
+    [34] select customers such that the shops count > 1. 
+    [37] select Name with user_id such that the user_id count > 3.
+    [38] select records with latest alert. #did not specify which label to group
+    [41] select rows with maximum departure time for each train.
+    [44] select rows with the highest timestamp for each deal_id the row.
+    [45] select rows such that the score is highest or second highest for each name.
+    [46] select rows with the last date in table 2 for each id.
+    [47] select id of the bill with the maximum amount per waiter.
+    [48] select latest value, based on survey timestamp and grouped by store_code, product_code, and production_month?
+    [53] the results contain the row with the greatest value in the quantity column and also the row with the greatest retail_price.
+    [55] return all records for attribute A that do not contain a specific value (8) for attribute B
+    [56] I need to write a query (Oracle) that will return the clientID and the creditCard type with the highest spending
+    [57] I would need an output that lists the distinct number of chapterids for each xmlfile
+    [58]  I would also need an output that lists the xmlfile with more than one chapterid
+    [60*] Check if they are same in the subsequent rows having same ID, if Yes then the output should show it as one row only, if not display it as how it is.
+
+  A.3 Filter based on existence
+    [14] select rows such that there exists another row with the same email and name.
+    [26] select product_ID's such that there exists no row with client_id = 2.
+    [30] select Plans such that there exists rows with the IsActive attribute value set to True.
+    [32] select team such that there exists multiple players with same name.
+    [33] select rows such that ARIDNR occurs more than onces with different id.
+
+  A.4 The combination of multiple filters
+    1 + 2: 
+      [2] select rows with dtg within the last 20 min; select rows with latest temp for each locId.
+      [51] select rows with value less than 8; select the rows with max value for each id.
+    1 + 2 + 2: 
+      [8] select rows that from_user<>'me'; select rows with max timestamp in every group; select rows with highest message_id in each group.
+    1 + 3:
+      [18] select rows with TREATED status; select rows such that exists a row with UNTREATED status and the same country as the one with the TREATED status.
+    1 + 2
+      [43] select rows that rejected is 0; select rows with minimum order index for productID.
+    2 + 2
+      [52] select rows with greatest quantity; select rows with maximum retail_price.
+
+  A.5 strange ones
+    [40] discard rows such that there exists another row with same acct_id but with greater alt_bill_id.
+    [52] select and join: one row is the sum of the id and the other row the max while another row is from where the max is.
+
+B. Aggregation:
+
+  [10] get the sum of the count column for all samples in a 10 second window for all samples.
+
+  [15] get the 3-day average and join back with the table.
+
+  [17] gives daily usage and last 7 days' rolling average.
+
+  [21] count the number of rows, but distinct by 3 parameters.
+
+  [22] count of deviceid based on the number of timestamps it is seen in.
+
+  [23] I want to count how many of each type that has 'Error' as status.
+
+  [36] sum up the value field based on the ErrorName.
+
+  [37] find all names along with the user_id where unique user_id count > 3.
+
+  [39] sum the observation by object and date, date should be the latest.
+
+C. Others
+
+  
+  [16] given a particular ID, I want to compute the proportion of entries that has action Foo.
+
+  [20] join and concatenate locations into a line.
+  
+  [24] get the name of the players with the highest GoalsScored + GoalsServed that is not in the takenplayername
+
+  [25] join the two tables so that I only include sales dates that are less than the maximum promotion date.
+
+  [29] list every parent ID and name.
+
+  [35] I want to know which stores sell the same fruit and what that fruit is.
+
+  [36] select with single query every row from Parents table and for each one single row from Childs table with relation "parent"-"id" value and the greatest "feature" column value.
+
+  [46] select certain records in table_a with the last time the row was updated.
+
+  [54] I need to find the PID's that have more than one GUID and then match that with their respective FirstName and LastName from the other table.
+
+  [61] I would like to find the average for each Month for User 1 and 2 and compare to User 3 for the same month so ideally I want.
+
+  [59] When values for X and Y exists, it will always show the higher ID value
+
+
+Different 
+
+[sql] is:question score:50
+
+1. string concatenate in SQL: 
+http://stackoverflow.com/questions/194852/concatenate-many-rows-into-a-single-text-string
+
+2. finding duplicates:
+http://stackoverflow.com/questions/2594829/finding-duplicate-values-in-a-sql-table
+
+3. select first row in each GroupBy group (argmax)
+http://stackoverflow.com/questions/3800551/select-first-row-in-each-group-by-group
+
+4. flat table parse
+http://stackoverflow.com/questions/192220/what-is-the-most-efficient-elegant-way-to-parse-a-flat-table-into-a-tree
+
+5. join without duplicate
+http://stackoverflow.com/questions/2043259/sql-server-how-to-join-to-first-row
+
+6. group by and having
+http://stackoverflow.com/questions/4434118/select-statement-to-find-duplicates-on-certain-fields
+
+7. order rows
+http://stackoverflow.com/search?page=4&tab=votes&q=%20%5bsql%5d%20is%3aquestion%20score%3a50
+
+8. select n-th row
+http://stackoverflow.com/questions/16568/how-to-select-the-nth-row-in-a-sql-database-table?s=73|0.0000
+
+9. select distinct on multiple columns
+http://stackoverflow.com/questions/54418/how-do-i-or-can-i-select-distinct-on-multiple-columns
+
+10. adding conditions in count
+
+11. count the number of distinct value
+http://stackoverflow.com/questions/141562/sql-to-find-the-number-of-distinct-values-in-a-column
+
+12. minimum sequential days accessed
+http://stackoverflow.com/questions/1176011/sql-to-determine-minimum-sequential-days-of-access
+
+13. argmax similar: select duplicates with other content value
+http://stackoverflow.com/questions/2112618/finding-duplicate-rows-in-sql-server
+
+14. calculate medium
+http://stackoverflow.com/questions/1342898/function-to-calculate-median-in-sql-server
+
+15. order by and limit
+
+16. select distinct
+
+
+sqllog stuff:
+  data26.js
+  data30.js: tf_idf, writing procedurally

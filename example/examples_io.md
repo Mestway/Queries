@@ -1,6 +1,6 @@
 # 1
 ### [select the rows with max value on a column](http://stackoverflow.com/questions/7745609/sql-select-only-rows-with-max-value-on-a-column)
-#### description
+#### description **
     How do I select one row per id and only the greatest rev?
 
 #### input
@@ -64,24 +64,8 @@
 
 #### input
 
-    | ID  | Name            | City           | Birthyear  |
-    |-----------------------------------------------------|
-    | 1   | Egon Spengler   | New York       | 1957       |
-    | 2   | Mac Taylor      | New York       | 1955       |
-    | 3   | Sarah Connor    | Los Angeles    | 1959       |
-    | 4   | Jean-Luc Picard | La Barre       | 2305       |
-    | 5   | Ellen Ripley    | Nostromo       | 2092       |
-    | 6   | James T. Kirk   | Riverside      | 2233       |
-    | 7   | Henry Jones     | Chicago        | 1899       |
+   
 
-
-#### output
-
-    | col1          | col2        |
-    |-----------------------------|
-    | Henry Jones   | Chicago     |
-    | Mac Taylor    | New York    |
-    | Sarah Connor  | Los Angeles |
 
 
 # 4
@@ -371,12 +355,12 @@
 #### input
 
 
-  |  id |  rev |  content |
-  |-----------------------|
-  |  1  |   1  |   A      |
-  |  2  |   1  |   B      |
-  |  1  |   2  |   C      |
-  |  1  |   3  |   D      |
+    |  id |  rev |  content |
+    |-----------------------|
+    |  1  |   1  |   A      |
+    |  2  |   1  |   B      |
+    |  1  |   2  |   C      |
+    |  1  |   3  |   D      |
 
 
 #### output
@@ -433,10 +417,10 @@
 
 #### output
 
-    |c1 | c2  | c3          |
-    |-----------------------|
-    | 5 | Tom | asd@asd.com |
-    | 5 | Tom | asd@asd.com |
+    |  c  |
+    |-----|
+    | Tom |
+    | Tom |
 
 
 # 15
@@ -747,7 +731,7 @@
     ...
 
 
-# 25
+# 25 **
 ### [Only joining rows where the date is less than the max date in another field](http://stackoverflow.com/questions/31941909/only-joining-rows-where-the-date-is-less-than-the-max-date-in-another-field)
 #### description
 
@@ -1305,7 +1289,7 @@
     |p.id|p.text |c.id  |c.parent|c.feature|
     |--------------------------------------|
     |  1 | Blah  |  1   |    1   |    123  |
-    |  2 | Blah2 |  3   |     2  |    15   |
+    |  2 | Blah2 |  3   |    2   |    15   |
     |  3 | Blah3 | null |   null |   null  |
 
       Where p = Parent table and c = Child table
@@ -1522,7 +1506,6 @@
 
     I want to select the 3 max payments grouped by the couple firstname, lastname
 
-
 #### input
 
 
@@ -1533,7 +1516,6 @@
     | b         | a        | 30          |
     | b         | a        | 40          |
     | b         | b        | 50          |
-
 
 #### output
 
@@ -1589,4 +1571,345 @@
     | 392 | America/Metlakatla  | 436352400    |
     | 393 | America/Anchorage   | 1425812400   |
 
+
+# 51
+### [PostgreSQL - MAX value for every user](http://stackoverflow.com/questions/33063073/postgresql-max-value-for-every-user)
+
+#### description
+
+    I want to select MAX value for every user, than it also lower than a tresshold 8.
+
+#### input
+
+    | User  | Phone | Value |
+    |-----------------------|
+    | Peter | 0     | 1     |
+    | Peter | 456   | 2     |
+    | Peter | 456   | 3     |
+    | Paul  | 456   | 7     |
+    | Paul  | 789   | 10    |
+
+#### output
+
+    |  c1   | c2  | c3 |
+    |------------------|
+    | Peter | 456 | 3  |
+    | Paul  | 456 | 7  |
+
+# 52
+### [SQL Greatest N Per Group with Extra Criteria](http://stackoverflow.com/questions/20282081/sql-greatest-n-per-group-with-extra-criteria)
+
+#### description
+
+    The current query would be:
+
+    SELECT Person, SUM(Time) AS Duration 
+    FROM Table
+    GROUP BY Person
+
+    What I need to add to this result set is the Uniq and value of the largest value per person
+
+#### input
+
+    | Uniq |  Value | Time | Person |
+    |-------------------------------|
+    |   1  |  6     | 180  | Bob    |
+    |   2  |  8     | 170  | Bob    |
+    |   3  |  4     | 45   | Claire |
+    |   4  |  4     | 90   | Claire |
+
+#### output
+
+    | Person | Duration | Value | Uniq |
+    |----------------------------------|
+    | Bob    | 350      | 8     | 2    |
+    | Claire | 135      | 4     | 3    |
+
+# 53
+### [greatest n per group needed in compound Mysql join sql](http://stackoverflow.com/questions/29080006/greatest-n-per-group-needed-in-compound-mysql-join-sql)
+
+#### description
+    
+    What I need is the results to only contain the row with the greatest value in the quantity column and also the row with the greatest retail_price. So my result set I need would look like this
+
+#### input
+
+    | number|quantity|retail_price|
+    |-----------------------------|
+    | 1007  | 288    | 5.750      |
+    | 1007  | 48     | 5.510      |
+    | 1007  | 576    | 5.460      |
+    | 1007  | 96     | 5.240      |
+    | 1007  | 576    | 5.230      |
+    | 1007  | 144    | 5.120      | 
+    | 1006  | 200    | 5.760      |
+    | 1006  | 100    | 5.550      |
+    | 1006  | 200    | 5.040      |
+    | 1006  | 500    | 5.010      |  
+
+#### output
+
+    | number|quantity|retail_price|
+    |-----------------------------|
+    | 1006  | 500    | 5.010      |
+    | 1007  | 576    | 5.460      |   
+
+# 54
+### [Find duplicate in column tied to another column...](http://www.sqlteam.com/forums/topic.asp?TOPIC_ID=201063)
+
+
+#### description
+    
+    For each unique PID, I need to find the PID's that have more than one GUID and then match that with their respective FirstName and LastName from the other table.
+
+#### input
+
+    @Table1
+
+    | GUID  | PID  |
+    |--------------| 
+    | GUID1 | PID1 |
+    | GUID1 | PID1 |
+    | GUID1 | PID1 |
+    | GUID2 | PID1 |
+    | GUID3 | PID2 |
+    | GUID3 | PID2 |
+    | GUID3 | PID2 |
+
+
+    @Table2
+
+    | GUID  | LastName | FirstName |
+    |------------------------------|
+    | GUID1 | Mulder   |  Fox      |
+    | GUID2 | Scully   |  Dana     |    
+    | GUID3 | Skinner  |  Walter   |    
+
+#### output
+    
+    | c1   |   c2   |     c3      |
+    |-----------------------------|
+    | PID1 | GUID 1 | Mulder Fox  |  
+    | PID1 | GUID 2 | Scully Dana |
+
+# 55
+### [One to Many Query Issue](http://www.sqlteam.com/forums/topic.asp?TOPIC_ID=201008)
+
+#### description
+
+    I want to return all records for attribute A that do not contain a specific value (8) for attribute B. 
+
+#### input
+
+    | ID_NUM | ID_Status |
+    |--------------------|
+    | 123    | 5         |  
+    | 123    | 6         |  
+    | 123    | 6         |  
+    | 123    | 10        |  
+
+#### output
+
+    | c   |
+    |-----|
+    | 123 |    
+
+# 56
+### [Max of Sum](http://www.sqlteam.com/forums/topic.asp?TOPIC_ID=200894)
+
+#### description
+
+    I need to write a query (Oracle) that will return the clientID and the creditCard type with the highest spending :
+
+#### input
+
+    | client | creditCard | amount |
+    |------------------------------|
+    | 1      |     A      | 10     |  
+    | 1      |     A      | 20     |  
+    | 1      |     B      | 40     |  
+    | 1      |     C      | 5      |     
+    | 1      |     C      | 10     |  
+    | 1      |     C      | 20     |  
+    | 2      |     A      | 40     |  
+    | 2      |     D      | 60     |  
+
+#### output
+
+    | client | creditCard   |
+    |-----------------------|
+    |     1  | B            |
+    |     2  | D            |
+
+
+# 57
+### [group by](http://www.sqlteam.com/forums/topic.asp?TOPIC_ID=200861)
+
+#### input
+
+    | chapterid | xmlfile |
+    |---------------------|
+    | 1234      | 123.xml |
+    | 1234      | 123.xml |
+    | 1234      | 123.xml |
+    | 1234      | 123.xml |
+    | 4567      | 123.xml |
+    | 4567      | 123.xml |
+    | 6789      | 145.xml |
+    | 7890      | 234.xml |
+    | 7890      | 234.xml |
+    | 7890      | 234.xml |
+
+#### description
+
+    I would need an output that lists the distinct number of chapterids for each xmlfile
+
+#### output
+
+    | chapterid | xmlfile |
+    |---------------------|
+    | 1234      | 123.xml | 
+    | 4567      | 123.xml |
+    | 6789      | 145.xml |
+    | 7890      | 234.xml |
+
+# 58
+### [group by]((http://www.sqlteam.com/forums/topic.asp?TOPIC_ID=200861))
+
+#### input
+
+    | chapterid | xmlfile |
+    |---------------------|
+    | 1234      | 123.xml |
+    | 1234      | 123.xml |
+    | 1234      | 123.xml |
+    | 1234      | 123.xml |
+    | 4567      | 123.xml |
+    | 4567      | 123.xml |
+    | 6789      | 145.xml |
+    | 7890      | 234.xml |
+    | 7890      | 234.xml |
+    | 7890      | 234.xml |
+
+#### description
+
+    I would also need an output that lists the xmlfile with more than one chapterid
+
+#### output
+
+    | chapterid | xmlfile |
+    |---------------------|
+    | 1234      | 123.xml | 
+    | 4567      | 123.xml |
+    | 7890      | 234.xml |
+
+# 59
+### [Not Sure If this is a grouping question](http://www.tek-tips.com/viewthread.cfm?qid=1753841)
+
+#### input
+
+    | ID|  X | Y |
+    |------------|
+    | 1 | 25 | 24|
+    | 2 | 24 | 25|
+    | 3 | 75 | 1 |
+    | 4 | 9  | 10|
+    | 5 | 10 | 9 | 
+
+
+#### output
+
+    | ID | X | Y  |
+    |-------------|
+    | 2  |24 | 25 |
+    | 3  |75 | 1  |
+    | 5  |10 | 9  | 
+
+#### description
+
+    When values for X and Y exists, it will always show the higher ID value.
+
+# 60
+### [how to create distinct on 3 columns](http://www.tek-tips.com/viewthread.cfm?qid=1740423)
+
+#### description
+    Check if they are same in the subsequent rows having same ID, if Yes then the output should show it as one row only, if not display it as how it is.
+
+#### input
+
+    | ID | Name | Row | Exp |  time  | rowcount |
+    |-------------------------------------------|
+    | 1  |  A   |  50 |  0  |  17:00 |  1       |
+    | 1  |  A   |  50 |  0  |  17:01 |  2       |
+    | 2  |  B   |  10 |  2  |  17:02 |  1       |
+    | 2  |  B   |  20 |  10 |  17:03 |  2       |
+    | 2  |  B   |  20 |  10 |  17:04 |  3       |
+
+#### output
+
+    | ID | Name | Row | Exp | time  | rowcount |
+    |------------------------------------------|
+    | 1  |  A   |  50 |  0  | 17:00 |  1       | 
+    | 2  |  B   |  10 |  2  | 17:02 |  1       |
+    | 2  |  B   |  20 |  10 | 17:03 |  2       |
+
+
+＃ 61
+### [Compare avg of data in column of certain users against a another user](http://www.dbforums.com/showthread.php?1707382-Compare-avg-of-data-in-column-of-certain-users-against-a-another-user)
+
+#### description
+
+    I would like to find the average for each Month for User 1 and 2 and compare to User 3 for the same month so ideally I want 
+
+#### input
+
+    | trans | user | Month |
+    |----------------------| 
+    | 100   |  1   |    1  | 
+    | 102   |  2   |    1  | 
+    | 103   |  3   |    1  | 
+    | 100   |  1   |    2  | 
+    | 103   |  2   |    2  | 
+    | 103   |  3   |    2  | 
+    | 104   |  1   |    3  | 
+    | 104   |  2   |    3  | 
+    | 101   |  3   |    3  |
+
+#### output
+
+    | Avgtrans | user3Trans | Month | 
+    | 101      |      103   |   1   |
+    | 101.5    |      103   |   2   |
+    | 104      |      101   |   3   |
+
+# 62
+### [SQL Server: How to Join to first row](http://stackoverflow.com/questions/2043259/sql-server-how-to-join-to-first-row)
+
+#### description
+    
+#### input
+    
+    @Orders
+
+    | LineItemGUID |  Order ID | Quantity | Description                 |  
+    |-------------------------------------------------------------------|
+    | {098FBE3...} |  1        | 7        | prefabulated amulite        |  
+    | {1609B09...} |  2        | 32       | spurving bearing            |  
+    | {A58A1...}   | 6,784,329 | 5        | pentametric fan             |
+    | {0E9BC...}   | 6,784,329 | 5        | differential girdlespring   |
+
+    @LineItems
+
+    | OrderGUID | OrderNumber |
+    |-------------------------|
+    | {FFB2...} | STL-7442-1  |     
+    | {3EC6...} | MPT-9931-8A |
+
+#### output
+
+    | OrderNumber | Quantity | Description               |  
+    |----------------------------------------------------|  
+    | STL-7442-1  | 7        | prefabulated amulite      |  
+    | MPT-9931-8A | 32       | differential girdlespring | 
+    | KSG-0619-81 | 5        | panametric fan            |  
 

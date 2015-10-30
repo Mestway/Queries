@@ -32,10 +32,44 @@
 	"buffers":
 	[
 		{
-			"file": "example_io",
+			"file": "DSL programming",
 			"settings":
 			{
-				"buffer_size": 41225,
+				"buffer_size": 1698,
+				"line_ending": "Unix",
+				"name": "DSL programming"
+			}
+		},
+		{
+			"file": "/Users/clwang/CourseWork/CSE505/hw02/hw2-Chenglong.tex",
+			"settings":
+			{
+				"buffer_size": 11306,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "constraint_lang",
+			"settings":
+			{
+				"buffer_size": 960,
+				"line_ending": "Unix",
+				"name": "T := 	T"
+			}
+		},
+		{
+			"file": "examples_io.md",
+			"settings":
+			{
+				"buffer_size": 55431,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Observations",
+			"settings":
+			{
+				"buffer_size": 9756,
 				"line_ending": "Unix"
 			}
 		}
@@ -46,6 +80,14 @@
 		"height": 375.0,
 		"selected_items":
 		[
+			[
+				"PACKAGE",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
 			[
 				"package",
 				"Package Control: List Packages"
@@ -112,11 +154,13 @@
 	},
 	"file_history":
 	[
-		"/Users/clwang/CourseWork/CSE505/hw02/hw2-Chenglong.tex",
+		"/Users/clwang/CourseWork/CSE505/readinghw02/paperreading2.txt",
 		"/Users/clwang/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
-		"/Users/clwang/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
-		"/Users/clwang/Research/DBQueries/example/examples_io.md",
+		"/Users/clwang/Documents/Graduate-School-Application/Resume/Resume.tex",
 		"/Users/clwang/Research/DBQueries/example/example_io",
+		"/Users/clwang/Research/DBQueries/example/examples_io.md",
+		"/Users/clwang/CourseWork/CSE505/hw02/hw2-Chenglong.tex",
+		"/Users/clwang/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
 		"/Users/clwang/Downloads/lec03-sql-basics.sql",
 		"/Users/clwang/Research/DBQueries/example/qlang",
 		"/Users/clwang/Research/DBQueries/example/data_link/index.html",
@@ -170,6 +214,29 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"average",
+			"sub",
+			" ))",
+			"\\to",
+			"WHile",
+			"Cond",
+			"if",
+			"\\mathtt{false}",
+			"\\mathtt{true}",
+			"\\mathtt{t}",
+			"true",
+			" \n",
+			"53",
+			"29",
+			"50",
+			"51",
+			"52",
+			"53",
+			"37",
+			".",
+			"(H, e)",
+			"}\n",
+			"|",
 			"snd",
 			"length",
 			".\n",
@@ -191,6 +258,13 @@
 		"regex": false,
 		"replace_history":
 		[
+			"\\longrightarrow",
+			"\\longarrow",
+			" 0",
+			" 1",
+			" ",
+			"H;e",
+			";",
 			"\\mathsf{snd}",
 			"\\mathsf{length}"
 		],
@@ -198,37 +272,156 @@
 		"show_context": true,
 		"use_buffer2": true,
 		"whole_word": false,
-		"wrap": true
+		"wrap": false
 	},
 	"groups":
 	[
 		{
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "example_io",
+					"file": "DSL programming",
 					"settings":
 					{
-						"buffer_size": 41225,
+						"buffer_size": 1698,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								201,
+								201
 							]
 						],
 						"settings":
 						{
+							"auto_name": "DSL programming",
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/Users/clwang/CourseWork/CSE505/hw02/hw2-Chenglong.tex",
+					"settings":
+					{
+						"buffer_size": 11306,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								255,
+								255
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LaTeX/LaTeX.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "constraint_lang",
+					"settings":
+					{
+						"buffer_size": 960,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								108,
+								113
+							]
+						],
+						"settings":
+						{
+							"auto_name": "T := 	T",
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 202.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 3,
+					"file": "examples_io.md",
+					"settings":
+					{
+						"buffer_size": 55431,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								44065,
+								44065
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown/Markdown.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 26117.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "Observations",
+					"settings":
+					{
+						"buffer_size": 9756,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								9735,
+								9735
+							]
+						],
+						"settings":
+						{
+							"spell_check": true,
 							"syntax": "Packages/Text/Plain text.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 4452.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -253,11 +446,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.541531626384,
 			1.0
 		],
 		"rows":
@@ -269,7 +469,7 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 112.0
+		"height": 185.0
 	},
 	"replace":
 	{
@@ -295,7 +495,7 @@
 	"show_minimap": true,
 	"show_open_files": true,
 	"show_tabs": true,
-	"side_bar_visible": true,
+	"side_bar_visible": false,
 	"side_bar_width": 139.0,
 	"status_bar_visible": true
 }

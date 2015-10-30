@@ -1,0 +1,218 @@
+251397|zism06@gmail.com|11/26/2013 6:08:17 AM|select * from [zism06@gmail.com].[table_metagenome1.tsv]
+251509|zism06@gmail.com|11/26/2013 6:08:53 AM|select * from [zism06@gmail.com].[table_metagenome2.tsv]
+251612|zism06@gmail.com|11/26/2013 6:09:23 AM|select * from [zism06@gmail.com].[table_metagenome3.tsv]
+29536|zism06@gmail.com|11/26/2013 6:11:51 AM|SELECT "phylum",count("species") FROM [zism06@gmail.com].[Metagenome3.tsv] group by "phylum"
+29537|zism06@gmail.com|11/26/2013 6:12:17 AM|SELECT "phylum",count("species") as Abundance FROM [zism06@gmail.com].[Metagenome3.tsv] group by "phylum"
+251664|zism06@gmail.com|11/26/2013 6:14:49 AM|select "phylum",sum("abundance") as abundance from [zism06@gmail.com].[metagenome3.tsv] group by "phylum"
+29538|zism06@gmail.com|11/26/2013 6:15:32 AM|SELECT "domain",count("phylum") as Abundance FROM [zism06@gmail.com].[Metagenome3.tsv] group by "domain"
+251703|zism06@gmail.com|11/26/2013 6:23:48 AM|select "domain",sum("abundance") as abundance from [zism06@gmail.com].[metagenome3.tsv]group by "domain"
+29545|zism06@gmail.com|11/26/2013 6:24:50 AM|SELECT "species",count("species") as Abundance FROM [zism06@gmail.com].[Metagenome3.tsv]group by "species"
+29547|zism06@gmail.com|11/26/2013 6:25:32 AM|SELECT "species", count("species") as Abundance FROM [zism06@gmail.com].[Metagenome3.tsv]group by "species"
+251755|zism06@gmail.com|11/26/2013 6:25:48 AM|select "species", sum("abundance") as abundance from [zism06@gmail.com].[metagenome3.tsv]group by "species"
+29548|zism06@gmail.com|11/26/2013 6:27:31 AM|SELECT "species", sum("abundance") as Abundance FROM [zism06@gmail.com].[Metagenome3.tsv]group by "species"
+29581|zism06@gmail.com|11/27/2013 10:02:24 AM|SELECT "species",sum("abundance") as Abundance FROM [zism06@gmail.com].[table_metagenome1.tsv] group by "species"
+29582|zism06@gmail.com|11/27/2013 10:15:41 AM|SELECT "domain", sum("abundance")as Abundance FROM [zism06@gmail.com].[Metagenome2.tsv] group by "domain"
+29583|zism06@gmail.com|11/27/2013 10:22:00 AM|SELECT "phylum",sum("abundance") as Abundance FROM [zism06@gmail.com].[Metagenome2.tsv] group by "phylum"
+29585|zism06@gmail.com|11/27/2013 10:38:12 AM|SELECT "domain",sum("abundance") as Abundance FROM [zism06@gmail.com].[Metagenome3.tsv]group by "domain"
+29560|zism06@gmail.com|11/27/2013 9:13:09 AM|SELECT "domain", count("phylum") as Abundance FROM [zism06@gmail.com].[metagenome1.tsv] group by "domain"
+252072|zism06@gmail.com|11/27/2013 9:13:43 AM|select "domain",sum("abundance") as abundance from [zism06@gmail.com].[metagenome1.tsv] group by "domain"
+29561|zism06@gmail.com|11/27/2013 9:19:28 AM|SELECT "phylum",count("phylum") as Abundance FROM [zism06@gmail.com].[table_metagenome1.tsv] group by "phylum"
+29562|zism06@gmail.com|11/27/2013 9:21:17 AM|SELECT * FROM [zism06@gmail.com].[table_metagenome1.tsv]
+29563|zism06@gmail.com|11/27/2013 9:22:09 AM|SELECT "phylum",count("phylum") FROM [zism06@gmail.com].[table_metagenome1.tsv] group by "phylum"
+252124|zism06@gmail.com|11/27/2013 9:22:32 AM|select "phylum",sum("abundance")as abundance from [zism06@gmail.com].[table_metagenome1.tsv] group by "phylum"
+252179|zism06@gmail.com|11/27/2013 9:23:54 AM|select "species",sum("abundance") as abundance from [zism06@gmail.com].[table_metagenome1.tsv] group by "species"
+29565|zism06@gmail.com|11/27/2013 9:27:22 AM|SELECT "domain", count("phylum") FROM [zism06@gmail.com].[Metagenome2.tsv] group by "domain"
+29566|zism06@gmail.com|11/27/2013 9:27:35 AM|SELECT "domain", count("phylum")as Abundance FROM [zism06@gmail.com].[Metagenome2.tsv] group by "domain"
+252224|zism06@gmail.com|11/27/2013 9:28:10 AM|select "domain", sum("abundance")as abundance from [zism06@gmail.com].[metagenome2.tsv] group by "domain"
+29567|zism06@gmail.com|11/27/2013 9:29:38 AM|SELECT "phylum",count("phylum") as Abundance FROM [zism06@gmail.com].[Metagenome2.tsv] group by "phylum"
+252282|zism06@gmail.com|11/27/2013 9:29:55 AM|select "phylum",sum("abundance") as abundance from [zism06@gmail.com].[metagenome2.tsv] group by "phylum"
+252328|zism06@gmail.com|11/27/2013 9:31:33 AM|select "species", sum("abundance") as abundance from [zism06@gmail.com].[metagenome2.tsv]group by "species"
+29569|zism06@gmail.com|11/27/2013 9:44:37 AM|SELECT "phylum", sum("Abundance")as Abundance FROM [zism06@gmail.com].[Metagenome2.tsv] group by "phylum"
+29570|zism06@gmail.com|11/27/2013 9:47:48 AM|SELECT "phylum",count("abundance") as Abundance FROM [zism06@gmail.com].[Metagenome3.tsv] group by "phylum"
+29571|zism06@gmail.com|11/27/2013 9:48:37 AM|SELECT "phylum",sum("abundance") as Abundance FROM [zism06@gmail.com].[Metagenome3.tsv] group by "phylum"
+29575|zism06@gmail.com|11/27/2013 9:53:07 AM|SELECT "species", sum("Abundance") as Abundance FROM [zism06@gmail.com].[Metagenome2.tsv]group by "species"
+29577|zism06@gmail.com|11/27/2013 9:55:44 AM|SELECT "phylum",sum("Abundance")as Abundance FROM [zism06@gmail.com].[table_metagenome1.tsv] group by "phylum"
+29578|zism06@gmail.com|11/27/2013 9:56:59 AM|SELECT "domain",sum("Abundance") as Abundance FROM [zism06@gmail.com].[metagenome1.tsv] group by "domain"
+29602|zism06@gmail.com|11/30/2013 7:34:19 AM|SELECT "phylum",sum("abundance")as Abundance FROM [zism06@gmail.com].[table_metagenome1.tsv] group by "phylum","abundance"
+29607|zism06@gmail.com|11/30/2013 7:38:33 AM|SELECT * FROM [zism06@gmail.com].[metagenome1.tsv] order by "abundance" DESC
+29608|zism06@gmail.com|11/30/2013 7:39:15 AM|SELECT * FROM [zism06@gmail.com].[metagenome1.tsv] order by "phylum","abundance" DESC
+250612|zism06@gmail.com|11/5/2013 6:32:29 AM|select * from [zism06@gmail.com].[table_ts1.txt]
+250705|zism06@gmail.com|11/5/2013 6:35:02 AM|select * from [zism06@gmail.com].[table_ts2.txt]
+250797|zism06@gmail.com|11/5/2013 6:35:29 AM|select * from [zism06@gmail.com].[table_ts4.txt]
+29192|zism06@gmail.com|11/5/2013 6:37:39 AM|SELECT family,genus,species FROM [zism06@gmail.com].[table_TS1.txt]
+29199|zism06@gmail.com|11/5/2013 6:41:02 AM|SELECT COUNT("phylum") FROM [zism06@gmail.com].[table_TS1.txt] group  by species
+251315|zism06@gmail.com|11/5/2013 9:22:09 AM|select * from [zism06@gmail.com].[table_ts5.txt]
+29211|zism06@gmail.com|11/5/2013 9:30:29 AM|SELECT "phylum","species",count("species") FROM [zism06@gmail.com].[table_TS1.txt]group by "phylum","species"
+29212|zism06@gmail.com|11/5/2013 9:34:31 AM|SELECT "phylum","species",count("species") FROM [zism06@gmail.com].[table_TS1.txt]where "phylum" ='Firmicutes' group by "phylum","species"
+29213|zism06@gmail.com|11/5/2013 9:39:29 AM|SELECT "domain","phylum",count("phylum") FROM [zism06@gmail.com].[table_TS1.txt]group by "domain","phylum"
+29230|zism06@gmail.com|11/5/2013 9:40:19 PM|SELECT "domain","phylum" FROM [zism06@gmail.com].[table_TS1.txt] where  "phylum" = 'bacteria'
+29232|zism06@gmail.com|11/5/2013 9:41:13 PM|SELECT "domain","phylum" FROM [zism06@gmail.com].[table_TS1.txt]
+29233|zism06@gmail.com|11/5/2013 9:41:52 PM|SELECT "domain","phylum" FROM [zism06@gmail.com].[table_TS1.txt]  where "domain"= 'Bacteria'
+29234|zism06@gmail.com|11/5/2013 9:43:16 PM|SELECT * FROM [zism06@gmail.com].[table_TS1.txt]  where "domain"= 'Bacteria'
+29235|zism06@gmail.com|11/5/2013 9:45:39 PM|SELECT * FROM [zism06@gmail.com].[table_TS1.txt] union SELECT * FROM [zism06@gmail.com].[table_TS2.txt]
+29236|zism06@gmail.com|11/5/2013 9:47:34 PM|SELECT * FROM [zism06@gmail.com].[table_TS2.txt] union SELECT * FROM [zism06@gmail.com].[table_TS1.txt]
+29238|zism06@gmail.com|11/5/2013 9:49:54 PM|SELECT sum("abundance") FROM [zism06@gmail.com].[table_TS2.txt]  group by "domain"
+29239|zism06@gmail.com|11/5/2013 9:50:33 PM|SELECT "domain",sum("abundance") FROM [zism06@gmail.com].[table_TS2.txt]  group by "domain"
+29249|zism06@gmail.com|11/7/2013 12:26:03 AM|SELECT "phylum",sum("abundance") FROM [zism06@gmail.com].[table_TS5.txt]group by "phylum"
+253842|zism06@gmail.com|11/7/2013 12:27:14 AM|select "phylum",sum("abundance") from [zism06@gmail.com].[table_ts5.txt]group by "phylum"
+29250|zism06@gmail.com|11/7/2013 12:30:08 AM|SELECT "species",sum("abundance") FROM [zism06@gmail.com].[table_TS5.txt]group by "species"
+253879|zism06@gmail.com|11/7/2013 12:30:32 AM|select "species",sum("abundance") from [zism06@gmail.com].[table_ts5.txt]group by "species"
+29251|zism06@gmail.com|11/7/2013 12:34:36 AM|SELECT "domain",sum("abundance") FROM [zism06@gmail.com].[table_TS5.txt]group by "domain"
+253931|zism06@gmail.com|11/7/2013 12:34:52 AM|select "domain",sum("abundance") from [zism06@gmail.com].[table_ts5.txt]group by "domain"
+29252|zism06@gmail.com|11/7/2013 4:31:30 AM|SELECT "domain",sum("abundance")From [zism06@gmail.com].[table_TS1.txt]group by "domain"
+253976|zism06@gmail.com|11/7/2013 4:31:52 AM|select "domain",sum("abundance")from [zism06@gmail.com].[table_ts1.txt]group by "domain"
+29255|zism06@gmail.com|11/7/2013 4:40:58 AM|SELECT "phylum",sum("abundance")From [zism06@gmail.com].[table_TS1.txt]group by "phylum"
+254027|zism06@gmail.com|11/7/2013 4:41:17 AM|select "phylum",sum("abundance")from [zism06@gmail.com].[table_ts1.txt]group by "phylum"
+29256|zism06@gmail.com|11/7/2013 4:42:57 AM|SELECT "species",sum("abundance")From [zism06@gmail.com].[table_TS1.txt]group by "species"
+254065|zism06@gmail.com|11/7/2013 4:43:31 AM|select "species",sum("abundance")as abundance from [zism06@gmail.com].[table_ts1.txt]group by "species"
+29257|zism06@gmail.com|11/7/2013 4:44:36 AM|SELECT "domain",sum("abundance") FROM [zism06@gmail.com].[table_TS2.txt]group by "domain"
+29259|zism06@gmail.com|11/7/2013 4:49:59 AM|SELECT "domain",sum("abundance")as Abundance FROM [zism06@gmail.com].[table_TS2.txt]group by "domain"
+254119|zism06@gmail.com|11/7/2013 4:50:28 AM|select "domain",sum("abundance")as abundance from [zism06@gmail.com].[table_ts2.txt]group by "domain"
+29260|zism06@gmail.com|11/7/2013 4:50:58 AM|SELECT "phylum",sum("abundance")as Abundance FROM [zism06@gmail.com].[table_TS2.txt]group by "phylum"
+254158|zism06@gmail.com|11/7/2013 4:51:14 AM|select "phylum",sum("abundance")as abundance from [zism06@gmail.com].[table_ts2.txt]group by "phylum"
+29261|zism06@gmail.com|11/7/2013 4:51:49 AM|SELECT "species",sum("abundance")as Abundance FROM [zism06@gmail.com].[table_TS2.txt]group by "species"
+254209|zism06@gmail.com|11/7/2013 4:53:00 AM|select "species",sum("abundance")as abundance from [zism06@gmail.com].[table_ts2.txt]group by "species"
+29263|zism06@gmail.com|11/7/2013 4:54:02 AM|SELECT "domain",sum("abundance") FROM [zism06@gmail.com].[table_TS4.txt] group by "domain"
+29264|zism06@gmail.com|11/7/2013 4:54:14 AM|SELECT "domain",sum("abundance") as Abundance FROM [zism06@gmail.com].[table_TS4.txt] group by "domain"
+254258|zism06@gmail.com|11/7/2013 4:54:25 AM|select "domain",sum("abundance") as abundance from [zism06@gmail.com].[table_ts4.txt] group by "domain"
+29265|zism06@gmail.com|11/7/2013 4:54:58 AM|SELECT "phylum",sum("abundance") as Abundance FROM [zism06@gmail.com].[table_TS4.txt] group by "phylum"
+254310|zism06@gmail.com|11/7/2013 4:55:10 AM|select "phylum",sum("abundance") as abundance from [zism06@gmail.com].[table_ts4.txt] group by "phylum"
+29266|zism06@gmail.com|11/7/2013 4:55:39 AM|SELECT "species",sum("abundance") as Abundance FROM [zism06@gmail.com].[table_TS4.txt] group by "species"
+254356|zism06@gmail.com|11/7/2013 4:55:56 AM|select "species",sum("abundance") as abundance from [zism06@gmail.com].[table_ts4.txt] group by "species"
+254447|zism06@gmail.com|11/7/2013 5:06:54 AM|select * from [zism06@gmail.com].[table_ts6.txt]
+254539|zism06@gmail.com|11/7/2013 5:07:29 AM|select * from [zism06@gmail.com].[table_ts7.txt]
+254630|zism06@gmail.com|11/7/2013 5:08:40 AM|select * from [zism06@gmail.com].[table_ts8.txt]
+254725|zism06@gmail.com|11/7/2013 5:09:32 AM|select * from [zism06@gmail.com].[table_ts9.txt]
+254808|zism06@gmail.com|11/7/2013 5:10:11 AM|select * from [zism06@gmail.com].[table_ts19.txt]
+254904|zism06@gmail.com|11/7/2013 5:10:43 AM|select * from [zism06@gmail.com].[table_ts20.txt]
+255002|zism06@gmail.com|11/7/2013 5:13:28 AM|select * from [zism06@gmail.com].[table_ts21.txt]
+255090|zism06@gmail.com|11/7/2013 5:14:23 AM|select * from [zism06@gmail.com].[table_ts28.txt]
+255189|zism06@gmail.com|11/7/2013 5:15:02 AM|select * from [zism06@gmail.com].[table_ts29.txt]
+255273|zism06@gmail.com|11/7/2013 5:15:31 AM|select * from [zism06@gmail.com].[table_ts30.txt]
+255368|zism06@gmail.com|11/7/2013 5:16:05 AM|select * from [zism06@gmail.com].[table_ts49.txt]
+255469|zism06@gmail.com|11/7/2013 5:16:35 AM|select * from [zism06@gmail.com].[table_ts50.txt]
+255558|zism06@gmail.com|11/7/2013 5:16:59 AM|select * from [zism06@gmail.com].[table_ts51.txt]
+255643|zism06@gmail.com|11/7/2013 5:17:24 AM|select * from [zism06@gmail.com].[table_ts53.txt]
+29267|zism06@gmail.com|11/7/2013 5:20:55 AM|SELECT ("domain"),sum("abundance") as Abundance FROM [zism06@gmail.com].[table_TS6.txt]group by "domain"
+255687|zism06@gmail.com|11/7/2013 5:21:18 AM|select ("domain"),sum("abundance") as abundance from [zism06@gmail.com].[table_ts6.txt]group by "domain"
+29268|zism06@gmail.com|11/7/2013 5:21:50 AM|SELECT ("phylum"),sum("abundance") as Abundance FROM [zism06@gmail.com].[table_TS6.txt]group by "phylum"
+255735|zism06@gmail.com|11/7/2013 5:22:04 AM|select ("phylum"),sum("abundance") as abundance from [zism06@gmail.com].[table_ts6.txt]group by "phylum"
+29269|zism06@gmail.com|11/7/2013 5:23:44 AM|SELECT ("species"),sum("abundance") as Abundance FROM [zism06@gmail.com].[table_TS6.txt]group by "species"
+255781|zism06@gmail.com|11/7/2013 5:24:03 AM|select ("species"),sum("abundance") as abundance from [zism06@gmail.com].[table_ts6.txt]group by "species"
+29270|zism06@gmail.com|11/7/2013 5:25:42 AM|SELECT "domain",sum("abundance") FROM [zism06@gmail.com].[table_TS7.txt]group by "domain"
+255831|zism06@gmail.com|11/7/2013 5:26:52 AM|select "domain",sum("abundance") from [zism06@gmail.com].[table_ts7.txt]group by "domain"
+29271|zism06@gmail.com|11/7/2013 5:27:33 AM|SELECT "phylum",sum("abundance") FROM [zism06@gmail.com].[table_TS7.txt]group by "phylum"
+255870|zism06@gmail.com|11/7/2013 5:27:44 AM|select "phylum",sum("abundance") from [zism06@gmail.com].[table_ts7.txt]group by "phylum"
+29272|zism06@gmail.com|11/7/2013 5:28:13 AM|SELECT "species",sum("abundance") FROM [zism06@gmail.com].[table_TS7.txt]group by "species"
+255922|zism06@gmail.com|11/7/2013 5:28:36 AM|select "species",sum("abundance") from [zism06@gmail.com].[table_ts7.txt]group by "species"
+29273|zism06@gmail.com|11/7/2013 5:29:17 AM|SELECT "species",sum("abundance") FROM [zism06@gmail.com].[table_TS7.txt]group by "species","phylum"
+29274|zism06@gmail.com|11/7/2013 5:29:39 AM|SELECT "phylum","species",sum("abundance") FROM [zism06@gmail.com].[table_TS7.txt]group by "species","phylum"
+29275|zism06@gmail.com|11/7/2013 5:31:08 AM|SELECT ("domain"), sum("abundance") FROM [zism06@gmail.com].[table_TS8.txt]group by "domain"
+29276|zism06@gmail.com|11/7/2013 5:31:20 AM|SELECT ("domain"), sum("abundance")as Abundance FROM [zism06@gmail.com].[table_TS8.txt]group by "domain"
+255961|zism06@gmail.com|11/7/2013 5:31:36 AM|select ("domain"), sum("abundance")as abundance from [zism06@gmail.com].[table_ts8.txt]group by "domain"
+29277|zism06@gmail.com|11/7/2013 5:33:19 AM|SELECT ("phylum"), sum("abundance")as Abundance FROM [zism06@gmail.com].[table_TS8.txt]group by "phylum"
+256013|zism06@gmail.com|11/7/2013 5:33:31 AM|select ("phylum"), sum("abundance")as abundance from [zism06@gmail.com].[table_ts8.txt]group by "phylum"
+29278|zism06@gmail.com|11/7/2013 5:34:10 AM|SELECT ("species"), sum("abundance")as Abundance FROM [zism06@gmail.com].[table_TS8.txt]group by "species"
+256054|zism06@gmail.com|11/7/2013 5:34:21 AM|select ("species"), sum("abundance")as abundance from [zism06@gmail.com].[table_ts8.txt]group by "species"
+29279|zism06@gmail.com|11/7/2013 5:35:21 AM|SELECT ("domain"),sum("abundance") FROM [zism06@gmail.com].[table_TS9.txt]group by "domain"
+29280|zism06@gmail.com|11/7/2013 5:35:33 AM|SELECT ("domain"),sum("abundance")as Abundance FROM [zism06@gmail.com].[table_TS9.txt]group by "domain"
+256108|zism06@gmail.com|11/7/2013 5:35:52 AM|select ("domain"),sum("abundance")as abundance from [zism06@gmail.com].[table_ts9.txt]group by "domain"
+29281|zism06@gmail.com|11/7/2013 5:36:55 AM|SELECT ("phylum"),sum("abundance")as Abundance FROM [zism06@gmail.com].[table_TS9.txt]group by "phylum"
+29283|zism06@gmail.com|11/7/2013 5:38:47 AM|SELECT * FROM [zism06@gmail.com].[table_TS9.txt]
+29284|zism06@gmail.com|11/7/2013 5:39:30 AM|SELECT ("phylum"),sum("abundance")as Abundance FROM [zism06@gmail.com].[table_TS9.txt] group by "phylum"
+256156|zism06@gmail.com|11/7/2013 5:39:46 AM|select ("phylum"),sum("abundance")as abundance from [zism06@gmail.com].[table_ts9.txt] group by "phylum"
+29285|zism06@gmail.com|11/7/2013 5:40:14 AM|SELECT ("species"),sum("abundance")as Abundance FROM [zism06@gmail.com].[table_TS9.txt] group by "species"
+256208|zism06@gmail.com|11/7/2013 5:40:32 AM|select ("species"),sum("abundance")as abundance from [zism06@gmail.com].[table_ts9.txt] group by "species"
+29286|zism06@gmail.com|11/7/2013 5:41:37 AM|SELECT ("domain"),sum("abundance")as Abundance FROM [zism06@gmail.com].[table_TS19.txt] group by "domain"
+256256|zism06@gmail.com|11/7/2013 5:41:52 AM|select ("domain"),sum("abundance")as abundance from [zism06@gmail.com].[table_ts19.txt] group by "domain"
+29287|zism06@gmail.com|11/7/2013 5:42:22 AM|SELECT ("phylum"),sum("abundance")as Abundance FROM [zism06@gmail.com].[table_TS19.txt] group by "phylum"
+256299|zism06@gmail.com|11/7/2013 5:42:37 AM|select ("phylum"),sum("abundance")as abundance from [zism06@gmail.com].[table_ts19.txt] group by "phylum"
+29288|zism06@gmail.com|11/7/2013 5:43:04 AM|SELECT ("species"),sum("abundance")as Abundance FROM [zism06@gmail.com].[table_TS19.txt] group by "species"
+256343|zism06@gmail.com|11/7/2013 5:43:25 AM|select ("species"),sum("abundance")as abundance from [zism06@gmail.com].[table_ts19.txt] group by "species"
+29290|zism06@gmail.com|11/7/2013 6:57:32 AM|SELECT "domain",sum("abundance") FROM [zism06@gmail.com].[table_TS20.txt] group by "domain"
+29291|zism06@gmail.com|11/7/2013 6:58:18 AM|SELECT "domain",sum("abundance") as Abundance FROM [zism06@gmail.com].[table_TS20.txt] group by "domain"
+256388|zism06@gmail.com|11/7/2013 6:58:43 AM|select "domain",sum("abundance") as abundance from [zism06@gmail.com].[table_ts20.txt] group by "domain"
+29292|zism06@gmail.com|11/7/2013 6:59:34 AM|SELECT "phylum",sum("abundance") as Abundance FROM [zism06@gmail.com].[table_TS20.txt] group by "phylum"
+29293|zism06@gmail.com|11/7/2013 7:03:10 AM|SELECT "phylum",sum("abundance") as Abundance FROM [zism06@gmail.com].[table_TS20.txt]x  group by "phylum" order by x."phylum"
+29297|zism06@gmail.com|11/7/2013 7:05:39 AM|SELECT "phylum",sum("abundance") as Abundance FROM [zism06@gmail.com].[table_TS20.txt]group by "phylum"
+250003|zism06@gmail.com|11/7/2013 7:06:00 AM|select "phylum",sum("abundance") as abundance from [zism06@gmail.com].[table_ts20.txt]group by "phylum"
+29298|zism06@gmail.com|11/7/2013 7:06:56 AM|SELECT "species",sum("abundance") as Abundance FROM [zism06@gmail.com].[table_TS20.txt]group by "species"
+250055|zism06@gmail.com|11/7/2013 7:07:43 AM|select "species",sum("abundance") as abundance from [zism06@gmail.com].[table_ts20.txt]group by "species"
+29299|zism06@gmail.com|11/7/2013 7:09:59 AM|SELECT "domain",sum("abundance") FROM [zism06@gmail.com].[table_TS21.txt] group by "domain"
+29303|zism06@gmail.com|11/7/2013 7:11:37 AM|SELECT "domain",sum("abundance") FROM [zism06@gmail.com].[table_TS21.txt]group by "domain"
+29304|zism06@gmail.com|11/7/2013 7:11:55 AM|SELECT "domain",sum("abundance") as Abundance FROM [zism06@gmail.com].[table_TS21.txt]group by "domain"
+250099|zism06@gmail.com|11/7/2013 7:12:11 AM|select "domain",sum("abundance") as abundance from [zism06@gmail.com].[table_ts21.txt]group by "domain"
+29305|zism06@gmail.com|11/7/2013 7:14:06 AM|SELECT "phylum",sum("abundance") as Abundance FROM [zism06@gmail.com].[table_TS21.txt]group by "phylum"
+250154|zism06@gmail.com|11/7/2013 7:14:24 AM|select "phylum",sum("abundance") as abundance from [zism06@gmail.com].[table_ts21.txt]group by "phylum"
+29306|zism06@gmail.com|11/7/2013 7:15:04 AM|SELECT "species",sum("abundance") as Abundance FROM [zism06@gmail.com].[table_TS21.txt]group by "species"
+250201|zism06@gmail.com|11/7/2013 7:15:21 AM|select "species",sum("abundance") as abundance from [zism06@gmail.com].[table_ts21.txt]group by "species"
+29307|zism06@gmail.com|11/7/2013 7:18:21 AM|SELECT "domain",sum("abundance") as Abundance FROM [zism06@gmail.com].[table_TS28.txt] group by "domain"
+29310|zism06@gmail.com|11/7/2013 7:19:11 AM|SELECT "domain",sum("abundance") as Abundance FROM [zism06@gmail.com].[table_TS28.txt]group by "domain"
+250246|zism06@gmail.com|11/7/2013 7:19:40 AM|select "domain",sum("abundance") as abundance from [zism06@gmail.com].[table_ts28.txt]group by "domain"
+29311|zism06@gmail.com|11/7/2013 7:20:19 AM|SELECT "phylum",sum("abundance") as Abundance FROM [zism06@gmail.com].[table_TS28.txt]group by "phylum"
+250296|zism06@gmail.com|11/7/2013 7:20:46 AM|select "phylum",sum("abundance") as abundance from [zism06@gmail.com].[table_ts28.txt]group by "phylum"
+29312|zism06@gmail.com|11/7/2013 7:22:28 AM|SELECT "species",sum("abundance") as Abundance FROM [zism06@gmail.com].[table_TS28.txt]group by "species"
+250345|zism06@gmail.com|11/7/2013 7:22:50 AM|select "species",sum("abundance") as abundance from [zism06@gmail.com].[table_ts28.txt]group by "species"
+29313|zism06@gmail.com|11/7/2013 7:24:19 AM|SELECT "domain", sum ("abundance") as Abundance  FROM [zism06@gmail.com].[table_TS29.txt] group  by "domain"
+250396|zism06@gmail.com|11/7/2013 7:24:43 AM|select "domain", sum ("abundance") as abundance  from [zism06@gmail.com].[table_ts29.txt] group  by "domain"
+29315|zism06@gmail.com|11/7/2013 7:26:19 AM|SELECT "phylum",sum("abundance") FROM [zism06@gmail.com].[table_TS29.txt] group by "phylum"
+29316|zism06@gmail.com|11/7/2013 7:27:09 AM|SELECT "phylum",sum("abundance") FROM [zism06@gmail.com].[table_TS29.txt] x group by "phylum" order by x."phylum"
+29317|zism06@gmail.com|11/7/2013 7:27:34 AM|SELECT "phylum",sum("abundance") as Abundance FROM [zism06@gmail.com].[table_TS29.txt] x group by "phylum" order by x."phylum"
+29321|zism06@gmail.com|11/7/2013 7:29:04 AM|SELECT "phylum",sum("abundance") as Abundance FROM [zism06@gmail.com].[table_TS29.txt] group by "phylum"
+250441|zism06@gmail.com|11/7/2013 7:29:21 AM|select "phylum",sum("abundance") as abundance from [zism06@gmail.com].[table_ts29.txt] group by "phylum"
+29322|zism06@gmail.com|11/7/2013 7:29:56 AM|SELECT "species",sum("abundance") as Abundance FROM [zism06@gmail.com].[table_TS29.txt] group by "species"
+250492|zism06@gmail.com|11/7/2013 7:30:27 AM|select "species",sum("abundance") as abundance from [zism06@gmail.com].[table_ts29.txt] group by "species"
+29323|zism06@gmail.com|11/7/2013 7:31:53 AM|SELECT "domain", sum("abundance") FROM [zism06@gmail.com].[table_TS30.txt] group by "domain"
+29324|zism06@gmail.com|11/7/2013 7:32:12 AM|SELECT "domain", sum("abundance")as Abundance FROM [zism06@gmail.com].[table_TS30.txt] group by "domain"
+250543|zism06@gmail.com|11/7/2013 7:32:47 AM|select "domain", sum("abundance")as abundance from [zism06@gmail.com].[table_ts30.txt] group by "domain"
+29325|zism06@gmail.com|11/7/2013 7:33:17 AM|SELECT "phylum", sum("abundance")as Abundance FROM [zism06@gmail.com].[table_TS30.txt] group by "phylum"
+250599|zism06@gmail.com|11/7/2013 7:33:38 AM|select "phylum", sum("abundance")as abundance from [zism06@gmail.com].[table_ts30.txt] group by "phylum"
+29326|zism06@gmail.com|11/7/2013 7:35:49 AM|SELECT "species", sum("abundance")as Abundance FROM [zism06@gmail.com].[table_TS30.txt] group by "species"
+250649|zism06@gmail.com|11/7/2013 7:36:14 AM|select "species", sum("abundance")as abundance from [zism06@gmail.com].[table_ts30.txt] group by "species"
+29328|zism06@gmail.com|11/7/2013 7:38:38 AM|SELECT "domain",sum("abundance")as Abundance FROM [zism06@gmail.com].[table_TS49.txt] group by "domain"
+250697|zism06@gmail.com|11/7/2013 7:38:52 AM|select "domain",sum("abundance")as abundance from [zism06@gmail.com].[table_ts49.txt] group by "domain"
+29329|zism06@gmail.com|11/7/2013 7:39:34 AM|SELECT "phylum",sum("abundance")as Abundance FROM [zism06@gmail.com].[table_TS49.txt] group by "phylum"
+250744|zism06@gmail.com|11/7/2013 7:39:55 AM|select "phylum",sum("abundance")as abundance from [zism06@gmail.com].[table_ts49.txt] group by "phylum"
+29330|zism06@gmail.com|11/7/2013 7:40:28 AM|SELECT "species",sum("abundance")as Abundance FROM [zism06@gmail.com].[table_TS49.txt] group by "species"
+250788|zism06@gmail.com|11/7/2013 7:47:16 AM|select "species",sum("abundance")as abundance from [zism06@gmail.com].[table_ts49.txt] group by "species"
+29332|zism06@gmail.com|11/7/2013 7:50:38 AM|SELECT "domain",sum("abundance") FROM [zism06@gmail.com].[table_TS50.txt] group by "domain"
+29333|zism06@gmail.com|11/7/2013 7:52:38 AM|SELECT "domain",sum("abundance")as Abundance FROM [zism06@gmail.com].[table_TS50.txt] group by "domain"
+250832|zism06@gmail.com|11/7/2013 7:52:58 AM|select "domain",sum("abundance")as abundance from [zism06@gmail.com].[table_ts50.txt] group by "domain"
+29334|zism06@gmail.com|11/7/2013 7:53:34 AM|SELECT "phylum",sum("abundance")as Abundance FROM [zism06@gmail.com].[table_TS50.txt] group by "phylum"
+250881|zism06@gmail.com|11/7/2013 7:53:54 AM|select "phylum",sum("abundance")as abundance from [zism06@gmail.com].[table_ts50.txt] group by "phylum"
+29335|zism06@gmail.com|11/7/2013 7:54:27 AM|SELECT "species",sum("abundance")as Abundance FROM [zism06@gmail.com].[table_TS50.txt] group by "species"
+250928|zism06@gmail.com|11/7/2013 7:54:42 AM|select "species",sum("abundance")as abundance from [zism06@gmail.com].[table_ts50.txt] group by "species"
+29336|zism06@gmail.com|11/7/2013 7:55:52 AM|SELECT "domain",sum("abundance") FROM [zism06@gmail.com].[table_TS51.txt] group by "domain"
+29337|zism06@gmail.com|11/7/2013 7:56:04 AM|SELECT "domain",sum("abundance")as Abundance FROM [zism06@gmail.com].[table_TS51.txt] group by "domain"
+250978|zism06@gmail.com|11/7/2013 7:56:23 AM|select "domain",sum("abundance")as abundance from [zism06@gmail.com].[table_ts51.txt] group by "domain"
+29338|zism06@gmail.com|11/7/2013 7:56:52 AM|SELECT "phylum",sum("abundance")as Abundance FROM [zism06@gmail.com].[table_TS51.txt] group by "phylum"
+251030|zism06@gmail.com|11/7/2013 7:57:13 AM|select "phylum",sum("abundance")as abundance from [zism06@gmail.com].[table_ts51.txt] group by "phylum"
+29339|zism06@gmail.com|11/7/2013 7:57:48 AM|SELECT "species",sum("abundance")as Abundance FROM [zism06@gmail.com].[table_TS51.txt] group by "species"
+251093|zism06@gmail.com|11/7/2013 7:58:08 AM|select "species",sum("abundance")as abundance from [zism06@gmail.com].[table_ts51.txt] group by "species"
+29340|zism06@gmail.com|11/7/2013 7:59:02 AM|SELECT "domain",sum("abundance") FROM [zism06@gmail.com].[table_TS53.txt] group by "domain"
+29341|zism06@gmail.com|11/7/2013 7:59:11 AM|SELECT "domain",sum("abundance")as Abundance FROM [zism06@gmail.com].[table_TS53.txt] group by "domain"
+251146|zism06@gmail.com|11/7/2013 7:59:27 AM|select "domain",sum("abundance")as abundance from [zism06@gmail.com].[table_ts53.txt] group by "domain"
+29342|zism06@gmail.com|11/7/2013 7:59:57 AM|SELECT "phylum",sum("abundance")as Abundance FROM [zism06@gmail.com].[table_TS53.txt] group by "phylum"
+251200|zism06@gmail.com|11/7/2013 8:00:23 AM|select "phylum",sum("abundance")as abundance from [zism06@gmail.com].[table_ts53.txt] group by "phylum"
+29343|zism06@gmail.com|11/7/2013 8:00:59 AM|SELECT "species",sum("abundance")as Abundance FROM [zism06@gmail.com].[table_TS53.txt] group by "species"
+251249|zism06@gmail.com|11/7/2013 8:01:20 AM|select "species",sum("abundance")as abundance from [zism06@gmail.com].[table_ts53.txt] group by "species"
+29344|zism06@gmail.com|11/7/2013 8:08:10 AM|SELECT count("class") FROM [zism06@gmail.com].[table_TS1.txt]
+29345|zism06@gmail.com|11/7/2013 8:08:26 AM|SELECT count("class") as cuenta FROM [zism06@gmail.com].[table_TS1.txt]
+29350|zism06@gmail.com|11/7/2013 8:28:48 AM|SELECT "domain","phylum","species","abundance"from [zism06@gmail.com].[table_TS1.txt] union SELECT "domain","phylum","species","abundance" from [zism06@gmail.com].[table_TS2.txt]
+251303|zism06@gmail.com|11/7/2013 8:30:15 AM|select "domain","phylum","species","abundance"from [zism06@gmail.com].[table_ts1.txt] union select "domain","phylum","species","abundance" from [zism06@gmail.com].[table_ts2.txt]
+29355|zism06@gmail.com|11/7/2013 8:35:54 AM|SELECT "domain","phylum","species","abundance" from [zism06@gmail.com].[table_TS1.txt]  union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS2.txt]
+29356|zism06@gmail.com|11/7/2013 8:36:52 AM|SELECT "domain","phylum","species","abundance" from [zism06@gmail.com].[table_TS1.txt]  union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS2.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS4.txt]
+29358|zism06@gmail.com|11/7/2013 8:38:00 AM|SELECT "domain","phylum","species","abundance" from [zism06@gmail.com].[table_TS1.txt]  union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS2.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS4.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS5.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS6.txt]
+29359|zism06@gmail.com|11/7/2013 8:38:47 AM|SELECT "domain","phylum","species","abundance" from [zism06@gmail.com].[table_TS1.txt]  union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS2.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS4.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS5.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS6.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS7.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS8.txt]
+29360|zism06@gmail.com|11/7/2013 8:42:54 AM|SELECT "domain","phylum","species","abundance" from [zism06@gmail.com].[table_TS1.txt]  union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS2.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS4.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS5.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS6.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS7.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS8.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS9.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS19.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS20.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS21.txt]
+29361|zism06@gmail.com|11/7/2013 8:43:35 AM|SELECT "domain","phylum","species","abundance" from [zism06@gmail.com].[table_TS1.txt]  union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS2.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS4.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS5.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS6.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS7.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS8.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS9.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS19.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS20.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS21.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS28.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS29.txt]
+29362|zism06@gmail.com|11/7/2013 8:44:17 AM|SELECT "domain","phylum","species","abundance" from [zism06@gmail.com].[table_TS1.txt]  union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS2.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS4.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS5.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS6.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS7.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS8.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS9.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS19.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS20.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS21.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS28.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS29.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS30.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS49.txt]
+29363|zism06@gmail.com|11/7/2013 8:44:54 AM|SELECT "domain","phylum","species","abundance" from [zism06@gmail.com].[table_TS1.txt]  union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS2.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS4.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS5.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS6.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS7.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS8.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS9.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS19.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS20.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS21.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS28.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS29.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS30.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS49.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS50.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS51.txt]
+29364|zism06@gmail.com|11/7/2013 8:45:27 AM|SELECT "domain","phylum","species","abundance" from [zism06@gmail.com].[table_TS1.txt]  union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS2.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS4.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS5.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS6.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS7.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS8.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS9.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS19.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS20.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS21.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS28.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS29.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS30.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS49.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS50.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS51.txt] union SELECT "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_TS53.txt]
+251356|zism06@gmail.com|11/7/2013 8:46:46 AM|select "domain","phylum","species","abundance" from [zism06@gmail.com].[table_ts1.txt]  union select "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_ts2.txt] union select "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_ts4.txt] union select "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_ts5.txt] union select "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_ts6.txt] union select "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_ts7.txt] union select "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_ts8.txt] union select "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_ts9.txt] union select "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_ts19.txt] union select "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_ts20.txt] union select "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_ts21.txt] union select "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_ts28.txt] union select "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_ts29.txt] union select "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_ts30.txt] union select "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_ts49.txt] union select "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_ts50.txt] union select "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_ts51.txt] union select "domain","phylum","species" ,"abundance" from [zism06@gmail.com].[table_ts53.txt]
+29366|zism06@gmail.com|11/7/2013 9:14:38 AM|SELECT "species",sum("abundance")as Abundance From [zism06@gmail.com].[table_TS1.txt]group by "species"
+253065|zism06@gmail.com|12/4/2013 12:11:26 AM|select * from [zism06@gmail.com].[table_4544832.3.tsv]
+29632|zism06@gmail.com|12/4/2013 12:12:21 AM|SELECT "domain",sum("abundance")as Abundance FROM [zism06@gmail.com].[4544832.3.tsv]group by "domain"
+253113|zism06@gmail.com|12/4/2013 12:13:00 AM|select "domain",sum("abundance")as abundance from [zism06@gmail.com].[4544832.3.tsv]group by "domain"
+29633|zism06@gmail.com|12/4/2013 12:13:28 AM|SELECT "phylum",sum("abundance")as Abundance FROM [zism06@gmail.com].[4544832.3.tsv]group by "phylum"
+253162|zism06@gmail.com|12/4/2013 12:14:01 AM|select "phylum",sum("abundance")as abundance from [zism06@gmail.com].[4544832.3.tsv]group by "phylum"

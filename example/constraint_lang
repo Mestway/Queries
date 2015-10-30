@@ -1,0 +1,52 @@
+T := 	T 
+  |   filter(T, b(r, T))
+  |	 	join(key, T, T)
+  |		agr(T, c, [c,...,c])
+
+agr := min | max | sum | count | avg
+
+f := b(r, T) 
+
+b := 	e relop e
+	| 	exists(x, b(x, r, T))
+	| 	neg(b)
+	| 	b /\ b
+
+e := const
+	|  lookup([c,...,c], agr(T, c, [c,...,c]))
+	|  agr(T, c)
+	|  r.c
+
+constraint :=
+	forall e, b
+
+
+#1
+
+	forall r1 r2 in output.(r1<>r2 -> r1.id<>r2.id);
+	forall r in output.(r.rev = lookup([r.id], max(input, rev, [id])));
+
+#7
+
+	forall r in output.(exists r2 in input.(r2.yrq = r.col1 /\ r2.start_date <= 2013-02-01 /\ r2.end_date >= 2013-02-15));
+
+#13
+
+	forall r in output.(r in input 
+							/\ r.b = max(input, b));
+
+#14
+	
+	forall r in output.(exists r1 r2 in input.(r1<>r2 /\ r1.NAME=r2.NAME /\ r1.EMAIL=r2.EMAIL));
+
+#37
+	
+	forall r in output. (count(input, user_id) > 3)
+
+#26
+	
+	forall r in output. (neg exists r1 in input.(r1.Product_ID=r.c1 /\ r1.Client_ID <> 2))
+
+#2
+	
+	forall r in output. (r.temp=lookup([r.locID], max(input, temp, [lockID])))

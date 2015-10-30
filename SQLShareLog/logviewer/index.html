@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <title>Data Inspector</title>
+    <!-- <link rel="stylesheet" type="text/css" href="tablestyle.css"/> -->
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.9/css/dataTables.jqueryui.min.css"/> 
+    <!-- Include required JS files -->
+    <script type="text/javascript" src="scripts/shCore.js"></script>
+    <script type="text/javascript" src="scripts/shBrushSql.js"></script>
+    <script type="text/javascript" src="scripts/jquery-2.1.4.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <!-- Include *at least* the core style and default theme -->
+    <link href="styles/shCore.css" rel="stylesheet" type="text/css" />
+    <link href="styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="styles/bootstrap.css">
+    <script type="text/javascript" src="scripts/d3.js"></script>
+    <script src="data/data.js"></script>
+  </head>
+  <body>  
+    <div class="container">
+    </div>
+  </body>
+
+  <script type="text/javascript">
+
+    var list = [];
+    var i = 1;
+    while(i <= 253) {
+      list.push(i);
+      i ++;
+    }
+
+    var ui=d3.select(".container")
+      .append("div");
+
+    ui.attr("class", "list-group")
+      .attr("style", "text-align:center;");
+
+    ui.selectAll(".page_links")
+      .data(list)
+      .enter()
+      .append("a")
+      .attr("href", function(d) {
+        return "pages/page" + d + ".html";
+      })
+      .attr("class", "list-group-item")
+      .append("div")
+      .text(function(d) {return "pages/page" + d + ".html"});
+
+  </script>
+</html>

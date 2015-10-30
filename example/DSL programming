@@ -1,0 +1,129 @@
+DSL programming
+
+T := 	T 
+  |   filter(T, b(r, T))
+  |	 	join(key, T, T)
+  |		aggre(T, a, c, (c,...,c))
+
+a := min | max | sum | count | avg
+
+f := b(r, T) 
+	| f /\ b(r, T)
+
+b := 	relop(e, e)
+	| 	exists(x, b(x, r, T))
+	| 	neg(b)
+
+e := const
+	|  phi(c, aggre(T, a, c, (c,...,c)))
+	|  r.c	
+
+
+=== 001
+
+filter ( 
+	T, 
+	f r => r.rev = phi(r.id, aggre(max, rev, id))
+)
+
+=== 002
+
+filter (
+	filter (
+		T,
+		f r => r.dtg >= "2009-02-25 10:10" - "20:00"
+	),
+	f r => r.dtg = phi(r.locId, aggre(latest, dtg, locId))
+)
+
+=== 003
+
+proj (
+	Name, City,
+	filter (
+		T,
+		f r => r.Birthyear = phi(r.Name, aggre(min, Birthyear, Name))
+	)
+)
+
+=== 034
+
+proj (
+	Custormer,
+	filter(
+		T,
+		f r => phi(r.Customer, aggre(count, shop, Custormer)) > 1
+	)
+)
+
+=== 014
+
+filter(
+	T,
+	f r => exists (x, x <> r /\ x.Name = r.Name /\ x.email = r.email)
+)
+
+=== 026
+
+proj (
+	Product_ID,
+	filter (
+		T,
+		f r => neg exists (x, x.Product_ID = r.Product_ID /\ x.Client_ID = 2)
+	)
+)
+
+=== 030
+
+filter (
+	T,
+	f r => exists (
+		x,
+		x.Plan = r.Plan /\ x.Attributes = Name /\ x.value = True
+	)
+)
+
+=== 051
+
+filter (
+	filter (
+		T,
+		f r => r.Value < 8
+	),
+	f r => r.Value = phi(r.User, aggre(max, Value, User))
+)
+
+=== 8
+
+filter (
+	filter (
+		filter (
+			T,
+			f r => r.from_user <> me
+		),
+		f r => r.timestamp = phi(r.conversation_id, aggre(max, timestamp, conversation_id))
+	),
+	f r => r.message_id = phi(conversation_id, aggre(max, message_id, conversation_id))
+)
+
+=== 18
+
+filter (
+	filter (
+		T,
+		f r => exists (x, x.country = r.country /\ x.status = UNTREATED)
+	),
+	f r => r.status = TREATED
+)
+
+=== 43
+
+filter (
+	filter (
+		T,
+		f r => r.rejected <> false
+	),
+	f r => r.orderIndex = phi(r.productID, aggre(min, orderIndex, productID))
+)
+
+===

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <title>Data Inspector</title>
+    <!-- <link rel="stylesheet" type="text/css" href="tablestyle.css"/> -->
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.9/css/dataTables.jqueryui.min.css"/> 
+    <!-- Include required JS files -->
+    <script type="text/javascript" src="../scripts/shCore.js"></script>
+    <script type="text/javascript" src="../scripts/shBrushSql.js"></script>
+    <script type="text/javascript" src="../scripts/jquery-2.1.4.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../scripts/d3.js"></script>
+    <script src="../data/data209.js"></script>
+    <!-- Include *at least* the core style and default theme -->
+    <link href="../styles/shCore.css" rel="stylesheet" type="text/css" />
+    <link href="../styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
+    <link href="../styles/bootstrap.css" rel="stylesheet" />
+    
+  </head>
+  <body>  
+    <div class="container">
+      <div class="row">
+        <div class="span3"></div>
+        <div class="span6" id="tablediv"></div>
+        <div class="span3"></div>
+      </div>
+    </div>
+
+      
+  </body>
+  <script type="text/javascript">
+
+    var fistColumnWidth = "50pt";
+
+    // data is define the the other file
+    var table = d3.select("#tablediv")
+    .append("div")
+    .attr("width", "80%")
+    .attr("class","table-responsive")
+    .append("table")
+    .attr("class", "table .table-condensed");
+
+    var tableheader = table.append("thead").append("tr");
+    tableheader
+      .append("th")
+      .attr("width", fistColumnWidth)
+      .style("text-align","center")
+      .text("id");
+    tableheader
+      .append("th")
+      .text("owner");
+    tableheader
+      .append("th")
+      .text("time");
+    tableheader
+      .append("th")
+      .text("query");
+
+    var tbody = table.append("tbody");
+    tbody.selectAll(".lines")
+      .data(data)
+      .enter()
+      .append("tr")
+      .attr("class", "lines")
+      .append("td")
+      .attr("width", fistColumnWidth)
+      .style("text-align","center")
+      .html(function(d) {
+        return d.id;
+      });
+
+    tbody.selectAll(".lines")
+      .append("td")
+      .html(function(d) {
+        return d.owner.substring(0, 8);
+      })
+
+
+    tbody.selectAll(".lines")
+      .append("td")
+      .html(function(d) {
+        return d.date;
+      })
+
+    tbody.selectAll(".lines")
+      .append("td")
+      .append("script")
+      .attr("class", "brush: sql")
+      .attr("type", "syntaxhighlighter")
+      .attr("id", function(d) {
+        return "queryno" + d.id;
+      })
+      .html(function(d){
+        function onSuccess(data) { 
+          var result = data['result'];
+          var count = 0;
+          for (var i = 0; i < result.length; i ++) {
+            if (result[i] == '\n') {
+              count = 0;
+            }
+            count ++;
+            if (count > 40) {
+              console.log(count);
+              result[i] = result[i]+ "\n";
+              count = 0;
+            }
+          }
+          "<![CDATA[\n" + $('#queryno'+d.id).text(result) + "]]>\n"; 
+        }
+        $.ajax({
+            url: 'http://sqlformat.org/api/v1/format',
+            dataType: 'jsonp',
+            crossDomain: true,
+            data: {sql: d.query, reindent: 1, strip_comments: 1, identifier_case: 'lower'},
+            success: onSuccess,
+        });
+      });
+
+      SyntaxHighlighter.defaults['gutter'] = false;
+      SyntaxHighlighter.all();
+  </script>
+</html>
