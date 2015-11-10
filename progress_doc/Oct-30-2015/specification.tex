@@ -1,0 +1,132 @@
+\documentclass[letter, notitlepage]{article}
+\usepackage{bussproofs}
+\usepackage{amssymb}
+\usepackage{latexsym}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage[top=1in, bottom=1in, left=0.85in, right=0.85in]{geometry}
+\usepackage{xcolor}
+\usepackage{bera}
+\usepackage{amsthm}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+
+%for bussproofs abbreviation
+\EnableBpAbbreviations
+
+\begin{document}
+
+\section{Investigation: How expressive should the constraint-lang be?}
+\paragraph{Discussion question:} \textbf{Which ones are supposed to be supported by our language?} 
+
+
+\paragraph{Data Source} These functions are summarized based on 1) previously collected Stack Overflow questions, 2) top-rated SQL questions in Stack Overflow, 3) TPC-H, 4) StackExchange examples and 5) some of SQLShare examples.
+
+\paragraph{Related SQL functions}
+\begin{itemize}\itemsep-1pt
+\item Sub-query support: sub-queries in JOIN clause, EXISTS/IN clause, Where clause (comparing with values when sub-query result is a single value table). Sometimes nested level can be high: 3-4 levels.
+\item Group by and aggregation support: Max, Min, Sum, Average, Count.
+\item Pivot table.
+\item Case analysis in SQL.
+\item Top, Limit, Order by, Distinct.
+\item Set operations.
+\item Syntax concatenation. (XML PATH)
+\item Interpret a single value table as a value.
+\item Exist, In, All
+\end{itemize}
+
+\paragraph{None-trivial task examples}
+\begin{itemize}
+\item Argmax.
+\item Flat table operations: self-join several times. \\
+			(http://stackoverflow.com/questions/192220/what-is-the-most-efficient-elegant-way-to-parse-a-flat-table-into-a-tree)
+\item Filtering on multiple fields.
+\item Finding duplicates.\\
+			(http://stackoverflow.com/questions/2594829/finding-duplicate-values-in-a-sql-table)
+\item Calculate moving average.
+\item Find medium value / n-th value in a table. \\
+			(http://stackoverflow.com/questions/1342898/function-to-calculate-median-in-sql-server)
+\item Arithmetic operation on result.
+\item Moving average: group by based on window.\\
+			(http://stackoverflow.com/questions/1176011/sql-to-determine-minimum-sequential-days-of-access)
+\item Date reformatting.
+\item Order rows.\\
+\item PIVOT, string concatenation.\\
+			(http://stackoverflow.com/questions/194852/concatenate-many-rows-into-a-single-text-string)
+\end{itemize}
+
+\paragraph{Other notes} The constraint language should support procedural description, e.g. first filter then aggregate.
+
+\section{Constraint language design}
+
+\paragraph{Discussion question} \textbf{How to limit the expressiveness of the language?}
+
+\paragraph{Basics} Constraint language is designed as an interface between higher level description and lower level SQL queries. We should be able to provide a bidirectional (rule-based) transformation between the constraint language and the SQL queries.
+
+Language design goal:
+
+\begin{itemize}\itemsep-1pt
+\item Task descriptions can be mapped to the language directly.
+\item Modularity: complex description can be generated from several simple description.
+\item Easy to synthesis: can be generated from input easily.
+\end{itemize}
+
+\paragraph{TRC/DRC and language design} TRC is a none-procedural language describing SQL queries. Here is a good reference for the language. 
+\href{http://www.cs.sfu.ca/CourseCentral/354/zaiane/material/notes/Chapter3/node11.html}{(Link)}
+
+We propose an extension of the language to support the features mentioned above. (Current design only contains an extension of aggregation and subquery) The language now is over-powered: is too expressive and same task can be represented by many different constraints, and I'm working on limiting its expressiveness now.
+
+\[
+\begin{array}{rcl}
+Q & := & \left\{r:(c_1,...,c_n) ~|~ P(r:(c_1,...,c_n)) \right\}\\
+P &:= & c~\mathit{relop}~c \\
+	& | & c~\mathit{relop}~v\\
+	& | & c~\mathit{relop}~T\\
+	& | & R((c_1,...,c_n))\\
+	& | & \exists r\in T. P(r)\\
+	& | & \forall r\in T. P(r)\\
+	& | & P \land P\\
+	& | & P \lor P\\
+	& | & \neg P\\
+\mathit{relop} &:=& < ~|~ > ~|~ \ge ~|~ \le ~|~ \neq ~|~ == ~|~ \in \\
+v &:= & \mathsf{const} \\
+	& | & \mathsf{table\_to\_value}(T)\\
+	& | & \mathsf{aggr}(f, (c_1,...,c_m), c, T)\\
+	& | & f(l)\\
+l & | & [v_1,...,v_n]\\
+	& | &  \left[c_i ~|~ r(c_1,...,c_i,...,c_n)\in T \right]\\
+T &:= &\mathsf{named}(T)\\
+	& | & \left\{r\in T ~|~ P(r)\right\}\\
+	& | & T \bowtie T\\
+	& | & T~\mathsf{setop}~T
+\end{array}
+\]
+
+\subsection{Examples}
+\paragraph{example-1} \href{http://stackoverflow.com/questions/33063073/postgresql-max-value-for-every-user}{PostgreSQL - MAX value for every user}
+\[
+	Q = \left\{ r:(c_1, c_2, c_3) ~|~ r\in \mathtt{input} \land c_3=\mathsf{aggr}(\mathsf{max}, (\mathtt{User}), \mathtt{Value}, \left\{r'\in \mathtt{input} ~|~ r'.\mathtt{Value} \le 8\right\} ) \right\}
+\]
+
+\paragraph{example-2} \href{http://stackoverflow.com/questions/11898003/sql-exists-comparison}{SQL exists comparison}
+\[
+	Q = \left\{ r:(c_1, c_2, c_3) ~|~ r\in \mathtt{input} \land c_3==`\mathtt{TREATED}' \land \exists r'\in \mathtt{input}.(r'.\mathtt{\mathtt{country}} == c2 \land r'.\mathtt{status} == `\mathtt{UNTREATED}') \right\}
+\]
+
+\paragraph{example-3} \href{http://stackoverflow.com/questions/31941909/only-joining-rows-where-the-date-is-less-than-the-max-date-in-another-field}{Only joining rows where the date is less than the max date in another field}
+\[
+	Q = \left\{r:(c_1,c_2,c_3) ~|~ (c_1, c_3)\in \mathtt{table_1} \land (c_1, c_2)\in \mathtt{table_2} \land c_2 \le \mathsf{aggr}(\mathsf{max}, (\mathtt{Emp\_ID}), \mathtt{Promo\_Date}, \mathtt{table_2}) \right\}
+\]
+
+\section{Some observations from the SQLShare Log}
+I have some results on SQLShare log observation. Should show them in slides tomorrow.
+
+\end{document}

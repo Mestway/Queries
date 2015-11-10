@@ -1804,7 +1804,7 @@
     | 7890      | 234.xml |
 
 # 59
-### [Not Sure If this is a grouping question](http://www.tek-tips.com/viewthread.cfm?qid=1753841)
+### [Not Sure If this is a grouping question]( )
 
 #### input
 

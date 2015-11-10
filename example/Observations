@@ -219,3 +219,4 @@ http://stackoverflow.com/questions/1342898/function-to-calculate-median-in-sql-s
 sqllog stuff:
   data26.js
   data30.js: tf_idf, writing procedurally
+  data40.js: compose different query into one

@@ -1,0 +1,166 @@
+\documentclass[letter, notitlepage]{article}
+\usepackage{bussproofs}
+\usepackage{amssymb}
+\usepackage{latexsym}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage[top=1in, bottom=1in, left=0.85in, right=0.85in]{geometry}
+\usepackage{xcolor}
+\usepackage{bera}
+\usepackage{amsthm}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+
+\newcommand{\code}[1]{\texttt{\footnotesize #1}}
+\newcommand{\cmt}[1]{\textit{\footnotesize #1}}
+
+%for bussproofs abbreviation
+\EnableBpAbbreviations
+
+\begin{document}
+
+\section{Syntax}
+
+In this language, constraints should be built only using provided components, you can only:
+\begin{itemize}
+\item Use a relation operator ($\mathsf{relop}$) from $\mathit{OP}$.
+\item Compare a tuple field with another field in the tuple.
+\item Compare a tuple field with a constant provided in the value set $V$.
+\item Compare a tuple with value calculated from aggregation, and the aggregation should be performed on a table in the table set $\bar{T}$.
+\item Join or union tables only using tables from $\bar{T}$.
+\item Compare a tuple with a table $T$, where tables are restricted to basic tables $T$ and joined/unioned tables from multiple basic tables.  
+\end{itemize} 
+
+The constraint language given synthesis components $(\bar{T}, O, V, \mathit{OP}, F)$.
+\[
+\begin{array}{rcl}
+Q & := & \left\{r:(c_1,...,c_n) ~|~ P(r) \right\}\\
+P & := & cmp\\
+src & := & T(\overline{r.c})\\
+		& | & r.c \leftarrow aggrv(AGR)(r)\\
+vrel & := & c~\mathsf{relop}~c\\
+		& |  & c~\mathsf{relop}~v\\
+		& |  & c~\mathsf{relop}~aggrv(T, f, (\overline{T.c}), T.c)(r)\\
+trel & := & (\overline{r.c})\in T\\
+		 & |  & \exists~r'\in T.(r~\mathsf{relop}~r')\\
+		 & |  & \forall~r'\in T.(r~\mathsf{relop}~r')\\
+T 	& := & T~(T\in \bar{T})\\
+		& |  & T \bowtie T\\
+		& |  & T~\mathsf{setop}~T\\
+\mathsf{relop} & := & r~ (r\in \mathit{OP})\\ 
+v 	& := & v~(v\in V)
+\end{array}
+\]
+
+\section{Meta-Constraint Language}
+As we only allow query constraints write with provided components during the synthesis phase, users need to provide extra components through interaction to enable synthesis of complex queries.
+
+A meta constraint $M$ is a tuple $(\bar{T},O, V, \mathit{OP}, F)$, containing input table set $\bar{T}$, output set $O$, value set $V$, operator set $\mathit{OP}$ and aggregation function set $F$.
+
+\[
+\begin{array}{rcll}
+	M & := & (\bar{I}, O, V_0, \mathit{OP}_0, F) & \text{(Basic synthesis framework)}\\
+		& |  & \code{extend}~M.V_0~\code{with}~\overline{v} & \text{(Extend value set)}\\
+		& |  & \code{extend}~M.\mathit{OP}_0~\code{with}~\overline{op} & \text{(Extend operator set)}\\
+		& |  & \code{extend}~M.F~\code{with}~\overline{f} & \text{(Extend aggregation functions)}\\
+		& |  & \code{extend}~M.\bar{T}~\code{with}~Syn[M'](M'.\bar{T})\{O\subset Syn[M'](M'.\bar{T})\} & \text{(Sub-procedure extension)}
+\end{array}
+\]
+
+\subsection{User interactions}
+When a user provides extra synthesis ingredients (besides default input output pairs), the synthesizer should be able to 1) enhance the expressiveness of the synthesized query, and 2) change the ranking of candidate programs.
+
+Users can extend meta-constraints through the following interactions:
+\begin{itemize}
+\item Providing a value/operator/aggrfunction as a keyword in the description. (Extend value/operator/function set)
+\item Describing a sub-procedure: there exists an intermediate result $O_m$ such that $O$ is contained by $O_m$ and $O_m$ is synthesized using original synthesis components; and we can synthesize $O$ by synthesizing a filter for $O_m$ using given synthesize component.
+
+\textbf{Example}: ``1. SELECT * WHERE from\_user <> id
+2. GROUP BY conversation\_id
+3. SELECT in every group row with MAX(timestamp) **(if there are two same timestamps in a group use second factor as highest message\_id)** !!!
+4. then results SORT BY timestamp''
+
+\item Describing a computation of on a special case, most (all?) of this case are describing a computation related to aggregation. In this case, we will generalize the computation in to group by flavor queries.
+
+\textbf{Example}: ``in a single query, given a particular ID, I want to compute the proportion of entries that has action Foo. For example, given A, there are 2 Foos out of 3 actions. So it'd be 66\%.''
+
+\end{itemize}
+
+\section{Examples}
+\subsection{Example \#1}
+\paragraph{description}
+	How do I select one row per id and only the greatest rev?
+
+\paragraph{input}
+\begin{verbatim}
+| id   |  rev   |  content  |
+|---------------------------|
+| 1    |  1     |  A        |
+| 2    |  1     |  B        |
+| 1    |  2     |  C        |
+| 1    |  3     |  D        |
+\end{verbatim}
+\paragraph{output}
+\begin{verbatim}
+| col1 | col2 | col3 |
+|--------------------|
+|  1   |  3   |  D   |
+|  2   |  1   |  B   |
+\end{verbatim}
+
+\paragraph{Synthesis Process} 
+
+\begin{itemize}
+\item Build meta-constraint: $M=\mathsf{extend}~(input, output, V_0, \mathit{OP}_0, F_0).F_0~\mathsf{with}~\mathit{max}$. \\
+i.e. $M=(input, output, V_0, \mathit{OP}_0, F_0\cup\{\mathit{max}\})$.
+\item Extend the input table with max aggregation value, yield a new table $T'$.
+\begin{verbatim}
+| id   |  rev   |  content  | max(id, (rev)) | max(rev, (id)) |
+|---------------------------|----------------|----------------|
+| 1    |  1     |  A        |     2          |       3        |
+| 2    |  1     |  B        |     2          |       1        |
+| 1    |  2     |  C        |     1          |       3        |
+| 1    |  3     |  D        |     1          |       3        |
+\end{verbatim}
+\item Solve the constraints built by basic relations forms: $c~\mathsf{relop}~c$, $c~\mathsf{relop}~v$, $c~\mathsf{relop}~\bar{T}$ 
+\end{itemize}
+
+
+
+
+\newpage
+\section{Legacy..}
+
+\[
+\begin{array}{rcl}
+Q & := & \left\{r:(c_1,...,c_n) ~|~ P(r:(c_1,...,c_n)) \right\}\\
+P &:= & c~\mathit{relop}~c \\
+	& | & c~\mathit{relop}~v\\
+	& | & c~\mathit{relop}~T\\
+	& | & R((c_1,...,c_n))\\
+	& | & \exists r\in T. P(r)\\
+	& | & \forall r\in T. P(r)\\
+	& | & P \land P\\
+	& | & P \lor P\\
+	& | & \neg P\\
+\mathit{relop} &:=& \ge ~|~ < ~|~ > ~|~ \leftarrow ~|~ \le ~|~ \neq ~|~ == ~|~ \in \\
+v &:= & \mathsf{const} \\
+	& | & \mathsf{table\_to\_value}(T)\\
+	& | & \mathsf{aggr}(f, (c_1,...,c_m), c, T)\\
+	& | & f(T)\\
+T &:= &\mathsf{named}(T)\\
+	& | & \left\{r\in T ~|~ P(r)\right\}\\
+	& | & T \bowtie T\\
+	& | & T~\mathsf{setop}~T
+\end{array}
+\]
+
+\end{document}
