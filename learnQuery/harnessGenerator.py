@@ -13,17 +13,16 @@ def processRequest (tableData, numCols):
     queryResults = executeQuery(query)
     return json.dumps({"query": query, "columnNames": columnNames, "results": queryResults})
   else:
-    return json.dumps({"query": "Cannot find query", "columnNames": [], "results": []})
-  
+    return json.dumps({"query": "Cannot find query", "columnNames": [], "results": []}) 
 
 
 
 def callSketch (filename):
   print "calling sketch on", filename
-  
+
   SketchBin = "/Users/clwang/Research/DBQueries/sketch-1.6.7/sketch-frontend/sketch"#PATH TO sketch-frontend/sketch# 
   SketchOutfile = "sketch.out"
-  
+
   sketchOut = open(SketchOutfile, "w")
   r = subprocess.call([SketchBin, "--bnd-inbits=6", filename], stdout=sketchOut, stderr=sketchOut)
   sketchOut.close()

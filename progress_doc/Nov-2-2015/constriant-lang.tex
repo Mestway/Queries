@@ -1,4 +1,5 @@
 \documentclass[letter, notitlepage]{article}
+\documentclass[letter, notitlepage]{article}
 \usepackage{bussproofs}
 \usepackage{amssymb}
 \usepackage{latexsym}
@@ -46,6 +47,7 @@ Q & := & \left\{r:(c_1,...,c_n) ~|~ P(r) \right\}\\
 P & := & cmp\\
 src & := & T(\overline{r.c})\\
 		& | & r.c \leftarrow aggrv(AGR)(r)\\
+		& | & \code{CASE}~vrel~\code{THEN}~src~\code{ELSE}~src\\
 vrel & := & c~\mathsf{relop}~c\\
 		& |  & c~\mathsf{relop}~v\\
 		& |  & c~\mathsf{relop}~aggrv(T, f, (\overline{T.c}), T.c)(r)\\
@@ -57,6 +59,12 @@ T 	& := & T~(T\in \bar{T})\\
 		& |  & T~\mathsf{setop}~T\\
 \mathsf{relop} & := & r~ (r\in \mathit{OP})\\ 
 v 	& := & v~(v\in V)
+\end{array}
+\]
+
+\[
+\begin{array}{l}
+	V_0 = \left\{c~|~c\in \bar{T} \right\}
 \end{array}
 \]
 

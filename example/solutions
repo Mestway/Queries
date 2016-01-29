@@ -1,0 +1,889 @@
+=== 001 argmax
+
+SELECT
+	t.id, t.rev, t.content
+FROM
+	input AS t JOIN (
+		SELECT 
+			id, MAX(aggr.rev) AS maxrev
+		FROM
+			input
+		GROUP BY
+			id
+	) AS t2 
+WHERE 
+	t.id = t2.id AND t.rev = t2.maxrev
+
+=== 002 argmax + constant filter
+
+SELECT
+	t.locID, t.dtg, t.temp
+FROM
+	input AS t JOIN (
+		SELECT
+			locId, MAX(dtg) AS maxdtg
+		FROM
+			input
+		GROUP BY
+			locId
+	) AS t2 ON t.locID = t2.locID
+WHERE
+	t2.temp >= Date(2009-02-25 10:10) - Time(00:20:00)
+	AND t.dtg = t2.maxdtg
+
+
+SELECT
+	t.locID, t.dtg, t.temp
+FROM
+	input AS t JOIN (
+		SELECT
+			locId, MAX(dtg) AS maxdtg
+		FROM
+			input
+		WHERE
+			temp >= Date(2009-02-25 10:10) - Time(00:20:00)
+		GROUP BY
+			locId
+	) AS t2 WHERE 
+WHERE t.locID = t2.locID AND t.dtg = t2.maxdtg
+
+=== 003 argmax + order / limit
+
+SELECT
+	t.Name, t.City, t.Birthyear
+FROM
+	input as t JOIN (
+		SELECT
+			City, MIN(Birthyear) AS minBirthyear
+		FROM
+			input
+		GROUP BY
+			city
+	) AS t2 
+WHERE 
+	t.City = t2.City AND t.Birthyear = t2.minBirthyear
+ORDER BY
+	t.Birthyear DESC
+LIMIT
+	3
+
+=== 004 argmax
+
+SELECT
+	t.id, t.customer, t.total
+FROM
+	input AS t JOIN (
+		SELECT 
+			MIN(id) AS minId, customer
+		FROM
+			input
+		GROUP BY
+			customer 
+	) AS t2 
+WHERE 
+	t.customer = t2.customer AND t.id = t2.minId
+
+=== 005 argmax
+
+SELECT
+	t.Id, t.Name, t.Other_Columns
+FROM
+	input AS t JOIN (
+		SELECT
+			MAX(Id) AS maxId, Name
+		FROM
+			input
+		GROUP BY
+			Name
+	) AS t2 
+WHERE t.Name = t2.Name AND t.Id = t2.maxId
+
+
+=== 006 compare / pivoting?
+
+SELECT
+	t.Category,
+	t.Month,
+	SUM(CASE WHEN t.year = 2008 THEN t.Revenue ELSE 0 END),
+	SUM(CASE WHEN t.year = 2007 THEN t.Revenue ELSE 0 END)
+FROM
+	input AS t
+WHERE
+	t.year = 2007 OR t.year = 2008
+GROUP BY
+	t.Category, t.month
+
+=== 007 range check
+
+SELECT
+	t.yrq
+FROM
+	input AS t
+WHERE
+	t.start_date <= Date(2013-02-01)
+	AND t.end_date >= Date(2013-02-15)
+
+=== 008 argmax-argmin
+
+SELECT *
+FROM
+ 	input JOIN (
+		SELECT 
+			t1.conversation_id, 
+			MAX(t1.timestamp) as maxTimestamp, 
+			t1.maxMessage_id
+		FROM (
+			SELECT 
+				conversation_id, 
+				timestamp, 
+				MAX(message_id) AS maxMessage_id
+			FROM
+				input
+			WHERE
+				message <> 'me'
+			GROUP BY
+				conversation_id, timestamp
+		) AS t1
+		GROUP BY
+			t1.conversation_id
+	) AS t2 ON input.message_id = t2.maxMessage_id
+ORDER BY
+	input.message_id
+
+=== 009 hard window function
+
+SELECT 
+	MIN(t5.id), t6.way, t6.start, t6.end
+FROM
+	table1 AS t5,
+	(	SELECT t4.way, MIN(t4.time) AS start, t4.end
+		FROM
+	    (SELECT t1.way, t1.time, MAX(t2.time) AS end
+				FROM table1 AS t1, table1 AS t2
+				WHERE 
+					t1.way = t2.way
+					AND t2.time >= t1.time
+					AND NOT EXISTS (
+						SELECT *
+						FROM table1 AS t3
+						WHERE 
+							t3.time > t1.time 
+							AND t3.time < t2.time
+							AND t3.way <> t2.way  
+				)
+			GROUP BY t1.way, t1.time) t4
+	GROUP BY
+	  t4.way, t4.end) AS t6
+WHERE t5.way = t6.way AND t5.time = t6.start
+GROUP BY t6.way, t6.start, t6.end
+ORDER BY MIN(t5.id) ASC
+
+=== 010 group-by segment of time
+
+SELECT
+	MIN(time_stamp),
+	SUM(count) AS sumCount
+FROM
+	input
+GROUP BY
+	GROUP BY UNIX_TIMESTAMP(time_stamp) DIV 30
+	
+=== 011 argmax
+
+SELECT
+	input.id, input.home, input.datetime, input.layer, input.resource
+FROM 
+	input JOIN (
+		SELECT home, MAX(datetime) AS maxDatetime
+		FROM input
+		GROUP BY home
+	) AS t1
+WHERE
+	input.home = t1.home AND input.datetime = t1.maxDatetime
+
+=== 012
+
+(Cannot be achieved without using system functions)
+
+=== 013 find max
+
+SELECT 
+	input.a, input.b
+FROM
+	input JOIN (
+		SELECT MAX(b) as maxB
+		FROM input
+	) AS t2
+WHERE input.b = t2.maxB
+
+=== 014 count
+
+SELECT
+	input.NAME
+FROM
+	input
+GROUP BY
+	input.NAME, input.EMAIL
+HAVING
+	COUNT(*) > 1
+
+=== 015 moving average
+
+SELECT
+	t1.date, t1.clicks, AVG(t2.clicks)
+FROM
+	input AS t1, input AS t2
+WHERE
+	t2.date >= t1.date - 2 AND t2.date <= t1.date
+GROUP BY
+	t1.date
+ORDER BY 1
+
+=== 016 count portion
+
+SELECT SUM(CASE 
+               WHEN "Action" = 'Foo' THEN 1 
+               ELSE 0 
+            END)*100 / count(*)
+FROM input
+GROUPY BY ID
+
+SELECT t1.ID, t2.countAction / t1.countAction
+FROM ( 
+		SELECT ID, COUNT(Action) AS countAction
+		FROM input
+		GROUP BY ID
+	) AS t1 JOIN (
+		SELECT ID, COUNT(Action) AS countAction
+		FROM input
+		WHERE Action = Foo
+		GROUP BY ID
+	) AS t2
+WHERE
+	t1.ID = t2.ID
+
+=== 017 rolling avg
+
+SELECT 
+	t1.productid, 
+	t1.date, 
+	MAX(t1.sumUsagecount), 
+	SUM(t2.usagecount) / COUNT(DISTINCT t2.date)
+FROM 
+  (SELECT productid, date, SUM(usagecount) AS sumUsagecount
+		FROM tbl
+		GROUP BY productid, date) AS t1, tbl AS t2
+WHERE
+	t1.productid = t2.productid
+	AND t2.date >= t1.date - 7
+	AND t2.date <= t1.date
+GROUP BY
+	t1.productid, t1.date
+
+=== 018 exists
+
+SELECT 
+	input.id, input.country, input.status
+FROM
+	input AS t1
+WHERE
+	EXISTS (
+		SELECT *
+		FROM input AS t2
+		WHERE t2.country = t1.country AND t2.status = UNTREATED
+	) AND t1.status = TREATED
+
+=== 019 argmax
+
+SELECT
+	t1.username, t1.date, t1.value
+FROM
+	input AS t1,
+	(SELECT username, MAX(date) AS maxDate
+		FROM input
+		GROUP BY username
+	) AS t2
+WHERE
+	t1.username = t2.username
+	AND t1.date = t2.maxDate
+
+=== 020 join and aggr
+
+SELECT
+	t1.VehicleID, t1.Name, CONCAT(t2.Locations)
+FROM
+	t1, t2
+WHERE
+	t1.VehicleID = t2.VehicleID
+GROUP BY
+	t1.VehicleID, t1.Name
+
+=== 21 count
+
+SELECT
+	COUNT (*)
+FROM 
+	input
+GROUP
+	t.Id, t.Name, t.Address
+
+=== 22 count
+
+SELECT
+	t.date, t.devicedid, COUNT(*)
+FROM
+	input AS t
+GROUP BY
+	t.date, t.time, t.deviceid
+
+=== 23 count
+
+SELECT
+	COUNT(*), t.Content_type
+FROM
+	input AS t
+WHERE
+	t.Status = Error
+GROUP BY
+	t.Content_type
+
+=== 24 column operation
+
+SELECT
+	t2.Name
+FROM 
+	table1 AS t2, JOIN (
+		SELECT 
+			MAX(t1.GoalsScored + t1.GoalsSaved) AS maxGoals
+		FROM 
+			table1 AS t1
+		WHERE NOT EXISTS (
+			SELECT *
+			FROM taken_players
+			WHERE
+				t1.Name = taken_players.takenplayername
+		) 
+	) AS t3
+WHERE t2.GoalsScored + t2.GoalsSaved = t3.maxGoals
+	AND NOT EXISTS (
+		SELECT *
+		FROM taken_players
+		WHERE
+			t1.Name = taken_players.takenplayername
+	) 
+
+=== 25 join max
+
+SELECT
+	t1.Emp_ID, t2.Sale_Date, t1.Promo_Date
+FROM
+	table2 AS t2, (
+		SELECT Emp_ID, MAX(Promo_Date) AS maxPromoDate
+		FROM table1
+		GROUP BY Emp_ID
+	) AS t1
+WHERE
+	t1.Emp_ID = t2.Emp_ID
+	AND t2.Sale_Date < t1.maxPromoDate
+
+=== 26 eclusive
+
+SELECT
+	t.Product_ID
+FROM
+	table AS t
+WHERE NOT EXISTS (
+	SELECT *
+	FROM table
+	WHERE Client_ID = 2
+) 
+	
+=== 27 join
+
+SELECT
+	t2.school_id, COUNT(*), SUM(t2.wage)
+FROM
+	table2 as t2
+GROUP BY
+	t2.school_id
+
+=== 29 join
+
+SELECT
+	t1.id, t1.Name
+FROM
+	table AS t1, (
+		SELECT Parent
+		FROM table 
+	) AS t2
+WHERE 
+	t1.ID = t2.parent
+
+SELECT
+	t1.id, t1.Name
+FROM
+	table AS t1
+WHERE
+	EXISTS (
+		SELECT *
+		FROM table AS t2
+		WHERE t2.Parent = t1.ID
+	)
+
+=== 30 exists
+
+SELECT t.Id, t.Plan, t.Attributes, t.Value
+FROM input AS t
+WHERE EXISTS (
+	SELECT *
+	FROM input AS t2
+	WHERE 
+		t1.id = t2.id
+		AND t2.Attributes = IsActive
+		AND t2.Value = True
+)
+
+=== 31 group by after group by
+
+SELECT 
+	t2.city, t2.car_colour
+FROM (
+	SELECT city, car_colour, SUM(qty) AS sumQty
+	FROM table
+	GROUP BY city, car_colour
+) AS t1, (
+	SELECT t2.city, MAX(t2.sumQty) AS maxSum
+	FROM (
+		SELECT city, car_colour, SUM(qty) AS sumQty
+		FROM table
+		GROUP BY city, car_colour
+	) AS t2
+	GROUP BY t2.city
+) AS t3
+WHERE 
+	t1.city = t4.city 
+	AND t2.sumQty = t4.maxSum
+
+=== 32 exists, having
+
+SELECT t1.Team
+FROM table AS t1
+WHERE EXISTS (
+	SELECT *
+	FROM table AS t2
+	GROUP BY
+		t2.Team, t2.Player
+	HAVING 
+		t1.Team = t2.Team 
+		AND COUNT(*) > 1
+)
+
+=== 33 exists
+
+SELECT
+	t1.ARIDNR, t1.LIEFNR
+FROM
+	table AS t1
+WHERE EXISTS (
+	SELECT *
+	FROM table AS t2
+	WHERE
+		t2.ARIDNR = t1.ARIDNR
+		AND t2.LIFTNR <> t1.LIFTNR
+)
+
+=== 34 exists / count
+
+SELECT t1.Customer
+FROM table AS t1
+WHERE EXISTS (
+	SELECT *
+	FROM table AS t2
+	WHERE 
+		t1.Customer = t2.Customer
+		AND t1.shop <> t2.shop
+)
+
+=== 35 join
+
+SELECT t1.ID, t2.ID, t2.Fruit
+FROM table AS t1, table AS t2
+WHERE 
+	t1.Fruit = t2.Fruit 
+	AND t1.ID < t2.ID
+
+=== 36 aggr
+
+SELECT 
+	t1.ErrorName, SUM(t1.Value)
+FROM
+	t1
+GROUP BY t1.ErrorName
+
+=== 37 exists
+
+SELECT
+	t1.user_id, t1.names
+FROM
+	table AS t1
+WHERE
+	EXISTS (
+		SELECT *
+		FROM table AS t2
+		GROUP BY t2.user_id, t2.names
+		HAVING COUNT(*) > 3 AND t1.user_id = t2.user_id
+	)
+
+=== 38 aggr
+
+SELECT 
+	Alerts, MAX(Alert_Date) AS maxAlertDate
+FROM table
+GROUP BY Alerts
+
+=== 39 argmax
+
+SELECT
+	t1.Oject, DateSerial(Year(t1.Date), Month(t1.Date), 1), SUM(Observation)
+FROM
+	input AS t1
+GROUP BY
+	t1.Object, DateSerial(Year(t1.Date), Month(t1.Date), 1)
+
+=== 40 agrmax
+
+SELECT 
+	t1.acct_id, t1.Bill_id, t1.Bill_dt, t1.alt_bill_id
+FROM
+	input AS t1, (
+		SELECT
+			acct_id, MAX(alt_bill_id) AS max_alt_bill_id
+		FROM
+			input
+		GROUP BY
+			acct_id
+	) AS t2
+WHERE 
+	input.acct_id = t2.acct_id 
+	AND input.alt_bill_id = t2.max_alt_bill_id
+
+=== 41 argmax
+
+SELECT
+	t1.Train, t1.Dest, t1.Time
+FROM
+	input AS t1, (
+		SELECT
+			Dest, MAX(t1.Time) AS maxTime
+		FROM
+			input
+		GROUP BY 
+			Dest
+	) AS t2
+WHERE
+	t1.Dest = t2.Dest AND t1.Time = t2.maxTime
+
+=== 42
+
+SELECT
+	p.id, p.text, c.id, c.parent, c.feature
+FROM 
+	Parent AS p LEFT JOIN (	
+		SELECT
+			t1.id, t1.parent, t1.feature
+		FROM
+			Childs AS t1, (
+				SELECT
+					parent, MAX(feature) AS maxFeature
+				FROM
+					Childs
+				GROUP BY parent
+			) AS t2
+		WHERE 
+			t1.parnet = t2.parent 
+			AND t1.feature = t2.maxFeature) AS c
+WHERE 
+	c.parnet = p.id
+
+=== 43 filter argmax
+
+SELECT 
+	t1.id, t1.productId, t1.orderIndex, t1.rejected
+FROM 
+	input AS t1, (
+		SELECT
+			productId, MIN(orderIndex) AS minOrderIndex
+		FROM
+			input
+		WHERE
+			rejected = 1
+		GROUP BY 
+			productId
+	) AS t2
+WHERE
+	t1.productId = t2.productId 
+	AND t1.orderIndex = t2.minOrderIndex
+
+=== 44 argmax
+
+SELECT
+	t1.deal_id, t1.status_id, t1.timestamp
+FROM 
+	input AS t1, (
+		SELECT deal_id, MAX(timestamp) AS maxTimestamp
+		FROM input
+		GROUP BY deal_id
+	) AS t2
+WHERE
+	t1.deal_id = t2.deal_id AND t1.timestamp = t2.maxTimestamp
+
+=== 45 max-n
+
+SELECT
+	t1.name, t1.score, COUNT(t2.score) countScore
+FROM
+	test AS t1, test AS t2
+WHERE
+	t1.name = t2.name
+	AND t1.score <= t2.score
+GROUP BY
+    t1.name, t1.score
+HAVING countScore <= 2
+
+=== 46 join
+
+SELECT
+	t1.id, t1.desc, t2.maxLast_date
+FROM
+	table1 AS t1, (
+	SELECT
+		link, MAX(last_date) AS maxLast_date
+	FROM
+		table2
+	GROUP BY
+		link ) AS t2
+WHERE
+	t1.id = t2.link
+
+=== 47 argmax
+
+SELECT
+	t1.id_waiter, t1.amount, t1.id
+FROM
+	input AS t1, (
+		SELECT id_waiter, MAX(amount) AS maxAmount
+		FROM input
+		GROUP BY id_waiter
+	) AS t2
+WHERE
+	t1.id_waiter = t2.id_waiter AND t1.amount = t2.maxAmount
+
+=== 48 JOIN / argmax
+
+SELECT
+	t3.survey_id, t3.store_code, t3.timestamp, t4.product_code, t4.production_month, t4.value
+FROM
+	table1 AS t3, table2 AS t4, (
+		SELECT
+			t1.store_code, t2.product_code, t2.production_month, MAX(t1.timestamp) AS maxTimestamp
+		FROM
+			table1 AS t1, table2 AS t2
+		WHERE
+			t1.survey_id = t2.survey_id
+		GROUP BY
+			t1.store_code, t2.product_code, t2.production_month
+	) AS t5
+WHERE
+	t3.store_code = t5.store_code 
+	AND t4.product_code = t5.product_code 
+	AND t4.production_month = t5.production_month
+	AND t3.timestamp = t5.maxTimestamp
+
+=== 49 max
+
+SELECT firstname, lastname, SUM(nb_payments)
+FROM input
+GROUP BY firstname, lastname
+
+=== 50
+
+SELECT
+	t.zone_id, t.zone_name, MAX(t.time_start)
+FROM
+	input AS t
+WHERE
+	t.timestart < 1425808800
+GROUP BY
+	t.zone_id, t.zone_name
+
+=== 51
+
+SELECT
+	t1.User, t1.Phone, t1.Value
+FROM
+	table AS t1, (
+		SELECT User, MAX(Value) AS maxValue
+		FROM table
+		GROUP BY User
+		HAVING maxValue < 8
+	) AS t2
+WHERE 
+	t1.User = t2.User AND t1.Value = t2.maxValue
+	
+=== 52 argmax, aggr
+	
+SELECT
+	t1.Person, t2.sumDuration, t1.Value, t1.Uniq
+SELECT
+	table AS t1, (
+		SELECT 
+			Person, 
+			SUM(Time) AS sumTIme, 
+			MAX(Value) AS maxValue
+		FROM table
+		GROUP BY Person
+	) AS t2
+WHERE 
+	t1.Person = t2.Person
+	AND t1.Value = t2.maxValue
+
+=== 53 argmax
+
+SELECT
+	t1.number, t1.quantity, t1.maxRetail_price
+FROM
+	( SELECT number, quantity, MAX(retail_price) AS maxRetail_price
+		FROM input
+		GROUP BY number, quantity) AS t1, 
+	)	JOIN (
+		SELECT number, MAX(quantity) AS maxQuantity
+		FROM input
+		GROUP BY number
+	) AS t2
+WHERE
+	t1.number = t2.number
+	AND t1.quantity = t2.maxQuantity
+
+=== 54 count?
+
+SELECT
+	t3.PID, t3.GUID, t.LastName + t.FirstName
+FROM
+	table2 t, (
+		SELECT
+			t1.PID, t1.GUID
+		FROM
+			table1 AS t1
+		WHERE 
+			EXISTS (
+				SELECT *
+				FROM table1 AS t2	
+				WHERE t1.PID = t2.PID AND t2.GUID <> t1.GUID
+	) AS t3
+WHERE
+	t.GUID = t3.GUID
+
+=== 55 exists
+
+SELECT t1.ID_NUM
+FROM input AS t1
+WHERE NOT EXISTS (
+	SELECT *
+	FROM input AS t2
+	WHERE
+		t2.ID_NUM = t1.ID_NUM
+		AND t2.ID_STATUS = 8
+)
+
+=== 56 groupby/groupby
+
+SELECT
+	t1.client, MAX(t1.creditCard)
+FROM (
+		SELECT client, creditCard, SUM(amount)
+		FROM input 
+		GROUP BY client, creditCard
+	) AS t1
+GROUP BY
+	t1.client
+
+=== 57 aggr
+
+SELECT chapterid, xmlfile
+FROM input
+GROUP BY chapterid, xmlfile
+
+=== 58 aggr
+
+SELECT chapterid, xmlfile
+FROM input
+GROUP BY chapterid, xmlfile
+HAVING COUNT(*) > 1
+
+=== 59 not exists
+
+SELECT 
+	ID, X, Y
+FROM
+	input AS t1
+WHERE NOT EXIST (
+	SELECT *
+	FROM input AS t2
+	WHERE
+		t1.X = t2.X AND t1.Y = t2.Y AND t1.ID < t2.ID
+) AND NOT EXIST (
+	SELECT *
+	FROM input AS t2
+	WHERE
+		t1.X = t2.Y AND t1.Y = t2.X AND t1.ID < t2.ID
+)
+
+=== 60 argmax
+
+SELECT
+	t1.*
+FROM 
+	input AS t1, (
+		SELECT ID, Name, Row, MIN(time) AS minTime
+		FROM input
+		GROUP BY ID, Name, Row
+	) AS t2
+WHERE
+	t1.ID = t2.ID AND t1.Name = t2.Name
+	AND t1.Row = t2.Row AND t1.time = t2.minTime
+
+=== 61 join
+
+SELECT
+	t2.Avgtrans, t1.trans, t1.Month
+FROM (
+		SELECT Month, trans
+		FROM input
+		WHERE user = 3
+	) AS t1, (
+		SELECT Month, AVG(trans) AS Avgtrans
+		FROM input
+		WHERE user = 1 OR user = 2
+		GROUP BY Month
+	) AS t2 
+WHERE t1.Month = t2.Month
+
+=== 62 Argmax, join
+
+SELECT 
+  Orders.OrderNumber,
+  LineItems.Quantity, 
+  LineItems.Description
+FROM 
+  Orders 
+  INNER JOIN (
+    SELECT
+      Orders.OrderNumber,
+      Max(LineItem.LineItemID) AS LineItemID
+    FROM
+      Orders INNER JOIN LineItems
+      ON Orders.OrderNumber = LineItems.OrderNumber
+    GROUP BY Orders.OrderNumber
+  ) AS Items ON Orders.OrderNumber = Items.OrderNumber
+  INNER JOIN LineItems 
+  ON Items.LineItemID = LineItems.LineItemID

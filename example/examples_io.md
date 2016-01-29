@@ -1,6 +1,7 @@
 # 1
 ### [select the rows with max value on a column](http://stackoverflow.com/questions/7745609/sql-select-only-rows-with-max-value-on-a-column)
-#### description **
+#### description
+
     How do I select one row per id and only the greatest rev?
 
 #### input
@@ -20,7 +21,6 @@
     |  1   |  3   |  D   |
     |  2   |  1   |  B   |
 
-
 # 2
 ### [SQL query to get the “latest” value for each location](http://stackoverflow.com/questions/1783932/sql-query-to-get-the-latest-value-for-each-location)
 #### description
@@ -31,29 +31,29 @@
 #### input
 
 
-    | locId  |    dtg             |  temp |
-    |-------------------------------------|
-    | 100    |  2009-02-25 10:00  |  15   |
-    | 200    |  2009-02-25 10:00  |  20   |
-    | 300    |  2009-02-25 10:00  |  24   |
-    | 100    |  2009-02-25 09:45  |  13   |
-    | 300    |  2009-02-25 09:45  |  16   |
-    | 200    |  2009-02-25 09:45  |  18   |
-    | 400    |  2009-02-25 09:45  |  12   |
-    | 100    |  2009-02-25 09:30  |  11   |
-    | 300    |  2009-02-25 09:30  |  14   |
-    | 200    |  2009-02-25 09:30  |  15   |
-    | 400    |  2009-02-25 09:30  |  10   |
+    | locId  |    dtg                |  temp |
+    |----------------------------------------|
+    | 100    |  2009-02-25 10:00:00  |  15   |
+    | 200    |  2009-02-25 10:00:00  |  20   |
+    | 300    |  2009-02-25 10:00:00  |  24   |
+    | 100    |  2009-02-25 09:45:00  |  13   |
+    | 300    |  2009-02-25 09:45:00  |  16   |
+    | 200    |  2009-02-25 09:45:00  |  18   |
+    | 400    |  2009-02-25 09:45:00  |  12   |
+    | 100    |  2009-02-25 09:30:00  |  11   |
+    | 300    |  2009-02-25 09:30:00  |  14   |
+    | 200    |  2009-02-25 09:30:00  |  15   |
+    | 400    |  2009-02-25 09:30:00  |  10   |
 
 
 #### output
 
 
-    | locID |    dtg               | tmp |
-    |------------------------------------|
-    | 100   |   2009-02-25 10:00   | 15  |
-    | 200   |   2009-02-25 10:00   | 20  |
-    | 300   |   2009-02-25 10:00   | 24  |
+    | locID |    dtg                  | tmp |
+    |---------------------------------------|
+    | 100   |   2009-02-25 10:00:00   | 15  |
+    | 200   |   2009-02-25 10:00:00   | 20  |
+    | 300   |   2009-02-25 10:00:00   | 24  |
 
 
 # 3
@@ -64,9 +64,24 @@
 
 #### input
 
+  | ID  | Name            | City           | Birthyear  |
+  |-----------------------------------------------------|
+  | 1   | Egon Spengler   | New York       | 1957       |
+  | 2   | Mac Taylor      | New York       | 1955       |
+  | 3   | Sarah Connor    | Los Angeles    | 1959       |
+  | 4   | Jean-Luc Picard | La Barre       | 2305       |
+  | 5   | Ellen Ripley    | Nostromo       | 2092       |
+  | 6   | James T. Kirk   | Riverside      | 2233       |
+  | 7   | Henry Jones     | Chicago        | 1899       |
+
+#### output
+
+  | col1          |  col2       |
+  |-----------------------------|
+  | Henry Jones   | Chicago     |
+  | Mac Taylor    | New York    |
+  | Sarah Connor  | Los Angeles |
    
-
-
 
 # 4
 ### [Select first row in each GROUP BY group?](http://stackoverflow.com/questions/3800551/select-first-row-in-each-group-by-group)
@@ -132,7 +147,6 @@
 #### description
 
     The view has a product category, a revenue, a year and a month. I want to create a report comparing 2007 and 2008, showing 0 for the months with no sales. So the report should look something like this:
-
 
 #### input
 
@@ -258,6 +272,9 @@
 
     What I would like to do, is get sums and averages of the count column over a range of times. For instance, I have samples every 2 seconds recorded, but I would like the sum of the count column for all the samples in a 10 second or 30 second window for all samples.
 
+    # This is the sum for the 00 - 30 seconds range
+    # This is the sum for the 30 - 60 seconds range
+    # This is the sum for the 30 - 60 seconds range
 
 #### input
 
@@ -308,9 +325,9 @@
 
      |          c1         |  c2  |
      |----------------------------|
-     | 2010-06-15 23:35:00 |    1 |  # This is the sum for the 00 - 30  seconds range
-     | 2010-06-15 23:35:30 | 7544 |  # This is the sum for the 30 - 60 seconds range
-     | 2010-06-17 10:39:35 |  450 |  # This is the sum for the 30 - 60 seconds range
+     | 2010-06-15 23:35:00 |    1 |  
+     | 2010-06-15 23:35:30 | 7544 |  
+     | 2010-06-17 10:39:35 |  450 |  
 
 
 # 11
@@ -465,14 +482,14 @@
 
 #### input
 
-    | ID  |     Date    | Action   | Params|
-    |--------------------------------------|
-    |  A  |  20151001   |   Foo    |     1 |
-    |  A  |  20151002   |   Foo    |     2 |
-    |  A  |  20151001   |   Bar    |    10 |
-    |  B  |  20151001   |   Foo    |     0 |
-    |  B  |  20151002   |   Foo    |     0 |
-    |  B  |  20151003   |   Bar    |     1 |
+    | ID  |     Date      | Action   | Params|
+    |----------------------------------------|
+    |  A  |  2015-10-01   |   Foo    |     1 |
+    |  A  |  2015-10-02   |   Foo    |     2 |
+    |  A  |  2015-10-01   |   Bar    |    10 |
+    |  B  |  2015-10-01   |   Foo    |     0 |
+    |  B  |  2015-10-02   |   Foo    |     0 |
+    |  B  |  2015-10-03   |   Bar    |     1 |
 
 
 #### output
@@ -493,30 +510,30 @@
 #### input
 
 
-    | ProductID | Date      | Hour | UsageCount |
-    |-------------------------------------------|
-    |  1        | 20140901  | 0    | 10         |
-    |  1        | 20140901  | 1    | 15         |
-    |  1        | 20140902  | 5    | 25         |
-    |  1        | 20140903  | 5    | 25         |
-    |  1        | 20140904  | 3    | 25         |
-    |  1        | 20140905  | 7    | 25         |
-    |  1        | 20140906  | 10   | 25         |
-    |  1        | 20140907  | 9    | 25         |
-    |  1        | 20140908  | 5    | 25         |
-    |  2        | 20140903  | 16   | 10         |
-    |  2        | 20140903  | 13   | 115        |
+    | ProductID | Date        | Hour | UsageCount |
+    |---------------------------------------------|
+    |  1        | 2014-09-01  | 0    | 10         |
+    |  1        | 2014-09-01  | 1    | 15         |
+    |  1        | 2014-09-02  | 5    | 25         |
+    |  1        | 2014-09-03  | 5    | 25         |
+    |  1        | 2014-09-04  | 3    | 25         |
+    |  1        | 2014-09-05  | 7    | 25         |
+    |  1        | 2014-09-06  | 10   | 25         |
+    |  1        | 2014-09-07  | 9    | 25         |
+    |  1        | 2014-09-08  | 5    | 25         |
+    |  2        | 2014-09-03  | 16   | 10         |
+    |  2        | 2014-09-03  | 13   | 115        |
 
 
 #### output
 
 
-    | ProductId | Date      | DailyUsage                |             RollingAverage                         |
-    |--------------------------------------------------------------------------------------------------------|
-    | 1         | 20140901  | sum of usages of that day | (Sum of usages from 20140901 through 20140826) / 7 |
-    | 1         | 20140901  | sum of usages of that day | (Sum of usages from 20140901 through 20140826) / 7 |
-    | 1         | 20140902  | sum of usages of that day | (Sum of usages from 20140902 through 20140827) / 7 |
-    | 2         | 20140902  | sum of usages of that day | (Sum of usages from 20140902 through 20140827) / 7 |
+    | ProductId | Date        | DailyUsage                |             RollingAverage                         |
+    |----------------------------------------------------------------------------------------------------------|
+    | 1         | 2014-09-01  | sum of usages of that day | (Sum of usages from 20140901 through 20140826) / 7 |
+    | 1         | 2014-09-01  | sum of usages of that day | (Sum of usages from 20140901 through 20140826) / 7 |
+    | 1         | 2014-09-02  | sum of usages of that day | (Sum of usages from 20140902 through 20140827) / 7 |
+    | 2         | 2014-09-02  | sum of usages of that day | (Sum of usages from 20140902 through 20140827) / 7 |
 
 
 # 18
@@ -563,19 +580,24 @@
 #### input
 
 
-    | username |   date    | value|
-    |-----------------------------|
-    | brad     | 1/2/2010  |  1.1 |
-    | fred     | 1/3/2010  |  1.0 |
-    | bob      | 8/4/2009  |  1.5 |
-    | brad     | 2/2/2010  |  1.2 |
-    | fred     | 12/2/2009 |  1.3 |
+    | username |   date     | value|
+    |------------------------------|
+    | brad     | 2010-01-02 |  1.1 |
+    | fred     | 2010-01-03 |  1.0 |
+    | bob      | 2009-08-04 |  1.5 |
+    | brad     | 2010-02-02 |  1.2 |
+    | fred     | 2009-12-02 |  1.3 |
 
 
 #### output
 
-
-      ...
+    | username |   date      | value|
+    |-------------------------------|
+    | brad     | 2010-01-02  |  1.1 |
+    | fred     | 2010-01-03  |  1.0 |
+    | bob      | 2009-08-04  |  1.5 |
+    | brad     | 2010-02-02  |  1.2 |
+    | fred     | 2009-12-02  |  1.3 |
 
 
 # 20
@@ -632,6 +654,8 @@
 #### output
 
 
+    | c |
+    |---|
     | 2 |
 
 
@@ -699,7 +723,6 @@
 ### [How to return the row with the highest sum of two columns?](http://stackoverflow.com/questions/32773790/how-to-return-the-row-with-the-highest-sum-of-two-columns)
 #### description
 
-
   I'm looking for the SQL query that returns the name of the player with the highest GoalsScored + GoalsSaved, as long is that player is not listed in the table of taken players.
 
 
@@ -728,7 +751,9 @@
 
 #### output
 
-    ...
+    | name     |
+    |----------|
+    | John Bob |
 
 
 # 25 **
@@ -847,14 +872,14 @@
 #### input
 
 
-    | ID|    Date    | Action    | Params|
-    |------------------------------------|
-    | A |  20151001  |    Foo    |     1 |
-    | A |  20151002  |    Foo    |     2 |
-    | A |  20151001  |    Bar    |    10 |
-    | B |  20151001  |    Foo    |     0 |
-    | B |  20151002  |    Foo    |     0 |
-    | B |  20151003  |    Bar    |     1 |
+    | ID|    Date      | Action    | Params|
+    |--------------------------------------|
+    | A |  2015-10-01  |    Foo    |     1 |
+    | A |  2015-10-02  |    Foo    |     2 |
+    | A |  2015-10-01  |    Bar    |    10 |
+    | B |  2015-10-01  |    Foo    |     0 |
+    | B |  2015-10-02  |    Foo    |     0 |
+    | B |  2015-10-03  |    Bar    |     1 |
 
 
 #### output
@@ -1150,24 +1175,24 @@
 #### input
 
 
-    |  Id | Alerts  |  Alert_Date            |
-    |----------------------------------------|
-    |  1  | Alert1  |  5/11/2015 12:12:22 PM |
-    |  2  | Alert2  |  5/11/2015 12:12:22 PM |
-    |  3  | Alert1  |  5/12/2015 12:12:22 PM |
-    |  4  | Alert2  |  5/13/2015 12:12:22 PM |
-    |  5  | Alert2  |  5/14/2015 12:12:22 PM |
-    |  6  | Alert3  |  5/14/2015 12:12:22 PM |
+    |  Id | Alerts  |  Alert_Date          |
+    |--------------------------------------|
+    |  1  | Alert1  |  05/11/2015 12:12:22 |
+    |  2  | Alert2  |  05/11/2015 12:12:22 |
+    |  3  | Alert1  |  05/12/2015 12:12:22 |
+    |  4  | Alert2  |  05/13/2015 12:12:22 |
+    |  5  | Alert2  |  05/14/2015 12:12:22 |
+    |  6  | Alert3  |  05/14/2015 12:12:22 |
 
 
 #### output
 
 
-    | Alerts | Alert_Date            |
-    |--------------------------------|
-    | Alert1 | 5/12/2015 12:12:22 PM |
-    | Alert2 | 5/14/2015 12:12:22 PM |
-    | Alert3 | 5/14/2015 12:12:22 PM |
+    | Alerts | Alert_Date          |
+    |------------------------------|
+    | Alert1 | 05/12/2015 12:12:22 |
+    | Alert2 | 05/14/2015 12:12:22 |
+    | Alert3 | 05/14/2015 12:12:22 |
 
 
 # 39
@@ -1181,13 +1206,13 @@
 #### input
 
 
-     | Object | Observation | Date      |
-     |----------------------------------|
-     | 1      | 215         | 10/1/2015 |
-     | 2      | 125         | 10/1/2015 |
-     | 1      | 225         | 10/4/2015 |
-     | 2      | 150         | 10/4/2015 |
-     | 1      | 250         | 10/8/2015 |
+     | Object | Observation | Date       |
+     |-----------------------------------|
+     | 1      | 215         | 10/01/2015 |
+     | 2      | 125         | 10/01/2015 |
+     | 1      | 225         | 10/04/2015 |
+     | 2      | 150         | 10/04/2015 |
+     | 1      | 250         | 10/08/2015 |
 
 
 #### output
@@ -1195,8 +1220,8 @@
 
     | Object | Total  |   Date    |
     |-----------------------------|
-    |  1     | 690    | 10/1/2015 |
-    |  2     | 275    | 10/1/2015 |
+    |  1     | 690    | 10/01/2015 |
+    |  2     | 275    | 10/01/2015 |
 
 
 # 40
@@ -1210,22 +1235,22 @@
 #### input
 
 
-    |  acct_id | Bill_Id |  Bill_dt    | alt_bill_id |
-    |------------------------------------------------|
-    |  12345   |  123451 | 02-JAN-2014 |   101       |
-    |  12345   |  123452 | 02-JAN-2014 |   102       |
-    |  12346   |  123461 | 02-JAN-2014 |   103       |
-    |  12347   |  123471 | 02-JAN-2014 |   104       |
+    |  acct_id | Bill_Id |  Bill_dt   | alt_bill_id |
+    |-----------------------------------------------|
+    |  12345   |  123451 | 2014-01-02 |   101       |
+    |  12345   |  123452 | 2014-01-02 |   102       |
+    |  12346   |  123461 | 2014-01-02 |   103       |
+    |  12347   |  123471 | 2014-01-02 |   104       |
 
 
 #### output
 
 
-    |  acct_id | Bill_Id |   Bill_dt   | alt_bill_id |
-    |------------------------------------------------|
-    |  12345   |  123452 | 02-JAN-2014 |  102        |
-    |  12346   |  123461 | 02-JAN-2014 |  103        |
-    |  12347   |  123471 | 02-JAN-2014 |  104        |
+    |  acct_id | Bill_Id |   Bill_dt  | alt_bill_id |
+    |-----------------------------------------------|
+    |  12345   |  123452 | 2014-01-02 |  102        |
+    |  12346   |  123461 | 2014-01-02 |  103        |
+    |  12347   |  123471 | 2014-01-02 |  104        |
 
 
 # 41
@@ -1285,7 +1310,6 @@
 
 #### output
 
-
     |p.id|p.text |c.id  |c.parent|c.feature|
     |--------------------------------------|
     |  1 | Blah  |  1   |    1   |    123  |
@@ -1336,7 +1360,7 @@
 
     | deal_id  | status_id|  timestamp           |
     |--------------------------------------------|
-    | 1226     |    1     |  2009-08.17 09:29:00 |
+    | 1226     |    1     |  2009-08-17 09:29:00 |
     | 1226     |    2     |  2009-08-17 17:01:56 |
     | 1226     |    2     |  2009-08-18 12:10:07 |
     | 1226     |    3     |  2009-08-18 12:10:25 |
@@ -1375,9 +1399,7 @@
     | zoe   |     5 |
     | zoe   |     6 |
 
-
 #### output
-
 
     | NAME  | SCORE |
     |---------------|
@@ -1886,6 +1908,8 @@
 ### [SQL Server: How to Join to first row](http://stackoverflow.com/questions/2043259/sql-server-how-to-join-to-first-row)
 
 #### description
+
+    No description
     
 #### input
     
@@ -1912,4 +1936,33 @@
     | STL-7442-1  | 7        | prefabulated amulite      |  
     | MPT-9931-8A | 32       | differential girdlespring | 
     | KSG-0619-81 | 5        | panametric fan            |  
+
+# 63
+### [SQL - find records from one table which don't exist in another](http://stackoverflow.com/questions/367863/sql-find-records-from-one-table-which-dont-exist-in-another)
+
+#### description
+
+    How do I find out which calls were made by people whose phone_number is not in the Phone_book? The desired output would be:
+
+#### input
+
+    @ Phone_book
+    | id | name | phone_number |
+    |--------------------------|
+    | 1  | John | 111111111111 |
+    | 2  | Jane | 222222222222 |
+
+    @ Call
+    | id | date | phone_number |
+    |--------------------------|
+    | 1  | 0945 | 111111111111 |
+    | 2  | 0950 | 222222222222 |
+    | 3  | 1045 | 333333333333 |
+
+#### output
+
+    @ Call
+    | id | date | phone_number |
+    |--------------------------|
+    | 3  | 1045 | 333333333333 |
 

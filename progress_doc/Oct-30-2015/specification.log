@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  1 NOV 2015 16:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  13 DEC 2015 22:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**specification.tex -recorder
+**specification.tex
 (./specification.tex
 LaTeX2e <2015/01/01>
 Babel <3.9l> and hyphenation patterns for 79 languages loaded.
@@ -445,29 +445,29 @@ LaTeX Warning: Unused global option(s):
 (./specification.aux)
 \openout1 = `specification.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 25.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 25.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 24.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 24.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    ... okay on input line 24.
 \AtBeginShipoutBox=\box36
-Package hyperref Info: Link coloring ON on input line 25.
+Package hyperref Info: Link coloring ON on input line 24.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -477,9 +477,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count123
 )
-LaTeX Info: Redefining \ref on input line 25.
-LaTeX Info: Redefining \pageref on input line 25.
-LaTeX Info: Redefining \nameref on input line 25.
+LaTeX Info: Redefining \ref on input line 24.
+LaTeX Info: Redefining \pageref on input line 24.
+LaTeX Info: Redefining \nameref on input line 24.
 
 (./specification.out) (./specification.out)
 \@outlinefile=\write3
@@ -536,69 +536,69 @@ LaTeX Info: Redefining \nameref on input line 25.
 \everyMPtoPDFconversion=\toks30
 )
 LaTeX Font Info:    Font shape `T1/fve/m/n' will be
-(Font)              scaled to size 12.9599pt on input line 27.
+(Font)              scaled to size 12.9599pt on input line 26.
 LaTeX Font Info:    Font shape `T1/fve/b/n' will be
-(Font)              scaled to size 12.9599pt on input line 27.
+(Font)              scaled to size 12.9599pt on input line 26.
 LaTeX Font Info:    Font shape `T1/fve/b/n' will be
-(Font)              scaled to size 8.99994pt on input line 28.
-LaTeX Font Info:    Try loading font information for TS1+fve on input line 35.
+(Font)              scaled to size 8.99994pt on input line 27.
+LaTeX Font Info:    Try loading font information for TS1+fve on input line 34.
  (/usr/local/texlive/2015/texmf-dist/tex/latex/bera/ts1fve.fd
 File: ts1fve.fd 2004/09/07 scalable font definitions for TS1/fve.
 )
 LaTeX Font Info:    Font shape `TS1/fve/m/n' will be
-(Font)              scaled to size 8.99994pt on input line 35.
+(Font)              scaled to size 8.99994pt on input line 34.
 
-Overfull \hbox (7.033pt too wide) in paragraph at lines 49--51
+Overfull \hbox (7.033pt too wide) in paragraph at lines 48--50
 \T1/fve/m/n/10 (http://stackoverflow.com/questions/192220/what-is-the-most-effi
 cient-elegant-way-to-parse-a-flat-table-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 61--62
+Underfull \hbox (badness 10000) in paragraph at lines 60--61
 
  []
 
 [1
 
 {/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Try loading font information for U+msa on input line 87.
+LaTeX Font Info:    Try loading font information for U+msa on input line 86.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 87.
+LaTeX Font Info:    Try loading font information for U+msb on input line 86.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+lasy on input line 87.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 86.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
 LaTeX Font Info:    Font shape `T1/fve/m/n' will be
-(Font)              scaled to size 6.29996pt on input line 101.
+(Font)              scaled to size 6.29996pt on input line 100.
 LaTeX Font Info:    Font shape `T1/fve/m/n' will be
-(Font)              scaled to size 4.49997pt on input line 101.
+(Font)              scaled to size 4.49997pt on input line 100.
 LaTeX Font Info:    Font shape `T1/fve/m/n' will be
-(Font)              scaled to size 10.79993pt on input line 113.
+(Font)              scaled to size 10.79993pt on input line 112.
 LaTeX Font Info:    Font shape `T1/fve/b/n' will be
-(Font)              scaled to size 10.79993pt on input line 113.
+(Font)              scaled to size 10.79993pt on input line 112.
 
-Overfull \hbox (8.94305pt too wide) detected at line 122
+Overfull \hbox (8.94305pt too wide) detected at line 121
 \OML/cmm/m/it/10 Q \OT1/cmr/m/n/10 = []
  []
 
 [2]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 132.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 131.
  [3]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 132.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 131.
  (./specification.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 132.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 132.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 131.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 131.
 Package rerunfilecheck Info: File `specification.out' has not changed.
 (rerunfilecheck)             Checksum: 30088992F2B67609025856E4A14078C9;287.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 132.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 131.
  ) 
 Here is how much of TeX's memory you used:
  8797 strings out of 493089
@@ -607,7 +607,7 @@ Here is how much of TeX's memory you used:
  12162 multiletter control sequences out of 15000+600000
  30051 words of font info for 48 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 30i,9n,43p,350b,337s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 30i,9n,43p,340b,337s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/te
 xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texl

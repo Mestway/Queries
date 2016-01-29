@@ -1,0 +1,50 @@
+\documentclass[letter, notitlepage]{article}
+\usepackage{bussproofs}
+\usepackage{amssymb}
+\usepackage{latexsym}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage[top=1in, bottom=1in, left=0.85in, right=0.85in]{geometry}
+\usepackage{xcolor}
+\usepackage{bera}
+\usepackage{amsthm}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+
+\newcommand{\code}[1]{\texttt{\footnotesize #1}}
+\newcommand{\cmt}[1]{\textit{\footnotesize #1}}
+
+%for bussproofs abbreviation
+\EnableBpAbbreviations
+
+\begin{document}
+\[
+\begin{array}{rcll}
+	Result & = & T^{2} & {\text{(Actual result from my enumeration program)}}\\
+	T^{0} & \leftarrow & \mathbf{named}[\mathit{table}] & \text{(Query of depth $0$)}\\
+	T^{n} & \leftarrow & T^{n-1} & \text{(Query with depth at most $n$)}\\
+				& & \mathbf{Select}(\bar{v},~T^{n-1},~\mathit{f}^{n-1,2} )\\
+				& &  \mathbf{Aggregation}(\mathcal{F},~\bar{c},~c,T^{n-1})\\
+				& & \mathbf{Join}(T^{n-1}, T^{n-1})\\
+				& & \mathbf{Instantiate}(\bar{v}, \mathit{parameterized}(T^n))\\
+	v & \leftarrow & \mathbf{ColumnName}[c] \\
+		& & \mathbf{Constant}[\mathit{const}] \\
+		& & \color{blue} \mathbf{TableAsVal}(T^1)\\
+	f^{n,1} & \leftarrow & \mathbf{ExistFilter}(T^n) & (\text{filter of depth at most $n$, of length $1$})\\
+					& & \mathbf{CompareVals}(v, v, \mathcal{C})\\
+	f^{n,m} & \leftarrow & \mathbf{LogicAND}(f^{n, i}, f^{n,j})_{\mathit{where}~i+j=m} & (\text{filter of depth at most $n$ and of length $m$})\\
+					& & \color{blue} \mathbf{LogicOR}(f^{n, i}, f^{n,j})_{\mathit{where}~i+j=m}\\
+					& & \color{blue} \mathbf{LogicNEG}(f^{n, m-1})\\
+	\mathcal{F} & \leftarrow & \mathit{Max}, \mathit{Min}, \mathit{Sum}, \mathit{Count}, \mathit{Concat}, \mathit{Avg} & \text{(Aggregation functions)}\\
+	\mathcal{C} & \leftarrow & <, >, \le, \ge, == & \text{(Compare functions)} 
+\end{array}
+\]
+\end{document}
