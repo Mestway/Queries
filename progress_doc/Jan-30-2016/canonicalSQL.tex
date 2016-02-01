@@ -1,0 +1,46 @@
+\documentclass[letter, notitlepage]{article}
+\usepackage{bussproofs}
+\usepackage{amssymb}
+\usepackage{latexsym}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage[top=1in, bottom=1in, left=0.85in, right=0.85in]{geometry}
+\usepackage{xcolor}
+\usepackage{bera}
+\usepackage{amsthm}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+
+\newcommand{\code}[1]{\texttt{\footnotesize #1}}
+\newcommand{\cmt}[1]{\textit{\footnotesize #1}}
+\newcommand{\keyword}[1]{\textbf{\footnotesize #1}}
+
+%for bussproofs abbreviation
+\EnableBpAbbreviations
+
+\begin{document}
+\[
+\begin{array}{rcll}
+	Q 		 & \leftarrow & \mathbf{proj}[T] & \text{(Query)}\\
+	T 		 & \leftarrow & \mathbf{named}[T](f[T.\mathit{meta}, *]) & \text{(Tables)}\\
+				 & 						& \mathbf{aggr}[T,\bar{c},\bar{\alpha}](f[\bar\tau, *])\\
+				 & 						& \mathbf{join}[T_1, T_2](f[T_1.\mathit{meta}, T_2.\mathit{meta}])\\
+	f[L,R] & \leftarrow & \mathbf{and}(f[L,R],f[L,R]) & \text{(Filters)}\\
+				 & 						& \mathbf{or}(f[L,R],f[L,R])\\
+				 & 						& \mathbf{neg}(f[L,R])\\
+				 & 						& \mathbf{cmp}(v[L], v[R], \mathit{op})\\
+	v[S] 	 & \leftarrow & v,~s.t.~v\in S & \text{(Value)}\\
+	T.\mathit{meta} & \leftarrow & \text{(Metadata/Schema of T)}\\
+	* & \leftarrow & \text{(The set containing all variables in the environment)}\\
+	\tau & \leftarrow & \text{(An aggregation target)}
+\end{array}
+\]
+\end{document}
