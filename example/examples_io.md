@@ -117,8 +117,8 @@
 # 5
 ### [Retrieving the last record in each group](http://stackoverflow.com/questions/1313120/retrieving-the-last-record-in-each-group)
 #### description
-	 That is, the last record in each group should be returned.
-
+	 
+   That is, the last record in each group should be returned.
 
 #### input
 
@@ -146,7 +146,9 @@
 ### [SQL query to compare product sales by month](http://stackoverflow.com/questions/17194/sql-query-to-compare-product-sales-by-month?rq=1)
 #### description
 
-    The view has a product category, a revenue, a year and a month. I want to create a report comparing 2007 and 2008, showing 0 for the months with no sales. So the report should look something like this:
+    The view has a product category, a revenue, a year and a month. 
+    I want to create a report comparing 2007 and 2008, showing 0 for the months with no sales. 
+    So the report should look something like this:
 
 #### input
 
@@ -172,9 +174,11 @@
     | Bikes     |     3   |       12 000     |          11 500 |
     | Bikes     |     4   |       0          |          15 400 |
 
-    The key thing to notice is how month 1 only has sales in 2008, and therefore is 0 for 2007. Also, month 4 only has no sales in 2008, hence the 0, while it has sales in 2007 and still show up.
+    The key thing to notice is how month 1 only has sales in 2008, and therefore is 0 for 2007. 
+    Also, month 4 only has no sales in 2008, hence the 0, while it has sales in 2007 and still show up.
 
-    Also, the report is actually for financial year - so I would love to have empty columns with 0 in both if there was no sales in say month 5 for either 2007 or 2008.
+    Also, the report is actually for financial year 
+    - so I would love to have empty columns with 0 in both if there was no sales in say month 5 for either 2007 or 2008.
 
 
 # 7

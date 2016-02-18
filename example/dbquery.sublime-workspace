@@ -32,18 +32,10 @@
 	"buffers":
 	[
 		{
-			"file": "/Users/clwang/Research/DBQueries/progress_doc/Jan-14-2016/enumeration_grammar.tex",
+			"file": "solutions",
 			"settings":
 			{
-				"buffer_size": 1993,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/Users/clwang/Research/DBQueries/progress_doc/Jan-30-2016/canonicalSQL.tex",
-			"settings":
-			{
-				"buffer_size": 1482,
+				"buffer_size": 14203,
 				"line_ending": "Unix"
 			}
 		}
@@ -128,11 +120,33 @@
 	},
 	"file_history":
 	[
-		"/Users/clwang/Research/DBQueries/example/solutions.md",
-		"/Users/clwang/Research/DBQueries/example/examples_io.md",
-		"/Users/clwang/Research/DBQueries/progress_doc/Oct-30-2015/specification.tex",
-		"/Users/clwang/CourseWork/CSE504/hw01/specification.tex",
+		"/Users/clwang/Research/DBQueries/sketch-1.6.7/sketch-frontend/src/main/java/sketch/compiler/solvers/SolutionStatistics.java",
+		"/Users/clwang/Research/Automated Feedback/wordprobs/src/Amazon.java",
+		"/Users/clwang/Research/commandline-helper/commandline-helper/man-page-parser/man2xml.py",
+		"/Users/clwang/Research/past/SWIN-Group/ecoop16/Rebuttal.txt",
+		"/Users/clwang/Research/commandline-helper/commandline-helper/docs/bibliography.bib",
+		"/Users/clwang/Research/commandline-helper/commandline-helper/docs/framework.tex",
+		"/Users/clwang/Research/commandline-helper/commandline-helper/docs/intro.tex",
+		"/Users/clwang/Research/commandline-helper/commandline-helper/docs/methodology.tex",
+		"/Users/clwang/Research/commandline-helper/commandline-helper/docs/writeup.tex",
+		"/Users/clwang/Research/commandline-helper/commandline-helper/docs/Makefile",
+		"/Users/clwang/Research/commandline-helper/commandline-helper/docs/relatedwork.tex",
+		"/Users/clwang/Research/DBQueries/example/exists_transformation",
+		"/Users/clwang/Desktop/draft",
 		"/Users/clwang/Research/DBQueries/progress_doc/Jan-14-2016/enumeration_grammar.tex",
+		"/Users/clwang/Research/DBQueries/example/examples_io.md",
+		"/Users/clwang/Research/DBQueries/example/solutions",
+		"/Users/clwang/Documents/homepage/mestway.github.io/index.html",
+		"/Users/clwang/CourseWork/CSE504/hw01/specification.tex",
+		"/Users/clwang/Documents/Graduate-School-Application/Resume/Resume.tex",
+		"/Users/clwang/Documents/Graduate-School-Application/Resume/Resume.",
+		"/Users/clwang/Research/commandline-helper/commandline-helper/data/examples.txt",
+		"/Users/clwang/Research/commandline-helper/commandline-helper/docs/NL2Commands.tex",
+		"/Users/clwang/Research/DBQueries/progress_doc/Jan-30-2016/canonicalSQL.tex",
+		"/Users/clwang/CourseWork/CSE504/hw01/wang-commemted.pdf",
+		"/Users/clwang/CourseWork/CSE504/Presentation1.pptx",
+		"/Users/clwang/Research/DBQueries/example/solutions.md",
+		"/Users/clwang/Research/DBQueries/progress_doc/Oct-30-2015/specification.tex",
 		"/Users/clwang/Desktop/test.py",
 		"/Users/clwang/Research/DBQueries/example/challenging_queries",
 		"/Users/clwang/Research/DBQueries/example/example_io",
@@ -151,7 +165,6 @@
 		"/Users/clwang/Research/DBQueries/SQLShareLog/logviewer/index.html",
 		"/Users/clwang/CourseWork/CSE505/readinghw02/paperreading2.txt",
 		"/Users/clwang/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
-		"/Users/clwang/Documents/Graduate-School-Application/Resume/Resume.tex",
 		"/Users/clwang/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
 		"/Users/clwang/Downloads/lec03-sql-basics.sql",
 		"/Users/clwang/Research/DBQueries/example/qlang",
@@ -177,7 +190,6 @@
 		"/Users/clwang/Documents/Research/DBQueries/learnQuery/js/jquery.handsontable.full.js",
 		"/Users/clwang/Documents/Research/DBQueries/learnQuery/js/jquery.js",
 		"/Users/clwang/Documents/Research/Automated Feedback/Automatic-Feedback/Discussion/4.23/specification.tex",
-		"/Users/clwang/Documents/homepage/mestway.github.io/index.html",
 		"/Users/clwang/Documents/Research/untitled folder/select the rows with max value on a column",
 		"/Users/chenglong/Library/Application Support/Sublime Text 2/Packages/User/LaTeXTools.sublime-settings",
 		"/Users/chenglong/Desktop/untitled folder/untitled.tex",
@@ -206,6 +218,16 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"EXISTS",
+			"Group by",
+			"EXISTS",
+			"JOIN",
+			" \n",
+			"  ",
+			"t2.end",
+			"find all files",
+			"exists",
+			"EXISTS",
 			" \n",
 			"		\n",
 			"LogicAND",
@@ -306,59 +328,32 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "/Users/clwang/Research/DBQueries/progress_doc/Jan-14-2016/enumeration_grammar.tex",
+					"file": "solutions",
 					"settings":
 					{
-						"buffer_size": 1993,
+						"buffer_size": 14203,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								351,
-								351
+								7561,
+								7567
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/LaTeX/LaTeX.tmLanguage",
+							"syntax": "Packages/Text/Plain text.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "/Users/clwang/Research/DBQueries/progress_doc/Jan-30-2016/canonicalSQL.tex",
-					"settings":
-					{
-						"buffer_size": 1482,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								717,
-								717
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/LaTeX/LaTeX.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 53.0,
+						"translation.y": 6775.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -411,6 +406,18 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"sol",
+				"DBQueries/example/solutions"
+			],
+			[
+				"solutions",
+				"DBQueries/sketch-1.6.7/sketch-frontend/src/main/java/sketch/compiler/solvers/SolutionStatistics.java"
+			],
+			[
+				"solution",
+				"DBQueries/example/solutions"
+			],
 			[
 				"example_io.md",
 				"DBQueries/example/examples_io.md"

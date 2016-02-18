@@ -283,6 +283,14 @@ GROUP BY
 === 018 exists
 
 SELECT 
+	t1.id,t1.country,t1.status
+FROM table t1 JOIN table t2
+WHERE 
+	t1.country=t2.country
+	AND t2.status='UNTREATED'
+ 	AND t1.status='TREATED' 
+
+SELECT 
 	input.id, input.country, input.status
 FROM
 	input AS t1
@@ -395,7 +403,8 @@ FROM
 WHERE NOT EXISTS (
 	SELECT *
 	FROM table
-	WHERE Client_ID = 2
+	WHERE Client_ID = 2 
+		AND t.Product_ID = Product_ID
 ) 
 	
 === 27 join
@@ -530,7 +539,7 @@ WHERE
 	EXISTS (
 		SELECT *
 		FROM table AS t2
-		GROUP BY t2.user_id, t2.names
+		GROUP BY t2.user_id
 		HAVING COUNT(*) > 3 AND t1.user_id = t2.user_id
 	)
 
@@ -830,12 +839,12 @@ WHERE NOT EXIST (
 	SELECT *
 	FROM input AS t2
 	WHERE
-		t1.X = t2.X AND t1.Y = t2.Y AND t1.ID < t2.ID
+		t1.X = t2.X AND t1.Y = t2.Y AND t1.ID > t2.ID
 ) AND NOT EXIST (
 	SELECT *
 	FROM input AS t2
 	WHERE
-		t1.X = t2.Y AND t1.Y = t2.X AND t1.ID < t2.ID
+		t1.X = t2.Y AND t1.Y = t2.X AND t1.ID > t2.ID
 )
 
 === 60 argmax

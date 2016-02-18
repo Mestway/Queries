@@ -1,0 +1,184 @@
+SELECT 
+    ID, X, Y
+FROM
+    input AS t1
+WHERE NOT EXIST (
+    SELECT *
+    FROM input AS t2
+    WHERE
+        t1.X = t2.X AND t1.Y = t2.Y AND t1.ID < t2.ID
+) AND NOT EXIST (
+    SELECT *
+    FROM input AS t2
+    WHERE
+        t1.X = t2.Y AND t1.Y = t2.X AND t1.ID < t2.ID
+)
+
+SELECT
+    ID, X, Y
+FROM 
+    input AS t
+    MINUS (
+        SELECT t1.*
+        FROM input AS t1, input AS t2
+        WHERE
+            t1.X = t2.X
+            AND t2.Y = t2.Y
+            AND t1.ID < t2.ID
+    ) 
+    MINUS (
+        SELECT t1.*
+        FROM input AS t1, input AS t2
+        WHERE
+            t1.X = t2.Y
+            AND t2.X = t1.Y
+            AND t1.ID < t2.ID
+    )
+
+SELECT
+    t.id, t.rev, t.content
+FROM
+    input AS t JOIN (
+        SELECT 
+            id, MAX(aggr.rev) AS maxrev
+        FROM
+            input
+        GROUP BY
+            id
+    ) AS t2 
+WHERE 
+    t.id = t2.id AND t.rev = t2.maxrev
+
+SELECT
+    t.id, t.rev, t.content
+FROM
+    docs AS t, docs AS t2
+WHERE
+    t.id = t2.id
+GROUP BY
+    t.id, t.rev, t.content, t2.id
+HAVING t.rev = MAX(t2.rev)
+
+SELECT
+  t.id, t.rev, t.content
+FROM
+  input AS t JOIN (
+    SELECT 
+      id, MAX(aggr.rev) AS maxre        
+    FROM input
+    GROUP BY id
+  ) AS t2 
+WHERE 
+  t.id = t2.id AND t.rev = t2.maxrev
+
+
+SELECT 
+    ID, X, Y
+FROM
+    input AS t1
+WHERE NOT EXIST (
+    SELECT *
+    FROM input AS t2
+    WHERE
+        t1.X = t2.X 
+        AND t1.Y = t2.Y 
+        AND t1.ID > t2.ID
+) AND NOT EXIST (
+    SELECT *
+    FROM input AS t2
+    WHERE
+        t1.X = t2.Y 
+        AND t1.Y = t2.X 
+        AND t1.ID > t2.ID
+)
+
+SELECT
+  ID, X, Y
+FROM
+  input AS t1
+  LEFT OUTER JOIN (
+    SELECT *
+    FROM input AS t2
+  ) ON t1.X = t2.X 
+        AND t1.Y = t2.Y 
+        AND t1.ID < t2.ID
+  LEFT OUTER JOIN (
+    SELECT *
+    FROM input AS t3
+  ) ON t1.X = t3.Y 
+      AND t1.Y = t3.X 
+      AND t1.ID < t3.ID
+WHERE
+  t2.ID IS NULL AND t3.ID IS NULL
+
+
+SELECT 
+  MIN(t5.id), t6.way, t6.start, t6.end
+FROM
+  table1 AS t5,
+  ( SELECT t4.way, MIN(t4.time) AS start, t4.end
+    FROM
+      (SELECT t1.way, t1.time, MAX(t2.time) AS end
+        FROM table1 AS t1, table1 AS t2
+        WHERE 
+          t1.way = t2.way
+          AND t2.time >= t1.time
+          AND NOT EXISTS (
+            SELECT *
+            FROM table1 AS t3
+            WHERE 
+              t3.time > t1.time 
+              AND t3.time < t2.time
+              AND t3.way <> t2.way  
+        )
+      GROUP BY t1.way, t1.time) t4
+  GROUP BY
+    t4.way, t4.end) AS t6
+WHERE t5.way = t6.way AND t5.time = t6.start
+GROUP BY t6.way, t6.start, t6.end
+ORDER BY MIN(t5.id) ASC
+
+SELECT 
+  MIN(t5.id), t6.way, t6.start, t6.end
+FROM
+  table1 AS t5,
+  ( SELECT t4.way, MIN(t4.time) AS start, t4.end
+    FROM
+      (SELECT t1.way, t1.time, MAX(t2.time) AS end
+        FROM table1 AS t1 
+          JOIN table1 AS t2
+            ON t1.way = t2.way 
+              AND t2.time >= t1.time
+          LEFT OUTER JOIN table1 AS t3
+            ON t3.time > t1.time 
+              AND t3.time < t2.time 
+              AND t3.way <> t2.way
+        WHERE t3.id IS NULL
+        GROUP BY t1.way, t1.time
+      ) t4
+    GROUP BY
+      t4.way, t4.end) AS t6
+WHERE t5.way = t6.way AND t5.time = t6.start
+GROUP BY t6.way, t6.start, t6.end
+ORDER BY MIN(t5.id) ASC
+
+SELECT MIN(t6.id), t6.way, t6.start, t6.end
+FROM
+  (SELECT t4.id, t4.way, t4.time, t4.way1, MIN(t4.time1) AS start, t4.end 
+  FROM 
+    (SELECT t5.id, t5.way, t5.time, t1.way AS way1, t1.time AS time1, MAX(t2.time) AS end
+    FROM table1 AS t5, table1 AS t1 
+          JOIN table1 AS t2
+             ON t1.way = t2.way
+              AND t2.time >= t1.time
+           LEFT OUTER JOIN table1 AS t3
+             ON t3.time > t1.time 
+               AND t3.time < t2.time 
+               AND t3.way <> t2.way
+    WHERE t3.id IS NULL 
+    GROUP BY t5.id, t5.way, t5.time, t1.way, t1.time) AS t4
+  GROUP BY
+    t4.id, t4.way, t4.time, t4.way1, t4.end
+  HAVING t4.time = MIN(t4.time1) AND t4.way = way1) t6
+GROUP BY t6.way, t6.start, t6.end
+ORDER BY MIN(t6.id) ASC
