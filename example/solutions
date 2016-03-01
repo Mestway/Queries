@@ -236,7 +236,7 @@ FROM
 WHERE
 	t2.date >= t1.date - 2 AND t2.date <= t1.date
 GROUP BY
-	t1.date
+	t1.date, t1.clicks
 ORDER BY 1
 
 === 016 count portion

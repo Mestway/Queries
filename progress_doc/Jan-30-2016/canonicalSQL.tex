@@ -19,7 +19,7 @@
     urlcolor=cyan,
 }
 
-\newcommand{\code}[1]{\texttt{\footnotesize #1}}
+\newcommand{\code}[1]{\texttt{\small #1}}
 \newcommand{\cmt}[1]{\textit{\footnotesize #1}}
 \newcommand{\keyword}[1]{\textbf{\footnotesize #1}}
 
@@ -41,6 +41,29 @@
 	T.\mathit{meta} & \leftarrow & \text{(Metadata/Schema of T)}\\
 	* & \leftarrow & \text{(The set containing all variables in the environment)}\\
 	\tau & \leftarrow & \text{(An aggregation target)}
+\end{array}
+\]
+
+\[
+\begin{array}{rcll}
+ \mathcal{C} & \leftarrow & \bar{b} & \text{(Constraints)}\\
+v & \leftarrow & \mathit{const} & \text{(Values)}\\
+	& & {c}_{O}\\
+	& & c_I[\overline{c_I = v}]\\
+	& & \mathcal{F}(c_I; \overline{c_I = v})\\
+	& & \mathcal{E}(\bar{v})\\
+	& & \mathsf{case}~(b, v_1, v_2)\\
+b & \leftarrow & (\bar{c}_O) \sim (\bar{c}_I) & \text{(Boolean Expressions)}\\
+	& & c_O~\mathit{op}~v\\
+	& & \mathcal{E}(c_O)~\mathit{op}~v\\
+	& & \mathsf{exists}(\overline{c_I=v})\\
+	& & \mathsf{not}~b\\
+\mathit{op} & \leftarrow & \code{<}, \code{>}, \code{=}, \code{<>} & \text{(Operators)}\\
+\mathcal{F} & \leftarrow & \code{max}, \code{min}, \code{sum}, \code{avg}, \code{count}, \code{concat} & \text{(Aggregation Functions)}\\
+\mathcal{E}	& \leftarrow & v,~\mathcal{E}(v) + \mathcal{E}(v), & \text{(Expressions)}\\
+						& & \mathcal{E}(v) / \mathcal{E}(v), \mathcal{E}(v) - \mathcal{E}(v),~\mathcal{E}(v) * \mathcal{E}(v)\\
+						& & \mathsf{unix\_timestamp}(v),~\mathsf{year}(v),\\
+						& & \mathsf{month}(v),~\mathsf{day}(v),~\mathsf{time}(v)
 \end{array}
 \]
 \end{document}
