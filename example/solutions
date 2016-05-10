@@ -177,16 +177,6 @@ FROM
 WHERE t5.way = t6.way AND t5.time = t6.start
 GROUP BY t6.way, t6.start, t6.end
 ORDER BY MIN(t5.id) ASC
-
-=== 010 group-by segment of time
-
-SELECT
-	MIN(time_stamp),
-	SUM(count) AS sumCount
-FROM
-	input
-GROUP BY
-	GROUP BY UNIX_TIMESTAMP(time_stamp) DIV 30
 	
 === 011 argmax
 
@@ -200,10 +190,6 @@ FROM
 	) AS t1
 WHERE
 	input.home = t1.home AND input.datetime = t1.maxDatetime
-
-=== 012
-
-(Cannot be achieved without using system functions)
 
 === 013 find max
 
@@ -261,24 +247,6 @@ FROM (
 	) AS t2
 WHERE
 	t1.ID = t2.ID
-
-=== 017 rolling avg
-
-SELECT 
-	t1.productid, 
-	t1.date, 
-	MAX(t1.sumUsagecount), 
-	SUM(t2.usagecount) / COUNT(DISTINCT t2.date)
-FROM 
-  (SELECT productid, date, SUM(usagecount) AS sumUsagecount
-		FROM tbl
-		GROUP BY productid, date) AS t1, tbl AS t2
-WHERE
-	t1.productid = t2.productid
-	AND t2.date >= t1.date - 7
-	AND t2.date <= t1.date
-GROUP BY
-	t1.productid, t1.date
 
 === 018 exists
 
@@ -829,38 +797,6 @@ FROM input
 GROUP BY chapterid, xmlfile
 HAVING COUNT(*) > 1
 
-=== 59 not exists
-
-SELECT 
-	ID, X, Y
-FROM
-	input AS t1
-WHERE NOT EXIST (
-	SELECT *
-	FROM input AS t2
-	WHERE
-		t1.X = t2.X AND t1.Y = t2.Y AND t1.ID > t2.ID
-) AND NOT EXIST (
-	SELECT *
-	FROM input AS t2
-	WHERE
-		t1.X = t2.Y AND t1.Y = t2.X AND t1.ID > t2.ID
-)
-
-=== 60 argmax
-
-SELECT
-	t1.*
-FROM 
-	input AS t1, (
-		SELECT ID, Name, Row, MIN(time) AS minTime
-		FROM input
-		GROUP BY ID, Name, Row
-	) AS t2
-WHERE
-	t1.ID = t2.ID AND t1.Name = t2.Name
-	AND t1.Row = t2.Row AND t1.time = t2.minTime
-
 === 61 join
 
 SELECT
@@ -877,22 +813,3 @@ FROM (
 	) AS t2 
 WHERE t1.Month = t2.Month
 
-=== 62 Argmax, join
-
-SELECT 
-  Orders.OrderNumber,
-  LineItems.Quantity, 
-  LineItems.Description
-FROM 
-  Orders 
-  INNER JOIN (
-    SELECT
-      Orders.OrderNumber,
-      Max(LineItem.LineItemID) AS LineItemID
-    FROM
-      Orders INNER JOIN LineItems
-      ON Orders.OrderNumber = LineItems.OrderNumber
-    GROUP BY Orders.OrderNumber
-  ) AS Items ON Orders.OrderNumber = Items.OrderNumber
-  INNER JOIN LineItems 
-  ON Items.LineItemID = LineItems.LineItemID
